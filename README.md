@@ -13,3 +13,6 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/art_Rectangle_5.svg" width="200" height="200" />
 <img src="images/art_Rings_4.svg" width="200" height="200" />
 <img src="images/art_Rings_5.svg" width="200" height="200" />
+
+<img src="images/trump.svg" width="200" height="200" />
+<img src="images/trump_rt3.svg" width="200" height="200" />

@@ -6,7 +6,7 @@ import numpy as np
 import random
 from svgBasic import *
 from svgFile import SVGFile
-    
+from svgImageMask import SVGImageMask
     
 class drawArt:
     def __init__(self,svg=None):
@@ -18,8 +18,7 @@ class drawArt:
         r = abs(ptCenter[0]-pt1[0])
         
         if circle:
-            for i in draw_circle(ptCenter[0],ptCenter[1],r):
-                self.svg.draw(i)
+            self.svg.draw(draw_circle(ptCenter[0],ptCenter[1],r))
         else:
             for i in draw_circleRings(ptCenter[0],ptCenter[1],r):
                 self.svg.draw(i)
@@ -169,10 +168,16 @@ def drawText():
             y0+=h
     svg.close()
     
+def maskImage():
+    f = r'.\res\trump.jpg'
+    d = r'.\images\trump.svg'
+    SVGImageMask(f,d).draw()
+    
 def main():
     #drawTest()
     #drawArtSvg()
-    drawText()
+    #drawText()
+    maskImage()
     
 if __name__=='__main__':
     main()
