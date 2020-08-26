@@ -10,15 +10,19 @@ from svgFile import SVGFile
     
 class drawArt:
     def __init__(self,svg=None):
-        self.styles=['Line','DiagLine','Rectangle','Circle']
+        self.styles=['Line','DiagLine','Rectangle','Circle','Rings']
         self.svg = svg
         
-    def DrawCircleByPt(self,pt1,pt2,pt3,pt4):
+    def DrawCircleByPt(self,pt1,pt2,pt3,pt4,circle=True):
         ptCenter = np.array([(pt1[0]+pt3[0])/2,(pt1[1]+pt3[1])/2])
         r = abs(ptCenter[0]-pt1[0])
         
-        for i in draw_circle(ptCenter[0],ptCenter[1],r):
-            self.svg.draw(i)
+        if circle:
+            for i in draw_circle(ptCenter[0],ptCenter[1],r):
+                self.svg.draw(i)
+        else:
+            for i in draw_circleRings(ptCenter[0],ptCenter[1],r):
+                self.svg.draw(i)
 
     def DrawLineByPt(self,startPt,stopPt):
         if startPt[0]>stopPt[0]: #switch
@@ -75,11 +79,11 @@ class drawArt:
         self.plotArt(pt3, ptCenter, N-1,style=style)
         self.plotArt(np.array([pt4[0],ptCenter[1]]), np.array([ptCenter[0],pt4[1]]), N-1,style=style)
         
-    def drawCircle(self,pt1,pt2,pt3,pt4,ptCenter,style,N):
+    def drawCircle(self,pt1,pt2,pt3,pt4,ptCenter,style,N,circle=True):
         a=[0,1]
         if N == 1:
             #if random.choice(a):
-            self.DrawCircleByPt(pt1,pt2,pt3,pt4)
+            self.DrawCircleByPt(pt1,pt2,pt3,pt4,circle=circle)
         
         self.plotArt(pt1, ptCenter, N-1,style=style)
         self.plotArt(np.array([ptCenter[0],pt2[1]]), np.array([pt2[0],ptCenter[1]]), N-1,style=style)
@@ -107,6 +111,8 @@ class drawArt:
                 self.drawRectangle(pt1,pt2,pt3,pt4,ptCenter,style,N)
             elif style == self.styles[3]:
                 self.drawCircle(pt1,pt2,pt3,pt4,ptCenter,style,N)
+            elif style == self.styles[4]:
+                self.drawCircle(pt1,pt2,pt3,pt4,ptCenter,style,N,circle=False)
             else:
                 print('Not handled!')
         else:

@@ -25,3 +25,13 @@ def draw_circle(x, y, radius, rings=3, color='black'):
         sw = random.choice([1,1,1,2,2,3])
         yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke_width="{sw}" \
             fill="{color}" />'
+
+def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
+    #Draw circles rings for svg
+    for _ in range(rings):
+        r = random.randint(1,rings)*radius/(rings+1)
+        sw = random.choice([1,1,1,2,2,3])
+        color = color or randomColor()
+        yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke_width="{sw}" \
+            stroke="{color}" fill="{fillColor}" />'
+            

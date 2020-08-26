@@ -12,3 +12,4 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/art_DiagLine.svg" width="200" height="200" />
 <img src="images/art_Circle.svg" width="200" height="200" />
 <img src="images/art_Rectangle.svg" width="200" height="200" />
+<img src="images/art_Rings.svg" width="200" height="200" />
