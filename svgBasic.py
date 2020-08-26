@@ -42,3 +42,6 @@ def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
         yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke_width="{sw}" \
             stroke="{color}" fill="{fillColor}" />'
             
+def draw_text(x,y,text,font='Consolas',color='black'):
+    return f'<text x="{x}" y="{y}" fill="{color}" font-family="{font}" \
+        font-size="smaller" font-style="normal" font-variant="normal">{text}</text>'
