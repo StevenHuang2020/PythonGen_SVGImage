@@ -39,9 +39,11 @@ def draw_rect(x, y, width, height, color=None):
     color = color or randomColor()
     return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{color}" stroke_width="0.5"  />'
 
-def draw_circle(x, y, radius, rings=3, color='black'):
+def draw_circle(x, y, radius, rings=4, color='black'):
     #Draw circles for svg
-    return f'<circle cx="{x}" cy="{y}" r="{radius}" fill="{color}" />'
+    r = random.choice(range(1,rings))*radius/rings
+    print('rand=',random.choice(range(1,rings)),'r=',r)
+    return f'<circle cx="{x}" cy="{y}" r="{r}" fill="{color}" />'
 
 def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
     #Draw circles rings for svg
