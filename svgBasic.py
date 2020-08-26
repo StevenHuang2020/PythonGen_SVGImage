@@ -4,7 +4,7 @@ import random
 def randomColor():
     chars = '0123456789ABCDEF'
     color = ['#']
-    for i in range(6):
+    for _ in range(6):
         color.append(random.choice(chars))
     return ''.join(color)
 
