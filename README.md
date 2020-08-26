@@ -7,8 +7,9 @@ SVG: https://www.w3.org/Graphics/SVG/
 
 #### SVG images generated using python code 
 <br/>
-<img src="images/art_Line.svg" width="200" height="200" />
-<img src="images/art_DiagLine.svg" width="200" height="200" />
-<img src="images/art_Circle.svg" width="200" height="200" />
-<img src="images/art_Rectangle.svg" width="200" height="200" />
-<img src="images/art_Rings.svg" width="200" height="200" />
+<img src="images/art_Line_5.svg" width="200" height="200" />
+<img src="images/art_DiagLine_5.svg" width="200" height="200" />
+<img src="images/art_Circle_5.svg" width="200" height="200" />
+<img src="images/art_Rectangle_5.svg" width="200" height="200" />
+<img src="images/art_Rings_4.svg" width="200" height="200" />
+<img src="images/art_Rings_5.svg" width="200" height="200" />
