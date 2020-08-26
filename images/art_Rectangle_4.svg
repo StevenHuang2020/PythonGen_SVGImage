@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-        <g opacity="1.0">
-<rect x="0" y="0" width="25.0" height="25.0"         fill="#181387" stroke="#181387" stroke_width="0.5"  />
-<rect x="25.0" y="0.0" width="25.0" height="25.0"         fill="#388DAC" stroke="#388DAC" stroke_width="0.5"  />
-<rect x="25.0" y="25.0" width="25.0" height="25.0"         fill="#EEC3E2" stroke="#EEC3E2" stroke_width="0.5"  />
-<rect x="0.0" y="25.0" width="25.0" height="25.0"         fill="#DCE8F7" stroke="#DCE8F7" stroke_width="0.5"  />
-<rect x="50.0" y="0.0" width="25.0" height="25.0"         fill="#6391B9" stroke="#6391B9" stroke_width="0.5"  />
-<rect x="75.0" y="0.0" width="25.0" height="25.0"         fill="#4EABF8" stroke="#4EABF8" stroke_width="0.5"  />
-<rect x="75.0" y="25.0" width="25.0" height="25.0"         fill="#6B77FD" stroke="#6B77FD" stroke_width="0.5"  />
-<rect x="50.0" y="25.0" width="25.0" height="25.0"         fill="#E850DE" stroke="#E850DE" stroke_width="0.5"  />
-<rect x="50.0" y="50.0" width="25.0" height="25.0"         fill="#80EC37" stroke="#80EC37" stroke_width="0.5"  />
-<rect x="75.0" y="50.0" width="25.0" height="25.0"         fill="#09F3DE" stroke="#09F3DE" stroke_width="0.5"  />
-<rect x="75.0" y="75.0" width="25.0" height="25.0"         fill="#7A40DF" stroke="#7A40DF" stroke_width="0.5"  />
-<rect x="50.0" y="75.0" width="25.0" height="25.0"         fill="#1592D9" stroke="#1592D9" stroke_width="0.5"  />
-<rect x="0.0" y="50.0" width="25.0" height="25.0"         fill="#491EF8" stroke="#491EF8" stroke_width="0.5"  />
-<rect x="25.0" y="50.0" width="25.0" height="25.0"         fill="#BD7B9D" stroke="#BD7B9D" stroke_width="0.5"  />
-<rect x="25.0" y="75.0" width="25.0" height="25.0"         fill="#686C84" stroke="#686C84" stroke_width="0.5"  />
-<rect x="0.0" y="75.0" width="25.0" height="25.0"         fill="#A12F0C" stroke="#A12F0C" stroke_width="0.5"  />
-<rect x="100.0" y="0.0" width="25.0" height="25.0"         fill="#DCB5A0" stroke="#DCB5A0" stroke_width="0.5"  />
-<rect x="125.0" y="0.0" width="25.0" height="25.0"         fill="#23F212" stroke="#23F212" stroke_width="0.5"  />
-<rect x="125.0" y="25.0" width="25.0" height="25.0"         fill="#963290" stroke="#963290" stroke_width="0.5"  />
-<rect x="100.0" y="25.0" width="25.0" height="25.0"         fill="#A81585" stroke="#A81585" stroke_width="0.5"  />
-<rect x="150.0" y="0.0" width="25.0" height="25.0"         fill="#489F72" stroke="#489F72" stroke_width="0.5"  />
-<rect x="175.0" y="0.0" width="25.0" height="25.0"         fill="#8914E8" stroke="#8914E8" stroke_width="0.5"  />
-<rect x="175.0" y="25.0" width="25.0" height="25.0"         fill="#C83D92" stroke="#C83D92" stroke_width="0.5"  />
-<rect x="150.0" y="25.0" width="25.0" height="25.0"         fill="#49314B" stroke="#49314B" stroke_width="0.5"  />
-<rect x="150.0" y="50.0" width="25.0" height="25.0"         fill="#9ABFCE" stroke="#9ABFCE" stroke_width="0.5"  />
-<rect x="175.0" y="50.0" width="25.0" height="25.0"         fill="#B12E25" stroke="#B12E25" stroke_width="0.5"  />
-<rect x="175.0" y="75.0" width="25.0" height="25.0"         fill="#0EEAAC" stroke="#0EEAAC" stroke_width="0.5"  />
-<rect x="150.0" y="75.0" width="25.0" height="25.0"         fill="#BD15A8" stroke="#BD15A8" stroke_width="0.5"  />
-<rect x="100.0" y="50.0" width="25.0" height="25.0"         fill="#94E1B0" stroke="#94E1B0" stroke_width="0.5"  />
-<rect x="125.0" y="50.0" width="25.0" height="25.0"         fill="#B67F17" stroke="#B67F17" stroke_width="0.5"  />
-<rect x="125.0" y="75.0" width="25.0" height="25.0"         fill="#412FE1" stroke="#412FE1" stroke_width="0.5"  />
-<rect x="100.0" y="75.0" width="25.0" height="25.0"         fill="#0855A6" stroke="#0855A6" stroke_width="0.5"  />
-<rect x="100.0" y="100.0" width="25.0" height="25.0"         fill="#BFF31D" stroke="#BFF31D" stroke_width="0.5"  />
-<rect x="125.0" y="100.0" width="25.0" height="25.0"         fill="#8B6CD2" stroke="#8B6CD2" stroke_width="0.5"  />
-<rect x="125.0" y="125.0" width="25.0" height="25.0"         fill="#51DAE6" stroke="#51DAE6" stroke_width="0.5"  />
-<rect x="100.0" y="125.0" width="25.0" height="25.0"         fill="#28CAC9" stroke="#28CAC9" stroke_width="0.5"  />
-<rect x="150.0" y="100.0" width="25.0" height="25.0"         fill="#D8B611" stroke="#D8B611" stroke_width="0.5"  />
-<rect x="175.0" y="100.0" width="25.0" height="25.0"         fill="#EC6208" stroke="#EC6208" stroke_width="0.5"  />
-<rect x="175.0" y="125.0" width="25.0" height="25.0"         fill="#A7D64D" stroke="#A7D64D" stroke_width="0.5"  />
-<rect x="150.0" y="125.0" width="25.0" height="25.0"         fill="#660879" stroke="#660879" stroke_width="0.5"  />
-<rect x="150.0" y="150.0" width="25.0" height="25.0"         fill="#B23FD4" stroke="#B23FD4" stroke_width="0.5"  />
-<rect x="175.0" y="150.0" width="25.0" height="25.0"         fill="#C308C3" stroke="#C308C3" stroke_width="0.5"  />
-<rect x="175.0" y="175.0" width="25.0" height="25.0"         fill="#0ADCE0" stroke="#0ADCE0" stroke_width="0.5"  />
-<rect x="150.0" y="175.0" width="25.0" height="25.0"         fill="#565FCD" stroke="#565FCD" stroke_width="0.5"  />
-<rect x="100.0" y="150.0" width="25.0" height="25.0"         fill="#15EC1D" stroke="#15EC1D" stroke_width="0.5"  />
-<rect x="125.0" y="150.0" width="25.0" height="25.0"         fill="#428B67" stroke="#428B67" stroke_width="0.5"  />
-<rect x="125.0" y="175.0" width="25.0" height="25.0"         fill="#D13DCC" stroke="#D13DCC" stroke_width="0.5"  />
-<rect x="100.0" y="175.0" width="25.0" height="25.0"         fill="#126E4F" stroke="#126E4F" stroke_width="0.5"  />
-<rect x="0.0" y="100.0" width="25.0" height="25.0"         fill="#A65EA6" stroke="#A65EA6" stroke_width="0.5"  />
-<rect x="25.0" y="100.0" width="25.0" height="25.0"         fill="#1A563A" stroke="#1A563A" stroke_width="0.5"  />
-<rect x="25.0" y="125.0" width="25.0" height="25.0"         fill="#46C33B" stroke="#46C33B" stroke_width="0.5"  />
-<rect x="0.0" y="125.0" width="25.0" height="25.0"         fill="#6BB260" stroke="#6BB260" stroke_width="0.5"  />
-<rect x="50.0" y="100.0" width="25.0" height="25.0"         fill="#EF2570" stroke="#EF2570" stroke_width="0.5"  />
-<rect x="75.0" y="100.0" width="25.0" height="25.0"         fill="#7B90D4" stroke="#7B90D4" stroke_width="0.5"  />
-<rect x="75.0" y="125.0" width="25.0" height="25.0"         fill="#369DE9" stroke="#369DE9" stroke_width="0.5"  />
-<rect x="50.0" y="125.0" width="25.0" height="25.0"         fill="#D2CC65" stroke="#D2CC65" stroke_width="0.5"  />
-<rect x="50.0" y="150.0" width="25.0" height="25.0"         fill="#1BF7F0" stroke="#1BF7F0" stroke_width="0.5"  />
-<rect x="75.0" y="150.0" width="25.0" height="25.0"         fill="#B54C48" stroke="#B54C48" stroke_width="0.5"  />
-<rect x="75.0" y="175.0" width="25.0" height="25.0"         fill="#CB9981" stroke="#CB9981" stroke_width="0.5"  />
-<rect x="50.0" y="175.0" width="25.0" height="25.0"         fill="#CAD050" stroke="#CAD050" stroke_width="0.5"  />
-<rect x="0.0" y="150.0" width="25.0" height="25.0"         fill="#77CC3B" stroke="#77CC3B" stroke_width="0.5"  />
-<rect x="25.0" y="150.0" width="25.0" height="25.0"         fill="#00DB08" stroke="#00DB08" stroke_width="0.5"  />
-<rect x="25.0" y="175.0" width="25.0" height="25.0"         fill="#964E8A" stroke="#964E8A" stroke_width="0.5"  />
-<rect x="0.0" y="175.0" width="25.0" height="25.0"         fill="#55FD46" stroke="#55FD46" stroke_width="0.5"  />
-        </g> 
+    <g opacity="1.0">
+        <rect x="0" y="0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="25.0" y="0.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="25.0" y="25.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="0.0" y="25.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="50.0" y="0.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="75.0" y="0.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="75.0" y="25.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="50.0" y="25.0" width="25.0" height="25.0"  fill="#006600" stroke="#006600" stroke_width="0.5"  />
+        <rect x="50.0" y="50.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="75.0" y="50.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="75.0" y="75.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="50.0" y="75.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="0.0" y="50.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="25.0" y="50.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="25.0" y="75.0" width="25.0" height="25.0"  fill="#006600" stroke="#006600" stroke_width="0.5"  />
+        <rect x="0.0" y="75.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="100.0" y="0.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="125.0" y="0.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="125.0" y="25.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="100.0" y="25.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="150.0" y="0.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="175.0" y="0.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="175.0" y="25.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="150.0" y="25.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="150.0" y="50.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="175.0" y="50.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="175.0" y="75.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="150.0" y="75.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="100.0" y="50.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="125.0" y="50.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="125.0" y="75.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="100.0" y="75.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="100.0" y="100.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="125.0" y="100.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="125.0" y="125.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="100.0" y="125.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="150.0" y="100.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="175.0" y="100.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="175.0" y="125.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="150.0" y="125.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="150.0" y="150.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="175.0" y="150.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="175.0" y="175.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="150.0" y="175.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="100.0" y="150.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="125.0" y="150.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="125.0" y="175.0" width="25.0" height="25.0"  fill="#006600" stroke="#006600" stroke_width="0.5"  />
+        <rect x="100.0" y="175.0" width="25.0" height="25.0"  fill="#006600" stroke="#006600" stroke_width="0.5"  />
+        <rect x="0.0" y="100.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="25.0" y="100.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="25.0" y="125.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="0.0" y="125.0" width="25.0" height="25.0"  fill="#006600" stroke="#006600" stroke_width="0.5"  />
+        <rect x="50.0" y="100.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="75.0" y="100.0" width="25.0" height="25.0"  fill="#006600" stroke="#006600" stroke_width="0.5"  />
+        <rect x="75.0" y="125.0" width="25.0" height="25.0"  fill="#6699FF" stroke="#6699FF" stroke_width="0.5"  />
+        <rect x="50.0" y="125.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="50.0" y="150.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="75.0" y="150.0" width="25.0" height="25.0"  fill="#006600" stroke="#006600" stroke_width="0.5"  />
+        <rect x="75.0" y="175.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="50.0" y="175.0" width="25.0" height="25.0"  fill="#00CC66" stroke="#00CC66" stroke_width="0.5"  />
+        <rect x="0.0" y="150.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+        <rect x="25.0" y="150.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="25.0" y="175.0" width="25.0" height="25.0"  fill="#009933" stroke="#009933" stroke_width="0.5"  />
+        <rect x="0.0" y="175.0" width="25.0" height="25.0"  fill="#00FFCC" stroke="#00FFCC" stroke_width="0.5"  />
+    </g> 
 </svg>

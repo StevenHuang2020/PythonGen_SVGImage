@@ -175,7 +175,7 @@ def maskImage():
     
 def main():
     drawTest()
-    #drawArtSvg()
+    drawArtSvg()
     #drawText()
     #maskImage()
     

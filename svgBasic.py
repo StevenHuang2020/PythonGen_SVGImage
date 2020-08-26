@@ -37,8 +37,7 @@ def draw_line(x, y, x2, y2, color='black'):
 def draw_rect(x, y, width, height, color=None):
     #Draw a rectangle for svg
     color = color or randomColor()
-    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}" \
-        fill="{color}" stroke="{color}" stroke_width="0.5"  />'
+    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{color}" stroke_width="0.5"  />'
 
 def draw_circle(x, y, radius, rings=3, color='black'):
     #Draw circles for svg
@@ -50,9 +49,7 @@ def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
         r = random.randint(1,rings)*radius/(rings+1)
         sw = random.choice([1,1,1,2,2,3])
         color = color or randomColor()
-        yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke_width="{sw}" \
-            stroke="{color}" fill="{fillColor}" />'
+        yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke_width="{sw}" stroke="{color}" fill="{fillColor}" />'
             
 def draw_text(x,y,text,font='Consolas',color='black'):
-    return f'<text x="{x}" y="{y}" fill="{color}" font-family="{font}" \
-        font-size="smaller" font-style="normal" font-variant="normal">{text}</text>'
+    return f'<text x="{x}" y="{y}" fill="{color}" font-family="{font}" font-size="smaller" font-style="normal" font-variant="normal">{text}</text>'
