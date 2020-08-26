@@ -174,10 +174,10 @@ def maskImage():
     SVGImageMask(f,d).draw()
     
 def main():
-    #drawTest()
+    drawTest()
     #drawArtSvg()
     #drawText()
-    maskImage()
+    #maskImage()
     
 if __name__=='__main__':
     main()

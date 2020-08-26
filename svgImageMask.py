@@ -32,7 +32,7 @@ class SVGImageMask:
                 roi = self.image[i:i+self.step, j:j+self.step]
                 #print(i,j,self.svgH,self.svgW,i+self.step,j+self.step)            
                 color = randomColor3(np.mean(roi))
-                if 1:
+                if 0:
                     self.svg.draw(draw_circle(y,x,r,color=color))
                 else:
                     self.svg.draw(draw_rect(y,x,self.step,self.step,color=color))
