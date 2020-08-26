@@ -23,7 +23,7 @@ class SVGFile:
         header.append(s)
         s = f'<svg width="{self.width}" height="{self.height}" xmlns="http://www.w3.org/2000/svg">\n'
         header.append(s)        
-        s='        <g opacity="0.8">\n'
+        s='        <g opacity="1.0">\n'
         header.append(s)
         
         for i in header:

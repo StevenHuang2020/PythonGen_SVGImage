@@ -2,11 +2,18 @@
 import random
 
 def randomColor():
+    return randomColor2()
+
     chars = '0123456789ABCDEF'
     color = ['#']
     for _ in range(6):
         color.append(random.choice(chars))
     return ''.join(color)
+
+def randomColor2():
+    #colors = ['#3300FF','#3366FF','#3399FF','#33FFFF','#CC6633']
+    colors = ['#006600','#009933','#00CC66','#00FFCC','#6699FF']
+    return random.choice(colors)
 
 def draw_line(x, y, x2, y2, color='black'):
     #Draw a line for svg

@@ -128,14 +128,16 @@ def drawTest():
 def drawArtSvg():
     styles = drawArt().styles
     
-    for style in styles:
-        fileName='art_'+style+'.svg'
-        file=r'.\images\\'+fileName
-        H,W=200,200
-        svg = SVGFile(file,W,H)
-        draw = drawArt(svg)
-        draw.plotArt(np.array([0,0]), np.array([W,H]), N=5, style=style)
-        svg.close()
+    recurse=[4,5]
+    for N in recurse:
+        for style in styles:
+            fileName='art_' + style + '_' + str(N)+'.svg'
+            file=r'.\images\\'+fileName
+            H,W=200,200
+            svg = SVGFile(file,W,H)
+            draw = drawArt(svg)
+            draw.plotArt(np.array([0,0]), np.array([W,H]), N=N, style=style)
+            svg.close()
     
 def main():
     #drawTest()
