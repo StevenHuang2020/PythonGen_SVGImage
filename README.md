@@ -19,4 +19,4 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/smile.svg" width="200" height="200" />
 <img src="images/smileC2.svg" />
 <img src="images/smileC3.svg" width="200" height="200" />
-<img src="images/smileC3_same.svg" width="200" height="200" />
+<img src="images/smileC_same.svg" width="200" height="200" />
