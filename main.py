@@ -7,7 +7,8 @@ import random
 from svgBasic import *
 from svgFile import SVGFile
 from svgImageMask import SVGImageMask
-    
+from svgSmile import SVGSmile
+
 class drawArt:
     def __init__(self,svg=None):
         self.styles=['Line','DiagLine','Rectangle','Circle','Rings']
@@ -18,6 +19,8 @@ class drawArt:
         r = abs(ptCenter[0]-pt1[0])
         
         if circle:
+            rings=4
+            r = random.choice(range(1,rings))*r/rings
             self.svg.draw(draw_circle(ptCenter[0],ptCenter[1],r))
         else:
             for i in draw_circleRings(ptCenter[0],ptCenter[1],r):
@@ -173,11 +176,42 @@ def maskImage():
     d = r'.\images\trump.svg'
     SVGImageMask(f,d).draw()
     
+def drawSmile():
+    file=r'.\images\smile.svg'
+    ridus = 100
+    if 1:
+        s = SVGSmile(file, ridus=100)
+        s.draw()
+        s.close()
+    else:
+        H,W = ridus*2, ridus*2
+        svg = SVGFile(file,W,H)
+        svg.draw(draw_circle(ridus,ridus,ridus,color='#FFC10E'))
+        
+        x = ridus*0.68
+        y = ridus*0.66
+        r = ridus*0.16
+        svg.draw(draw_circle(x,y,r,color='#333333')) #left eye
+        
+        x = 2*ridus - x
+        svg.draw(draw_circle(x,y,r,color='#333333')) #right eye
+        
+        startPt = [0.42*ridus, 1.30*ridus]
+        stopPt = [2*ridus - startPt[0], startPt[1]]
+        cp1 =  [0.71*ridus, 1.88*ridus]  #Bézier Curves control points
+        cp2 =  [2*ridus - cp1[0], cp1[1]]  #Bézier Curves control points
+        path = 'M {} {} C {} {}, {} {}, {} {}'.format(startPt[0],startPt[1],\
+            cp1[0],cp1[1],cp2[0],cp2[1],stopPt[0],stopPt[1])
+        
+        svg.draw(draw_path(path, width=0.127*ridus, color='black')) #mouth
+        svg.close()
+    
 def main():
-    drawTest()
-    drawArtSvg()
+    #drawTest()
+    #drawArtSvg()
     #drawText()
     #maskImage()
+    drawSmile()
     
 if __name__=='__main__':
     main()

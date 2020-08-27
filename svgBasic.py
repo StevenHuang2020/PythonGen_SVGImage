@@ -39,11 +39,8 @@ def draw_rect(x, y, width, height, color=None):
     color = color or randomColor()
     return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{color}" stroke_width="0.5"  />'
 
-def draw_circle(x, y, radius, rings=4, color='black'):
-    #Draw circles for svg
-    r = random.choice(range(1,rings))*radius/rings
-    print('rand=',random.choice(range(1,rings)),'r=',r)
-    return f'<circle cx="{x}" cy="{y}" r="{r}" fill="{color}" />'
+def draw_circle(x, y, radius, color='black'):
+    return f'<circle cx="{x}" cy="{y}" r="{radius}" fill="{color}" />'
 
 def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
     #Draw circles rings for svg
@@ -51,7 +48,12 @@ def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
         r = random.randint(1,rings)*radius/(rings+1)
         sw = random.choice([1,1,1,2,2,3])
         color = color or randomColor()
-        yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke_width="{sw}" stroke="{color}" fill="{fillColor}" />'
+        yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke-width="{sw}" stroke="{color}" fill="none" />'
             
 def draw_text(x,y,text,font='Consolas',color='black'):
     return f'<text x="{x}" y="{y}" fill="{color}" font-family="{font}" font-size="smaller" font-style="normal" font-variant="normal">{text}</text>'
+
+def draw_path(path, width=30, color='black',fillColor='transparent'):
+    #https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+    #M 100 306 C 168 444, 304 444, 352 306
+    return f'<path d="{path}" stroke="{color}" stroke-width="{width}" fill="{fillColor}"/>'
