@@ -57,8 +57,8 @@ def testSmile2():
     offsetY=0
     r0 = 10
     
-    totalW = N*(N+1)*r0 + N*inter + offsetX
-    totalH = N*2*r0 + offsetY
+    totalW = N*(N-1)*r0 + N*inter + offsetX
+    totalH = (N-1)*2*r0 + offsetY
     
     s = SVGSmile(dstSvgfile=d,svgW=totalW,svgH=totalH)
     for i in range(1,N):
