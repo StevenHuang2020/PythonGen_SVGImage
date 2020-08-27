@@ -16,12 +16,13 @@ class SVGSmile:
         self.svg = SVGFile(dstSvgfile,W=self.svgW,H=self.svgH)
         print('ridus=',ridus,'SVG H,W=',self.svgH,self.svgW)
         
-    def draw(self, ridus=None, offsetX=0, offsetY=0):
+    def draw(self, ridus=None, offsetX=0, offsetY=0,color=None):
         ridus = ridus or self.ridus
         
         x = ridus + offsetX
         y = ridus + offsetY
-        self.svg.draw(draw_circle(x,y,ridus,color='#FFC10E'))
+        color = color or '#FFC10E'
+        self.svg.draw(draw_circle(x,y,ridus,color=color))
     
         x = ridus*0.68 + offsetX
         y = ridus*0.66 + offsetY
@@ -67,10 +68,33 @@ def testSmile2():
         offsetX += (2*r + inter)
         
     s.close()
+    
+def testSmile3():
+    d = r'.\images\smileC3.svg'
+    H,W = 6,6
+    inter = 5
+    offsetX=0
+    offsetY=0
+    r0 = 20
+    
+    totalW = W*2*r0 + W*inter + offsetX
+    totalH = H*2*r0 + H*inter + offsetY
+    
+    s = SVGSmile(dstSvgfile=d,svgW=totalW,svgH=totalH)
+    for i in range(H):
+        for j in range(W):
+            r = r0
+            offsetX = j*(2*r + inter)
+            offsetY = i*(2*r + inter)
+            #s.draw(ridus = r,offsetX=offsetX,offsetY=offsetY)
+            s.draw(ridus = r,offsetX=offsetX,offsetY=offsetY,color=randomColor())
+              
+    s.close()
        
 def main():
     #testSmile()
-    testSmile2()
+    #testSmile2()
+    testSmile3()
     
 if __name__=='__main__':
     main()         
