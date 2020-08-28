@@ -3,15 +3,13 @@ import numpy as np
 from svgFile import SVGFile
 from svgBasic import *
 
-def drawSVG(svg, ridus=None, offsetX=0, offsetY=0,color=None):
-    ridus = ridus or self.ridus
-    
+def drawSVG(svg, ridus, offsetX=0, offsetY=0,color=None):      
     x = ridus + offsetX
     y = ridus + offsetY
     color = color or '#FFC10E'
     svg.draw(draw_circle(x,y,ridus,color=color))
 
-    x = ridus*0.68 + offsetX
+    x = ridus*0.67 + offsetX
     y = ridus*0.66 + offsetY
     r = ridus*0.16
     svg.draw(draw_circle(x,y,r,color='#333333')) #left eye
@@ -19,15 +17,20 @@ def drawSVG(svg, ridus=None, offsetX=0, offsetY=0,color=None):
     x = 2*ridus - x +  2*offsetX
     svg.draw(draw_circle(x,y,r,color='#333333')) #right eye
     
-    startPt = [0.42*ridus + offsetX, 1.30*ridus + offsetY]
+    startPt = [0.40*ridus + offsetX, 1.05*ridus + offsetY]
     stopPt = [2*ridus - startPt[0] + 2*offsetX, startPt[1]]
-    cp1 =  [0.71*ridus + offsetX, 1.88*ridus+offsetY]  #Bézier Curves control points
+    cp1 =  [0.6*ridus + offsetX, 1.78*ridus+offsetY]  #Bézier Curves control points
     cp2 =  [2*ridus - cp1[0] + 2*offsetX, cp1[1]]  #Bézier Curves control points
     path = 'M {} {} C {} {}, {} {}, {} {}'.format(startPt[0],startPt[1],\
         cp1[0],cp1[1],cp2[0],cp2[1],stopPt[0],stopPt[1])
     
-    svg.draw(draw_path(path, width=0.127*ridus, color='black')) #mouth
+    color = 'black'
+    lineWidth = 0.11*ridus
+    svg.draw(draw_path(path, width=lineWidth, color=color)) #mouth
         
+    svg.draw(draw_circle(startPt[0], startPt[1], lineWidth/2, color=color))
+    svg.draw(draw_circle(stopPt[0], stopPt[1], lineWidth/2, color=color))
+    
 class SVGSmile:
     def __init__(self, dstSvgfile=None, ridus=None, svgW=None,svgH=None):
         self.ridus = ridus
@@ -43,7 +46,7 @@ class SVGSmile:
             print('ridus=',ridus,'SVG H,W=',self.svgH,self.svgW)
         
     def draw(self, ridus=None, offsetX=0, offsetY=0,color=None):
-        return drawSVG(self.svg, ridus=ridus, offsetX=offsetX, offsetY=offsetY,color=color)
+        return drawSVG(self.svg, ridus=ridus or self.ridus, offsetX=offsetX, offsetY=offsetY,color=color)
         '''
         ridus = ridus or self.ridus
         

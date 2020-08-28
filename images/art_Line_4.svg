@@ -4,7 +4,7 @@
     line {
       stroke: black;
     }
-  </style>
+    </style>
     <g opacity="1.0">
         <line x1="0" y1="0" x2="0.0" y2="25.0"  />
         <line x1="50.0" y1="25.0" x2="50.0" y2="0.0" />
