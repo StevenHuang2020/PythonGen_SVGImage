@@ -214,12 +214,12 @@ def drawRandomPath():
     svg = SVGFile(file,W,H)
     
     svg.draw(add_style_path(stroke_width=0.5))
-    
+    times=1
     N=10
     r = 10
     cx,cy = 50,50
     
-    for i in range(10):
+    for i in range(times):
         path='M 100 50 L '
         if 1:
             for i in range(N+1):
@@ -253,9 +253,9 @@ def main():
     #drawTest()
     #drawArtSvg()
     #drawText()
-    maskImage()
+    #maskImage()
     #drawSmile()
-    #drawRandomPath()
+    drawRandomPath()
     
 if __name__=='__main__':
     main()
