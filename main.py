@@ -172,9 +172,11 @@ def drawText():
     svg.close()
     
 def maskImage():
-    f = r'.\res\trump.jpg'
+    f = r'.\res\trumps.jpg'
     d = r'.\images\trump.svg'
-    SVGImageMask(f,d).draw()
+    svg = SVGImageMask(f,d)
+    svg.drawStep()
+    svg.close()
     
 def drawSmile():
     file=r'.\images\smile.svg'
@@ -206,12 +208,54 @@ def drawSmile():
         svg.draw(draw_path(path, width=0.127*ridus, color='black')) #mouth
         svg.close()
     
+def drawRandomPath():
+    file=r'.\images\randomPath.svg'
+    H,W=100,100
+    svg = SVGFile(file,W,H)
+    
+    svg.draw(add_style_path(stroke_width=0.5))
+    
+    N=10
+    r = 10
+    cx,cy = 50,50
+    
+    for i in range(10):
+        path='M 100 50 L '
+        if 1:
+            for i in range(N+1):
+                rd = np.random.rand()
+                x = (cx*np.cos(np.pi*2*i/N) + cx)*rd
+                y = (cy*np.sin(np.pi*2*i/N) + cy)*rd
+                x = x.round(1)
+                y = y.round(1)
+                path = path + ' ' + str(x) + ' ' + str(y)
+            path = path + ' Z'
+        else:    
+            path='M 0 0 L '    
+            ptX = np.random.randint(cx-r,cx+r, size=(N,)).round(1)
+            ptY = np.sqrt(r**2-(ptX-cx)**2).round(1)
+            print(ptX)
+            print(ptY)
+
+            for x,y in zip(ptX,ptY):
+                path = path + ' ' + str(x) + ' ' + str(y)
+            path = path + ' Z'    
+            
+            #path = 'M {} {} L {} {} {} {} {} {} Z'.format(startPt[0],startPt[1],\
+                #cp1[0],cp1[1],cp2[0],cp2[1],stopPt[0],stopPt[1])
+                
+        #print(path)
+        svg.draw(draw_Only_path(path)) 
+        
+    svg.close()
+    
 def main():
     #drawTest()
     #drawArtSvg()
     #drawText()
-    #maskImage()
-    drawSmile()
+    maskImage()
+    #drawSmile()
+    #drawRandomPath()
     
 if __name__=='__main__':
     main()

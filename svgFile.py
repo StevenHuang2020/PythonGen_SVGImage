@@ -38,6 +38,10 @@ class SVGFile:
     def _writeSVGTail(self):
         tail = '    </g> \n</svg>'
         self._writeToFile(tail) 
+    
+    def draw(self, content):
+        content = '        ' + content + '\n'
+         self._writeToFile(content)
     '''
     
     def _writeToSvg(self):

@@ -27,15 +27,21 @@ def randomColor3(i):
         return colorFader('k','w',i/N)
     except:
         print('i,i/n = ',i,i/N)
-        
+
+def convertRGB(rgb):
+    def clamp(x): 
+        return max(0, min(x, 255))
+    return "#{0:02x}{1:02x}{2:02x}".format(rgb[0], rgb[1], rgb[2])
+
+#------------------------------draw function---------------------------------#        
 def draw_line(x, y, x2, y2, color='black'):
     #Draw a line for svg
     return f'<line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="{color}" />'
 
-def draw_rect(x, y, width, height, color=None):
+def draw_rect(x, y, width, height, stroke_width=0.5, color=None):
     #Draw a rectangle for svg
     color = color or randomColor()
-    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{color}" stroke_width="0.5"  />'
+    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{color}" stroke_width="{stroke_width}"  />'
 
 def draw_circle(x, y, radius, color='black'):
     return f'<circle cx="{x}" cy="{y}" r="{radius}" fill="{color}" />'
@@ -54,4 +60,10 @@ def draw_text(x,y,text,font='Consolas',color='black'):
 def draw_path(path, width=30, color='black',fillColor='transparent'):
     #https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
     #M 100 306 C 168 444, 304 444, 352 306
-    return f'<path d="{path}" stroke="{color}" stroke-width="{width}" fill="{fillColor}"/>'
+    return f'<path d="{path}" stroke="{color}" stroke-width="{width}" fill="{fillColor}" />'
+
+def add_style_path(stroke='black', stroke_width=1, fill='transparent'):
+    return '<style> path { stroke: %s; stroke-width: %s; fill: %s; } </style>' % (stroke,stroke_width,fill)
+
+def draw_Only_path(path):
+    return f'<path d="{path}"/>'

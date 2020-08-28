@@ -3,9 +3,33 @@ import numpy as np
 from svgFile import SVGFile
 from svgBasic import *
 
-
+def drawSVG(svg, ridus=None, offsetX=0, offsetY=0,color=None):
+        ridus = ridus or self.ridus
+        
+        x = ridus + offsetX
+        y = ridus + offsetY
+        color = color or '#FFC10E'
+        svg.draw(draw_circle(x,y,ridus,color=color))
+    
+        x = ridus*0.68 + offsetX
+        y = ridus*0.66 + offsetY
+        r = ridus*0.16
+        svg.draw(draw_circle(x,y,r,color='#333333')) #left eye
+        
+        x = 2*ridus - x +  2*offsetX
+        svg.draw(draw_circle(x,y,r,color='#333333')) #right eye
+        
+        startPt = [0.42*ridus + offsetX, 1.30*ridus + offsetY]
+        stopPt = [2*ridus - startPt[0] + 2*offsetX, startPt[1]]
+        cp1 =  [0.71*ridus + offsetX, 1.88*ridus+offsetY]  #Bézier Curves control points
+        cp2 =  [2*ridus - cp1[0] + 2*offsetX, cp1[1]]  #Bézier Curves control points
+        path = 'M {} {} C {} {}, {} {}, {} {}'.format(startPt[0],startPt[1],\
+            cp1[0],cp1[1],cp2[0],cp2[1],stopPt[0],stopPt[1])
+        
+        svg.draw(draw_path(path, width=0.127*ridus, color='black')) #mouth
+        
 class SVGSmile:
-    def __init__(self, dstSvgfile, ridus=None, svgW=None,svgH=None):
+    def __init__(self, dstSvgfile=None, ridus=None, svgW=None,svgH=None):
         self.ridus = ridus
         if svgW == None:
             self.svgW = int(ridus*2 + 0.5)
@@ -13,10 +37,14 @@ class SVGSmile:
         else:
             self.svgW = svgW
             self.svgH = svgH
-        self.svg = SVGFile(dstSvgfile,W=self.svgW,H=self.svgH)
-        print('ridus=',ridus,'SVG H,W=',self.svgH,self.svgW)
+        
+        if dstSvgfile:
+            self.svg = SVGFile(dstSvgfile,W=self.svgW,H=self.svgH)
+            print('ridus=',ridus,'SVG H,W=',self.svgH,self.svgW)
         
     def draw(self, ridus=None, offsetX=0, offsetY=0,color=None):
+        return drawSVG(self.svg, ridus=ridus, offsetX=offsetX, offsetY=offsetY,color=color)
+        '''
         ridus = ridus or self.ridus
         
         x = ridus + offsetX
@@ -40,7 +68,8 @@ class SVGSmile:
             cp1[0],cp1[1],cp2[0],cp2[1],stopPt[0],stopPt[1])
         
         self.svg.draw(draw_path(path, width=0.127*ridus, color='black')) #mouth
-    
+        '''
+
     def close(self):
         self.svg.close()
     
