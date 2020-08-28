@@ -255,7 +255,8 @@ def main():
     #drawText()
     #maskImage()
     #drawSmile()
-    drawRandomPath()
+    #drawRandomPath()
+    pass
     
 if __name__=='__main__':
     main()
