@@ -23,8 +23,8 @@ def drawRandomNumbersPath():
     H,W=100,100
     svg = SVGFile(file,W,H)
     
-    times=1000
-    N=50
+    times=100
+    N=500
     xW = 5
     
     for i in range(times):
@@ -49,7 +49,6 @@ def drawRandomWalkPath():
     svg = SVGFile(file,W,H)
     
     times=10000
-    N=50
     xW = 5
     cx,cy = W//2,H//2
     
@@ -64,6 +63,5 @@ def drawRandomWalkPath():
     svg.close()
     
 if __name__=='__main__':    
-    #drawRandomNumbersPath()
-    #drawRandomWalkPath()
-    pass
+    drawRandomNumbersPath()
+    drawRandomWalkPath()
