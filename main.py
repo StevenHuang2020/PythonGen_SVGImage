@@ -226,6 +226,47 @@ def drawRandomPath():
         
     svg.close()
     
+def drawHearCurve():
+    def heart(x,offsetX=50,lam=4/5,offsetY=50,r=10,up=True): #heart equation: x**2+ (5*y/4 - sqrt(abs(x)))**2 = r**2
+        #lam = 4/5 #4/5
+        if up:
+            a = np.sqrt(r**2 - (x-offsetX)**2)*1 + np.sqrt(abs(x-offsetX))
+        else:
+            a = np.sqrt(r**2 - (x-offsetX)**2)*(-1) + np.sqrt(abs(x-offsetX))
+        return a*lam*(-1) + offsetY
+
+    file=r'.\images\heartPath.svg'
+    H,W=100,100
+    svg = SVGFile(file,W,H)
+    
+    offsetX = W//2
+    offsetY = H//2
+    
+    svg.draw(add_style_path(stroke='red', stroke_width=0.5,fill='red'))
+    
+    N = 100
+    r = 50
+    lam = 4/5.5
+    path = 'M %.1f %.1f L ' % (0+offsetX, (lam)*r*(-1)+offsetY)
+    x = np.linspace(-r+offsetX, r+offsetX, N)
+    y = heart(x,r=r,lam=lam,offsetX=offsetX,offsetY=offsetY)    #Up part points of heart curve, set sqrt value positive       
+    xr = np.flip(x) #Down part points of heart curve, set sqrt value negative
+    yr = heart(xr,r=r,lam=lam, offsetX=offsetX,offsetY=offsetY,up=False)
+      
+    x = np.concatenate((x, xr), axis=0)
+    y = np.concatenate((y, yr), axis=0)
+    print('x=',x)
+    print('y=',y)
+    
+    for i,j in zip(x,y):
+        path = path + ' ' + str(i.round(1)) + ' ' + str(j.round(1))
+        
+    print(path)
+    svg.draw(draw_Only_path(path))
+    svg.close()
+    
+
+    
 def main():
     #drawTest()
     #drawArtSvg()
@@ -233,6 +274,7 @@ def main():
     #maskImage()
     #drawSmile()
     #drawRandomPath()
+    #drawHearCurve()
     pass
     
 if __name__=='__main__':

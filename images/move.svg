@@ -5,6 +5,8 @@
   <circle id="4-circle" r="20" cx="30" cy="190" fill="black" />
   <circle id="5-circle" r="20" cx="230" cy="240" fill="green" />
   
+  <rect id="6-rect" x="30" y="290" width="40" height="20" fill="red" />
+  
   <animate 
            xlink:href="#orange-circle"
            attributeName="cx"
@@ -73,4 +75,16 @@
            fill="freeze"  
 		   repeatCount="indefinite"
            id="circ-anim"/>
+		   
+  <animateTransform 
+						  xlink:href="#6-rect"
+						  attributeName="transform"
+                          attributeType="XML"
+                          type="rotate"
+                          from="0 50 300"
+                          to="360 50 300"
+                          dur="10s"
+                          repeatCount="indefinite"/>
+
+
 </svg>
