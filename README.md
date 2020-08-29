@@ -21,6 +21,6 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/smileC2.svg" />
 <img src="images/smileC3.svg" width="200" height="200" />
 <img src="images/smileC_same.svg" width="200" height="200" />
-<img src="images/randomNumberPath.svg" width="200" height="200" />
-<img src="images/randomWalkPath.svg" width="200" height="200" />
-<img src="images/move.svg" width="200" height="200" />
+<img src="images/randomNumberPath.svg"  />
+<img src="images/randomWalkPath.svg"  />
+<img src="images/move.svg"  />
