@@ -23,3 +23,5 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/smileC_same.svg" width="200" height="200" />
 <img src="images/randomNumberPath.svg"  />
 <img src="images/randomWalkPath.svg"  />
+<img src="images/func.svg"  />
+

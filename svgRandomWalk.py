@@ -37,6 +37,8 @@ def drawRandomNumbersPath():
         print(ptY)
 
         for x,y in zip(ptX,ptY):
+            x = x.round(1)
+            y = y.round(1)
             path = path + ' ' + str(x) + ' ' + str(y)
         #path = path    
         svg.draw(draw_path(path,width=0.2,color=randomColor())) 
@@ -57,6 +59,8 @@ def drawRandomWalkPath():
     path = 'M %.1f %.1f L ' % (x, y)
     for i in range(times):       
         x,y = random_walk(x,y,1,step=2)
+        x = x.round(1)
+        y = y.round(1)
         path = path + ' ' + str(x) + ' ' + str(y)           
          
     svg.draw(draw_path(path,width=0.2))     
