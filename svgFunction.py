@@ -31,24 +31,37 @@ def sigmoid(x):
 def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):          
     N=500
     x = np.linspace(-100,100,N)
-    ptX = x + offsetX
-    ptY = funcIdentity(x)*-1 + offsetY
+    
+    fOffsetX = 50
+    fOffsetY = 100
+    ptX = x + offsetX + offsetX
+    ptY = funcIdentity(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
     
-    ptY = funcQuadratic(x)*-1 + offsetY
+    fOffsetX = 50
+    fOffsetY = 50
+    ptX = x + offsetX + fOffsetX
+    ptY = funcQuadratic(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
     
-    ptY = funcSin(x)*-1 + offsetY
+    fOffsetX = 50
+    fOffsetY = 50
+    ptX = x + offsetX + fOffsetX
+    ptY = funcSin(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
     
-    ptY = funcCos(x)*-1 + offsetY
+    ptX = x + offsetX + fOffsetX
+    ptY = funcCos(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
     
-    ptY = normalDistribution(x)*-1 + offsetY
+    ptX = x + offsetX + fOffsetX
+    ptY = normalDistribution(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
-    ptY = softmaxFuc(x)*-1 + offsetY
+    ptX = x + offsetX + fOffsetX
+    ptY = softmaxFuc(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
-    ptY = sigmoid(x)*-1 + offsetY
+    ptX = x + offsetX + fOffsetX
+    ptY = sigmoid(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
     
 def drawOneFuncSVG(svg, ptX,ptY, N=10, color=None):     
