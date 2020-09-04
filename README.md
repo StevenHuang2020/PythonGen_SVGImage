@@ -24,7 +24,7 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/randomNumberPath.svg"  />
 <img src="images/randomWalkPath.svg"  />
 <img src="images/func.svg"  />
-<img src="images/randomShapePath1.svg" width="250" height="500"/>
-<img src="images/randomShapePath3.svg" width="250" height="500" />
-<img src="images/randomShapePath4.svg" width="250" height="500"  />
-<img src="images/randomShapePath.svg" width="250" height="500" />
+<img src="images/randomShapePath1.svg" width="500" height="250"/>
+<img src="images/randomShapePath3.svg" width="500" height="250" />
+<img src="images/randomShapePath4.svg" width="500" height="250"  />
+<img src="images/randomShapePath.svg" width="500" height="250" />
