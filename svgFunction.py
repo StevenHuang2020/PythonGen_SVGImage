@@ -25,9 +25,55 @@ def softmaxFuc(x):
     #print(np.sum(softmax))
     return softmax
 
+def heartFuc(x,r=1,up=True):#heart equation: x**2+ (5*y/4 - sqrt(abs(x)))**2 = r**2
+    if up:
+        a = np.sqrt(r**2 - x**2)*1 + np.sqrt(abs(x))
+    else:
+        a = np.sqrt(r**2 - x**2)*(-1) + np.sqrt(abs(x))
+    return a*4/5
+    
+def circleFuc(x,r=1,up=True):#circle equation: x**2+ y**2 = r**2
+    if up:
+        a = np.sqrt(r**2 - x**2)*1 
+    else:
+        a = np.sqrt(r**2 - x**2)*(-1)
+    return a
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
+def getCurvePoints(r=1,N=10,func=heartFuc):
+    x = np.linspace(-r, r, N)
+    y = func(x,r=r)    #Up part points of curve, set sqrt value positive       
+    xDown = np.flip(x) #Down part points of curve, set sqrt value negative
+    yDown = func(xDown,r=r,up=False)
+      
+    #connect from start  
+    x = np.concatenate((x, xDown), axis=0)
+    y = np.concatenate((y, yDown), axis=0)
+        
+    if 1:#connect from random
+        rand = np.random.randint(1, len(x),size=1)[0]
+        x = np.concatenate((x[rand:], x[:rand]), axis=0)
+        y = np.concatenate((y[rand:], y[:rand]), axis=0)
+        
+        #print('rand=',rand,N,len(x))
+        # xL = x[:rand]
+        # xR = x[rand:]
+        # print(len(xL),len(xR))
+        
+        # x = np.concatenate((xR, xDown), axis=0)
+        # x = np.concatenate((x, xL), axis=0)
+        
+        # yL = y[:rand]
+        # yR = y[rand:]
+        # y = np.concatenate((yR, yDown), axis=0)
+        # y = np.concatenate((y, yL), axis=0)
+    
+    #print('x=',x)
+    #print('y=',y)
+    return x,y
+    
 def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):          
     N=500
     x = np.linspace(-100,100,N)
@@ -63,6 +109,12 @@ def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):
     ptX = x + offsetX + fOffsetX
     ptY = sigmoid(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
+    
+    ptX,ptY = getCurvePoints(r=10,N=10,func=circleFuc)
+    ptX = ptX + offsetX + fOffsetX
+    ptY = ptY + offsetY + fOffsetY
+    drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
+    
     
 def drawOneFuncSVG(svg, ptX,ptY, N=10, color=None):     
     x = ptX[0]

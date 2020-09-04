@@ -265,7 +265,6 @@ def drawHearCurve():
     svg.draw(draw_Only_path(path))
     svg.close()
     
-
     
 def main():
     #drawTest()
