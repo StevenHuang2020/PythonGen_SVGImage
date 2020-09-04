@@ -28,3 +28,4 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/randomShapePath3.svg" width="500" height="250" />
 <img src="images/randomShapePath4.svg" width="500" height="250"  />
 <img src="images/randomShapePath.svg" width="500" height="250" />
+<img src="images/randomShapePath5.svg" width="500" height="250" />

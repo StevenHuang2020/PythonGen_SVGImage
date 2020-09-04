@@ -10,7 +10,7 @@ def addNoise(x,y,alpha=10):
     y = y + np.random.randn(len(y))*alpha
     return x,y
     
-def drawOnePathcSVG(svg, ptX,ptY, N=10):     
+def drawOnePathcSVG(svg, ptX,ptY, N=10, onlyPath=True):     
     x = ptX[0]
     y = ptY[0]
     path = 'M %.1f %.1f L ' % (x, y)     
@@ -19,9 +19,13 @@ def drawOnePathcSVG(svg, ptX,ptY, N=10):
         y = y.round(1)
         path = path + ' ' + str(x) + ' ' + str(y)
     path = path + 'z'
-    svg.draw(draw_Only_path(path)) 
     
-def drawFuncSVG(svg, r=1, N=10, offsetX=50, offsetY=50, noise=True):          
+    if onlyPath:
+        svg.draw(draw_Only_path(path)) 
+    else:
+        svg.draw(draw_path(path,width=1,color=randomColor())) 
+    
+def drawFuncSVG(svg, r=1, N=10, offsetX=50, offsetY=50, noise=True,onlyPath=True):          
     #x = np.linspace(-100,100,N)
     ptX,ptY = getCurvePoints(r=r,N=N,func=circleFuc)
     ptX = ptX + offsetX
@@ -30,16 +34,21 @@ def drawFuncSVG(svg, r=1, N=10, offsetX=50, offsetY=50, noise=True):
     if noise:
         ptX,ptY = addNoise(ptX,ptY)
         
-    drawOnePathcSVG(svg,ptX,ptY,N=N) 
+    drawOnePathcSVG(svg,ptX,ptY,N=N,onlyPath=onlyPath) 
     
 def drawRandomPath():
     file=r'.\images\randomShapePath.svg'
     H,W=500,1000
     svg = SVGFile(file,W,H)
     
-    color='#33FFC9'
-    svg.draw(add_style_path(stroke=color, stroke_width=1, fill='transparent'))
-    
+    singleColor=False
+    if singleColor:
+        onlyPath = True
+        color='#33FFC9'
+        svg.draw(add_style_path(stroke=color, stroke_width=1, fill='transparent'))
+    else:
+        onlyPath = False
+
     times=200
     r=2
 
@@ -57,7 +66,7 @@ def drawRandomPath():
         #offsetY = 50 + random.random()*2
         
         #drawFuncSVG(svg, r=r, offsetX=offsetX, offsetY=offsetY, N=10, noise=True) #N=random.randint(1,10)
-        drawFuncSVG(svg, r=r, offsetX=offsetX, offsetY=offsetY, N=random.randint(5,10), noise=True)
+        drawFuncSVG(svg, r=r, offsetX=offsetX, offsetY=offsetY, N=random.randint(5,10), noise=True,onlyPath=onlyPath)
         
     svg.close()
 
