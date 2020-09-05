@@ -5,7 +5,7 @@ from svgFile import *
 from svgBasic import *
 from svgFunction import *
 
-def addNoise(x,y,alpha=10):
+def addNoise(x,y,alpha=2):
     x = x + np.random.randn(len(x))*alpha
     y = y + np.random.randn(len(y))*alpha
     return x,y
@@ -49,22 +49,22 @@ def drawRandomPath():
         onlyPath = False
 
     times=200
-    r=2
+    r=1
 
     offsetX = 50 #W//2 #
     offsetY = H//2
     for _ in range(times):
         r = r + random.random()*2
-        #r = r + random.normalvariate(mu=0,sigma=1)*4
+        #r = r + random.normalvariate(mu=0,sigma=1)*8
         
-        offsetX = offsetX + random.random()*6  #8
+        offsetX = offsetX + random.random()*5  #8
         #offsetX = offsetX + random.normalvariate(mu=0,sigma=1)*1
         
         #offsetY = offsetY + random.random()*1
         #offsetX = 50 + random.random()*10
         #offsetY = 50 + random.random()*2
         
-        ptX,ptY = getCirclePtsSVG(svg, r=r, N=10, offsetX=offsetX, offsetY=offsetY, noise=True,onlyPath=onlyPath)
+        ptX,ptY = getCirclePtsSVG(svg, r=r, N=80, offsetX=offsetX, offsetY=offsetY, noise=True,onlyPath=onlyPath)
         drawOnePathcSVG(svg,ptX,ptY,onlyPath=onlyPath) 
      
     svg.close()
@@ -116,6 +116,6 @@ def drawRandomCirclePath():
     svg.close()
     
 if __name__=='__main__':    
-    #drawRandomPath()
-    drawRandomCirclePath()
+    drawRandomPath()
+    #drawRandomCirclePath()
     

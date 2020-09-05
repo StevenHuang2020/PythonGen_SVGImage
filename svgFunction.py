@@ -52,7 +52,7 @@ def getCirclePoints(r=1,N=10,func=heartFuc):
     x = np.concatenate((x, xDown), axis=0)
     y = np.concatenate((y, yDown), axis=0)
         
-    if 1:#connect from random
+    if 0:#connect from random
         rand = np.random.randint(1, len(x),size=1)[0]
         x = np.concatenate((x[rand:], x[:rand]), axis=0)
         y = np.concatenate((y[rand:], y[:rand]), axis=0)
