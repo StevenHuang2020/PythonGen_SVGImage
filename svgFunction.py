@@ -42,7 +42,7 @@ def circleFuc(x,r=1,up=True):#circle equation: x**2+ y**2 = r**2
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-def getCurvePoints(r=1,N=10,func=heartFuc):
+def getCirclePoints(r=1,N=10,func=heartFuc):
     x = np.linspace(-r, r, N)
     y = func(x,r=r)    #Up part points of curve, set sqrt value positive       
     xDown = np.flip(x) #Down part points of curve, set sqrt value negative
@@ -110,7 +110,7 @@ def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):
     ptY = sigmoid(x)*-1 + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
     
-    ptX,ptY = getCurvePoints(r=10,N=10,func=circleFuc)
+    ptX,ptY = getCirclePoints(r=10,N=10,func=circleFuc)
     ptX = ptX + offsetX + fOffsetX
     ptY = ptY + offsetY + fOffsetY
     drawOneFuncSVG(svg,ptX,ptY,N=N,color=color) 
