@@ -183,8 +183,3 @@ if __name__=='__main__':
     #drawRandomCirclePath()
     drawRandomRectanglePath()
     
-    # x = np.array([0,1,0])
-    # y = np.array([0,0,1])             
-
-    # x,y = rotationMatrix(x,y, np.pi/4)
-    # print(x,y)
