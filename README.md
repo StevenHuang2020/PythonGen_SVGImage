@@ -38,3 +38,6 @@ SVG: https://www.w3.org/Graphics/SVG/
 <img src="images/randomCirclePath2.svg" width="200" height="200" />
 <img src="images/randomCirclePath.svg" width="200" height="200" />
 
+<img src="images/randomRectanglePath1.svg" width="200" height="200" />
+<img src="images/randomRectanglePath2.svg" width="200" height="200" />
+<img src="images/randomRectanglePath3.svg" width="200" height="200" />

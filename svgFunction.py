@@ -56,24 +56,35 @@ def getCirclePoints(r=1,N=10,func=heartFuc):
         rand = np.random.randint(1, len(x),size=1)[0]
         x = np.concatenate((x[rand:], x[:rand]), axis=0)
         y = np.concatenate((y[rand:], y[:rand]), axis=0)
-        
-        #print('rand=',rand,N,len(x))
-        # xL = x[:rand]
-        # xR = x[rand:]
-        # print(len(xL),len(xR))
-        
-        # x = np.concatenate((xR, xDown), axis=0)
-        # x = np.concatenate((x, xL), axis=0)
-        
-        # yL = y[:rand]
-        # yR = y[rand:]
-        # y = np.concatenate((yR, yDown), axis=0)
-        # y = np.concatenate((y, yL), axis=0)
     
     #print('x=',x)
     #print('y=',y)
     return x,y
     
+def getRectanglePoints(x0=0, y0=0, N=10, w=10, h=10):
+    x1 = np.linspace(x0, x0 + w, N)
+    y1 = np.zeros_like(x1) + y0
+    
+    y2 = np.linspace(y0, y0+h, N)
+    x2 = np.zeros_like(y2) + x0 + w
+    
+    x3 = np.flip(x1)
+    y3 = np.zeros_like(x3) + y0 + h
+    
+    y4 = np.flip(y2)
+    x4 = np.zeros_like(y4) + x0
+     
+    #connect from start  
+    x = np.concatenate((x1, x2), axis=0)
+    x = np.concatenate((x, x3), axis=0)
+    x = np.concatenate((x, x4), axis=0)
+    
+    y = np.concatenate((y1, y2), axis=0)
+    y = np.concatenate((y, y3), axis=0)
+    y = np.concatenate((y, y4), axis=0)
+
+    return x,y
+
 def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):          
     N=500
     x = np.linspace(-100,100,N)
