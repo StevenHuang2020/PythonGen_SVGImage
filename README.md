@@ -9,7 +9,7 @@ SVG: https://www.w3.org/Graphics/SVG/
 <br/>
 
 <table>
-  <tr>
+   <tr>
     <td><img src="images/art_Line_5.svg" width="200" height="200" /></td>
     <td><img src="images/art_DiagLine_5.svg" width="200" height="200" /></td>
    </tr> 
@@ -65,26 +65,21 @@ SVG: https://www.w3.org/Graphics/SVG/
       <td><img src="images/randomShapePath10.svg" width="500" height="250" /></td>
       <td><img src="images/randomShapePath11.svg" width="500" height="250" /></td>
    </tr>
-   
     <tr>
       <td><img src="images/randomCirclePath1.svg" width="200" height="200" /></td>
       <td><img src="images/randomCirclePath2.svg" width="200" height="200" /></td>
    </tr>
    <tr>
       <td><img src="images/randomCirclePath.svg" width="200" height="200" /></td>
+      <td><img src="images/randomRectanglePath1.svg" width="200" height="200" /></td>
    </tr>
    
-    <tr>
-      <td><img src="images/randomRectanglePath1.svg" width="200" height="200" /></td>
+   <tr>
       <td><img src="images/randomRectanglePath2.svg" width="200" height="200" /></td>
-   </tr>
-    <tr>
       <td><img src="images/randomRectanglePath3.svg" width="200" height="200" /></td>
-      <td><img src="images/randomRectanglePath4.svg" width="200" height="200" /></td>
    </tr>
-    <tr>
+   <tr>
+      <td><img src="images/randomRectanglePath4.svg" width="200" height="200" /></td>
       <td><img src="images/randomRectanglePath5.svg" width="200" height="200" /></td>
    </tr>
-   
 </table>
-
