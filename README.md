@@ -7,37 +7,84 @@ SVG: https://www.w3.org/Graphics/SVG/
 
 #### SVG images generated using python code 
 <br/>
-<img src="images/art_Line_5.svg" width="200" height="200" />
-<img src="images/art_DiagLine_5.svg" width="200" height="200" />
-<img src="images/art_Circle_5.svg" width="200" height="200" />
-<img src="images/art_Rectangle_5.svg" width="200" height="200" />
-<img src="images/art_Rings_4.svg" width="200" height="200" />
-<img src="images/art_Rings_5.svg" width="200" height="200" />
 
-<img src="images/trump.svg" width="200" height="200" />
-<img src="images/trump_pt.svg" width="200" height="200" />
-<img src="images/trumpX.svg" width="200" height="200" />
-<img src="images/smile.svg" width="200" height="200" />
-<img src="images/smileC2.svg" />
-<img src="images/smileC3.svg" width="200" height="200" />
-<img src="images/smileC_same.svg" width="200" height="200" />
-<img src="images/randomNumberPath.svg"  />
-<img src="images/randomWalkPath.svg"  />
-<img src="images/func.svg"  />
-<img src="images/randomShapePath1.svg" width="500" height="250"/>
-<img src="images/randomShapePath3.svg" width="500" height="250" />
-<img src="images/randomShapePath4.svg" width="500" height="250"  />
-<img src="images/randomShapePath.svg" width="500" height="250" />
-<img src="images/randomShapePath5.svg" width="500" height="250" />
-<img src="images/randomShapePath6.svg" width="500" height="250" />
-<img src="images/randomShapePath7.svg" width="500" height="250" />
-<img src="images/randomShapePath9.svg" width="500" height="250" />
-<img src="images/randomShapePath10.svg" width="500" height="250" />
+<table>
+  <tr>
+    <td><img src="images/art_Line_5.svg" width="200" height="200" /></td>
+    <td><img src="images/art_DiagLine_5.svg" width="200" height="200" /></td>
+   </tr> 
+   <tr>
+      <td><img src="images/art_Circle_5.svg" width="200" height="200" /></td>
+      <td><img src="images/art_Rectangle_5.svg" width="200" height="200" /></td>
+   </tr>
+  <tr>
+      <td><img src="images/art_Rings_4.svg" width="200" height="200" /></td>
+      <td><img src="images/art_Rings_5.svg" width="200" height="200" /></td>
+   </tr>
+   <tr>
+      <td><img src="images/trump.svg" width="200" height="200" /></td>
+      <td><img src="images/trump_pt.svg" width="200" height="200" /></td>
+   </tr>
+   <tr>
+      <td><img src="images/trumpX.svg" width="200" height="200" /></td>
+      <td><img src="images/smile.svg" width="200" height="200" /></td>
+   </tr>
+   <tr>
+      <td><img src="images/smileC2.svg" /></td>
+      <td><img src="images/smileC3.svg" width="200" height="200" /></td>
+   </tr>
+   <tr>
+      <td><img src="images/smileC_same.svg" width="200" height="200" /></td>
+      <td><img src="images/randomNumberPath.svg"  /></td>
+   </tr>
+   <tr>
+      <td><img src="images/randomWalkPath.svg"  /></td>
+      <td><img src="images/func.svg"  /></td>
+   </tr>
+   <tr>
+      <td><img src="images/randomShapePath.svg" width="500" height="250"/></td>
+      <td><img src="images/randomShapePath1.svg" width="500" height="250" /></td>
+   </tr>
+    <tr>
+      <td><img src="images/randomShapePath2.svg" width="500" height="250"  /></td>
+      <td><img src="images/randomShapePath3.svg" width="500" height="250" /></td>
+   </tr>
+    <tr>
+      <td><img src="images/randomShapePath4.svg" width="500" height="250" /></td>
+      <td><img src="images/randomShapePath5.svg" width="500" height="250" /></td>
+   </tr>
+    <tr>
+      <td><img src="images/randomShapePath6.svg" width="500" height="250" /></td>
+      <td><img src="images/randomShapePath7.svg" width="500" height="250" /></td>
+   </tr>
+    <tr>
+      <td><img src="images/randomShapePath8.svg" width="500" height="250" /></td>
+      <td><img src="images/randomShapePath9.svg" width="500" height="250" /></td>
+   </tr>
+    <tr>
+      <td><img src="images/randomShapePath10.svg" width="500" height="250" /></td>
+      <td><img src="images/randomShapePath11.svg" width="500" height="250" /></td>
+   </tr>
+   
+    <tr>
+      <td><img src="images/randomCirclePath1.svg" width="200" height="200" /></td>
+      <td><img src="images/randomCirclePath2.svg" width="200" height="200" /></td>
+   </tr>
+   <tr>
+      <td><img src="images/randomCirclePath.svg" width="200" height="200" /></td>
+   </tr>
+   
+    <tr>
+      <td><img src="images/randomRectanglePath1.svg" width="200" height="200" /></td>
+      <td><img src="images/randomRectanglePath2.svg" width="200" height="200" /></td>
+   </tr>
+    <tr>
+      <td><img src="images/randomRectanglePath3.svg" width="200" height="200" /></td>
+      <td><img src="images/randomRectanglePath4.svg" width="200" height="200" /></td>
+   </tr>
+    <tr>
+      <td><img src="images/randomRectanglePath5.svg" width="200" height="200" /></td>
+   </tr>
+   
+</table>
 
-<img src="images/randomCirclePath1.svg" width="200" height="200" />
-<img src="images/randomCirclePath2.svg" width="200" height="200" />
-<img src="images/randomCirclePath.svg" width="200" height="200" />
-
-<img src="images/randomRectanglePath1.svg" width="200" height="200" />
-<img src="images/randomRectanglePath2.svg" width="200" height="200" />
-<img src="images/randomRectanglePath3.svg" width="200" height="200" />

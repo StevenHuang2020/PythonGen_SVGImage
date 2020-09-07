@@ -64,16 +64,13 @@ def getCirclePoints(r=1,N=10,func=heartFuc):
 def getRectanglePoints(x0=0, y0=0, N=10, w=10, h=10):
     x1 = np.linspace(x0, x0 + w, N)
     y1 = np.zeros_like(x1) + y0
-    
     y2 = np.linspace(y0, y0+h, N)
     x2 = np.zeros_like(y2) + x0 + w
-    
     x3 = np.flip(x1)
     y3 = np.zeros_like(x3) + y0 + h
-    
     y4 = np.flip(y2)
     x4 = np.zeros_like(y4) + x0
-     
+    
     #connect from start  
     x = np.concatenate((x1, x2), axis=0)
     x = np.concatenate((x, x3), axis=0)
@@ -83,7 +80,36 @@ def getRectanglePoints(x0=0, y0=0, N=10, w=10, h=10):
     y = np.concatenate((y, y3), axis=0)
     y = np.concatenate((y, y4), axis=0)
 
-    return x,y
+    center = ((x0+w)/2,(y0+h)/2)
+    return x,y,center
+
+def getLsoscelesTrianglePoints(center,r):
+    # x1 = np.linspace(x0, x0 + w, N)
+    # y1 = np.zeros_like(x1) + y0
+    # y2 = np.linspace(y0, y0+h, N)
+    # x2 = np.zeros_like(y2) + x0 + w
+    # x3 = np.flip(x1)
+    # y3 = np.zeros_like(x3) + y0 + h
+    # y4 = np.flip(y2)
+    # x4 = np.zeros_like(y4) + x0
+    
+    # #connect from start  
+    # x = np.concatenate((x1, x2), axis=0)
+    # x = np.concatenate((x, x3), axis=0)
+    # x = np.concatenate((x, x4), axis=0)
+    
+    # y = np.concatenate((y1, y2), axis=0)
+    # y = np.concatenate((y, y3), axis=0)
+    # y = np.concatenate((y, y4), axis=0)
+
+    # center = ((x0+w)/2,(y0+h)/2)
+    # return x,y,center
+
+def getTrianglePoints(pt1,pt2,pt3):
+    pass
+
+def getLinePoints(pt1,pt2):
+    pass
 
 def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):          
     N=500
