@@ -1,12 +1,49 @@
+#Python3 Steven 
+#Update: add lxml verion 09/07/2020 
 import os
+from lxml import etree
 
-class SVGFile:
+
+class SVGFileV2:
+    """SVGFileV2 xml version"""
     def __init__(self,fileName,W=100,H=100):
         self._initFile(fileName)
         self.fileName = fileName
         self.width = W
         self.height = H
-        #self._writeSVGHeader()
+        self.svgRoot = etree.Element("svg")
+        self.svgRoot.set("width", str(self.width))
+        self.svgRoot.set("height", str(self.height))
+        self.svgRoot.set("xmlns", "http://www.w3.org/2000/svg")
+
+        self.g = etree.SubElement(self.svgRoot, "g")
+        self.g.set("opacity",'1.0')
+        
+    def _initFile(self,fileName):
+        """remove svg file if already exist"""
+        if os.path.exists(fileName):
+            os.remove(fileName) 
+            
+    def svgSize(self):
+        return self.width,self.height
+    
+    def draw(self, content):
+        """link child to svgRoot child g element"""
+        self.g.append(etree.fromstring(content))
+        
+    def close(self):
+        """write lxml tree to file"""
+        etree.ElementTree(self.svgRoot).write(self.fileName, pretty_print=True, \
+            xml_declaration=True, encoding='UTF-8', standalone=False) 
+        
+        
+class SVGFile:
+    """SVGFile string io version,deprecated"""
+    def __init__(self,fileName,W=100,H=100):
+        self._initFile(fileName)
+        self.fileName = fileName
+        self.width = W
+        self.height = H
         self._svgContent=''
         self._svgHeader()
         

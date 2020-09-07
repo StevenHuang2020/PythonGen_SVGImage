@@ -34,9 +34,9 @@ def convertRGB(rgb):
     return "#{0:02x}{1:02x}{2:02x}".format(rgb[0], rgb[1], rgb[2])
 
 #------------------------------draw function---------------------------------#        
-def draw_line(x, y, x2, y2, color='black'):
+def draw_line(x, y, x2, y2, stroke_width=0.5, color='black'):
     #Draw a line for svg
-    return f'<line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="{color}" />'
+    return f'<line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="{color}" stroke_width="{stroke_width}"/>'
 
 def draw_rect(x, y, width, height, stroke_width=0.5, color=None):
     #Draw a rectangle for svg

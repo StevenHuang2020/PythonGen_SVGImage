@@ -112,6 +112,27 @@ def getTrianglePoints(pt1,pt2,pt3):
 def getLinePoints(pt1,pt2):
     pass
 
+def rotationMatrix(x,y,theta):
+    """x,y vector rotation with (0,0)"""
+    a = np.stack(([x,y]))
+    #print(a)
+
+    c, s = np.cos(theta), np.sin(theta)
+    R = np.array([[c,-s],[s,c]])
+    res = np.dot(R, a)
+    #return np.dot(R, a)
+    return res[0][:],res[1][:]
+
+def rotationMatrixCenter(x,y,center,theta):
+    """x,y vector rotation with a center"""
+    c, s = np.cos(theta), np.sin(theta)
+    #R = np.array([[c,-s],[s,c]])
+    #res = np.dot(R, a)
+    #return np.dot(R, a)
+    newX = center[0] + (x-center[0])*c - (y-center[1])*s
+    newY = center[1] + (x-center[0])*s + (y-center[1])*c
+    return newX,newY
+
 def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):          
     N=500
     x = np.linspace(-100,100,N)

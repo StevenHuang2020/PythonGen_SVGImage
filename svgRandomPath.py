@@ -1,7 +1,7 @@
 #python3 Steven
 import random 
 import numpy as np
-from svgFile import *
+from svgFile import SVGFile, SVGFileV2
 from svgBasic import *
 from svgFunction import *
 
@@ -114,43 +114,19 @@ def drawRandomCirclePath():
                 
     svg.close()
     
-def rotationMatrix(x,y,theta):
-    #a = np.concatenate((x.T, y.T),axis=0)
-    a = np.stack(([x,y]))
-    #print(a)
-
-    c, s = np.cos(theta), np.sin(theta)
-    R = np.array([[c,-s],[s,c]])
-    res = np.dot(R, a)
-    #return np.dot(R, a)
-    return res[0][:],res[1][:]
-
-def rotationMatrixCenter(x,y,center,theta):
-    #a = np.concatenate((x.T, y.T),axis=0)
-    a = np.stack(([x,y]))
-    #print(a)
-
-    c, s = np.cos(theta), np.sin(theta)
-    R = np.array([[c,-s],[s,c]])
-    res = np.dot(R, a)
-    #return np.dot(R, a)
-    newX = center[0] + (x-center[0])*c - (y-center[1])*s
-    newY = center[1] + (x-center[0])*s + (y-center[1])*c
-    return newX,newY
-
+    
 def getRectanglePtsSVG(svg, w,h, N=10, noise=True,onlyPath=True):          
     ptX,ptY, center = getRectanglePoints(w=w,h=h,N=N)
     ptX = ptX
     ptY = ptY
-    
     if noise:
-        ptX,ptY = addNoise(ptX,ptY,alpha=0.6)
+        ptX,ptY = addNoise(ptX,ptY,alpha=1)
     return ptX,ptY,center
 
 def drawRandomRectanglePath():
     file=r'.\images\randomRectanglePath.svg'
     H,W=200,200
-    svg = SVGFile(file,W,H)
+    svg = SVGFileV2(file,W,H)
 
     styles=['rectangle','rectangle roation','rotataion Center']
     
@@ -196,7 +172,7 @@ def drawRandomRectanglePath():
             offsetX = offsetX + random.random()*1  #8
             w = w + random.random()*1
             h = w
-            ptX,ptY,center = getRectanglePtsSVG(svg, w,h, N=20, noise=False,onlyPath=onlyPath)
+            ptX,ptY,center = getRectanglePtsSVG(svg, w,h, N=20, noise=True,onlyPath=onlyPath)
         
             ptX,ptY = rotationMatrixCenter(ptX,ptY,center, theta)
             theta = theta + 2*np.pi/(times-1)

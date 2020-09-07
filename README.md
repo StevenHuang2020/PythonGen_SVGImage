@@ -86,4 +86,19 @@ SVG: https://www.w3.org/Graphics/SVG/
       <td><img src="images/randomRectanglePath6.svg" width="200" height="200" /></td>
       <td><img src="images/randomRectanglePath7.svg" width="200" height="200" /></td>
    </tr>
+   
+   
+   <tr>
+      <td><img src="images/lingGraphic1.svg" width="200" height="200" /></td>
+      <td><img src="images/lingGraphic2.svg" width="200" height="200" /></td>
+   </tr>
+   <tr>
+      <td><img src="images/lingGraphic3.svg" width="200" height="200" /></td>
+      <td><img src="images/lingGraphic4.svg" width="200" height="200" /></td>
+   </tr>
+   <tr>
+      <td><img src="images/lingGraphic5.svg" width="200" height="200" /></td>
+      <td><img src="images/lingGraphic6.svg" width="200" height="200" /></td>
+   </tr>
+   
 </table>
