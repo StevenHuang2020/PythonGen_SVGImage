@@ -82,4 +82,7 @@ SVG: https://www.w3.org/Graphics/SVG/
       <td><img src="images/randomRectanglePath4.svg" width="200" height="200" /></td>
       <td><img src="images/randomRectanglePath5.svg" width="200" height="200" /></td>
    </tr>
+   <tr>
+      <td><img src="images/randomRectanglePath6.svg" width="200" height="200" /></td>
+   </tr>
 </table>

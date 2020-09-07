@@ -104,6 +104,7 @@ def getLsoscelesTrianglePoints(center,r):
 
     # center = ((x0+w)/2,(y0+h)/2)
     # return x,y,center
+    pass
 
 def getTrianglePoints(pt1,pt2,pt3):
     pass

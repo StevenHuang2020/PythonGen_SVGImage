@@ -188,14 +188,15 @@ def drawRandomRectanglePath():
             ptY = ptY + offsetY
             drawOnePathcSVG(svg,ptX,ptY,width=0.5,onlyPath=onlyPath)
     elif style == styles[2]:
-        times=150
+        times=180
         offsetX = 20 #W//2
         offsetY = 20 #H//2
         theta = 0
         for _ in range(times):
+            offsetX = offsetX + random.random()*1  #8
             w = w + random.random()*1
             h = w
-            ptX,ptY,center = getRectanglePtsSVG(svg, w,h, N=20, noise=True,onlyPath=onlyPath)
+            ptX,ptY,center = getRectanglePtsSVG(svg, w,h, N=20, noise=False,onlyPath=onlyPath)
         
             ptX,ptY = rotationMatrixCenter(ptX,ptY,center, theta)
             theta = theta + 2*np.pi/(times-1)
