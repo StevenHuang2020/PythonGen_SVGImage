@@ -111,8 +111,8 @@ def drawLsoscelesTrianglePoints(svg):
     width = 0
     rotation = True
     for i in range(times):
-        width = width + 4
-        #width = 100
+        #width = width + 4
+        width = 160
         
         x = [] #np.zeros((3,),dtype=float)
         y = [] #np.zeros((3,),dtype=float)
