@@ -8,6 +8,10 @@ from svgFunction import *
 def drawlinePoints(svg,pts,stroke_width=0.5,color=None):
     for i in pts:
         x1,y1,x2,y2 = i
+        x1 = x1.round(1)
+        y1 = y1.round(1)
+        x2 = x2.round(1)
+        y2 = y2.round(1)
         svg.draw(draw_line(x1,y1,x2,y2, stroke_width=stroke_width, color = color or randomColor()))
         
 def drawLineGrapic(svg):
