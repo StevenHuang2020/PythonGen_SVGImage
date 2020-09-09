@@ -4,6 +4,7 @@ import numpy as np
 from svgFile import SVGFile, SVGFileV2
 from svgBasic import *
 from svgFunction import *
+from geoTransformation import *
 
 def addNoise(x,y,alpha=2):
     x = x + np.random.randn(len(x))*alpha
@@ -15,8 +16,8 @@ def drawOnePathcSVG(svg, ptX, ptY, width=1,onlyPath=True):
     y = ptY[0]
     path = 'M %.1f %.1f L ' % (x, y)     
     for x,y in zip(ptX,ptY):
-        x = x.round(1)
-        y = y.round(1)
+        x = clipFloat(x)
+        y = clipFloat(y)
         path = path + ' ' + str(x) + ' ' + str(y)
     path = path + 'z'
     
@@ -35,7 +36,7 @@ def getCirclePtsSVG(svg, r=1, N=10, offsetX=50, offsetY=50, noise=True,onlyPath=
     return ptX,ptY
 
 def drawRandomPath():
-    file=r'.\images\randomShapePath.svg'
+    file = gImageOutputPath + r'\randomShapePath.svg'
     H,W=500,1000
     svg = SVGFile(file,W,H)
     
@@ -70,7 +71,7 @@ def drawRandomPath():
 
     
 def drawRandomCirclePath():
-    file=r'.\images\randomCirclePath.svg'
+    file = gImageOutputPath + r'\randomCirclePath.svg'
     H,W=200,200
     svg = SVGFile(file,W,H)
 
@@ -124,7 +125,7 @@ def getRectanglePtsSVG(svg, w,h, N=10, noise=True,onlyPath=True):
     return ptX,ptY,center
 
 def drawRandomRectanglePath():
-    file=r'.\images\randomRectanglePath.svg'
+    file= gImageOutputPath + r'\randomRectanglePath.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H)
 

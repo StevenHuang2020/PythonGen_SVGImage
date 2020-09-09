@@ -1,17 +1,19 @@
 #python3 Steven
 import random 
 import numpy as np
+from scipy.linalg import solve
 from svgFile import SVGFileV2
 from svgBasic import *
 from svgFunction import *
+from geoTransformation import *
 
 def drawlinePoints(svg,pts,stroke_width=0.5,color=None):
     for i in pts:
         x1,y1,x2,y2 = i
-        x1 = x1.round(1)
-        y1 = y1.round(1)
-        x2 = x2.round(1)
-        y2 = y2.round(1)
+        x1 = clipFloat(x1)
+        y1 = clipFloat(y1)
+        x2 = clipFloat(x2)
+        y2 = clipFloat(y2)
         svg.draw(draw_line(x1,y1,x2,y2, stroke_width=stroke_width, color = color or randomColor()))
         
 def drawLineGrapic(svg):
@@ -107,10 +109,17 @@ def drawTrianglePoints(svg,pt1,pt2,pt3):
     
     drawlinePoints(svg,pts,stroke_width=0.1,color=randomColor())
     
+def drawTrianglePointsXY(svg,x,y):
+    """x&y are (3,) vector, three points"""
+    pt1 = (x[0],y[0])
+    pt2 = (x[1],y[1])
+    pt3 = (x[2],y[2])
+    drawTrianglePoints(svg,pt1,pt2,pt3)
+        
 def drawLsoscelesTrianglePoints(svg):
     W,H = svg.svgSize()
     cx,cy = W//2,H//2
-    
+
     times = 40
     width = 0
     rotation = True
@@ -118,8 +127,8 @@ def drawLsoscelesTrianglePoints(svg):
         #width = width + 4
         width = 160
         
-        x = [] #np.zeros((3,),dtype=float)
-        y = [] #np.zeros((3,),dtype=float)
+        x = [] 
+        y = [] 
         
         # pt1 = (cx - width/2, cy + (width/2)*np.tan(np.pi/6))
         # pt2 = (cx + width/2, cy + (width/2)*np.tan(np.pi/6))
@@ -138,18 +147,100 @@ def drawLsoscelesTrianglePoints(svg):
             #theta = i*2*np.pi/(times+1)
             theta = random.random()*2*np.pi
             x,y = rotationMatrixCenter(x,y,(cx,cy),theta)
-                
-        pt1 = (x[0],y[0])
-        pt2 = (x[1],y[1])
-        pt3 = (x[2],y[2])
-        drawTrianglePoints(svg,pt1,pt2,pt3)
+
+        drawTrianglePointsXY(svg,x,y)
     
 
+def getRandomPoints(size,min=0, max = 5):
+    return np.random.random(size)*(max-min) + min  #[0,5)
+
+def getRandomPoint(min=0, max = 5):
+    #return np.random.random((2,))*(max-min) + min  #[0,5)
+    return getRandomPoints((2,), min=min, max=max)
+
+def getCenterPoint(p1, p2, p3):
+    """get center point of three points"""
+    #return get_outer_circle(p1,p2,p3)
+    return get_inner_circle(p1,p2,p3)
+
+def get_inner_circle(A, B, C):
+    xa, ya = A[0], A[1]
+    xb, yb = B[0], B[1]
+    xc, yc = C[0], C[1]
+
+    ka = (yb - ya) / (xb - xa) if xb != xa else None
+    kb = (yc - yb) / (xc - xb) if xc != xb else None
+
+    alpha = np.arctan(ka) if ka != None else np.pi / 2
+    beta  = np.arctan(kb) if kb != None else np.pi / 2
+
+    a = np.sqrt((xb - xc)**2 + (yb - yc)**2)
+    b = np.sqrt((xa - xc)**2 + (ya - yc)**2)
+    c = np.sqrt((xa - xb)**2 + (ya - yb)**2)
+
+    ang_a = np.arccos((b**2 + c**2 - a**2) / (2 * b * c))
+    ang_b = np.arccos((a**2 + c**2 - b**2) / (2 * a * c))
+
+    # 两条角平分线的斜率
+    k1 = np.tan(alpha + ang_a / 2)
+    k2 = np.tan(beta + ang_b / 2)
+    kv = np.tan(alpha + np.pi / 2)
+
+    # 求圆心
+    y, x = solve([[1.0, -k1], [1.0, -k2]], [ya - k1 * xa, yb - k2 * xb])
+    ym, xm = solve([[1.0, -ka], [1.0, -kv]], [ya - ka * xa, y - kv * x])
+    r1 = np.sqrt((x - xm)**2 + (y - ym)**2)
+
+    return(x, y, r1)
+
+def get_outer_circle(px1, px2, px3):
+    x1 = px1[0]
+    y1 = px1[1]
+    x2 = px2[0]
+    y2 = px2[1]
+    x3 = px3[0]
+    y3 = px3[1]
+    e = 2 * (x2 - x1)
+    f = 2 * (y2 - y1)
+    g = x2*x2 - x1*x1 + y2*y2 - y1*y1
+    a = 2 * (x3 - x2)
+    b = 2 * (y3 - y2)
+    c = x3*x3 - x2*x2 + y3*y3 - y2*y2
+    X = (g*b - c*f) / (e*b - a*f)
+    Y = (a*g - c*e) / (a*f - b*e)
+    R = np.sqrt((X-x1)*(X-x1)+(Y-y1)*(Y-y1))
+    return X,Y,R
+
+def drawRandomTrianglePoints(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    
+    r = 50
+    pts = getRandomPoints((3,2), min=cx-r, max=cx+r)
+    print(pts)
+    #drawTrianglePoints(svg,pts[0],pts[1],pts[2])
+    
+    cx, cy, _ = getCenterPoint(pts[0],pts[1],pts[2])
+    x = pts.T[0]
+    y = pts.T[1]
+    print('cx,cy=',cx,cy)
+    
+    #zoomPoint = (0,0)
+    zoomPoint = (cx,cy)
+    
+    times = 30
+    for z in np.linspace(0.1, 2, times):
+        zx, zy = zoomMatrixCenter(x,y,zoomPoint,z)  
+        drawTrianglePointsXY(svg, zx, zy)
+
+
 if __name__=='__main__':    
-    file=r'.\images\lingGraphic.svg'
+    file = gImageOutputPath + r'\lingGraphic.svg'
     H,W=200,200
-    svg = SVGFileV2(file,W,H)
+    svg = SVGFileV2(file,W,H,border=True)
     #drawLineGrapic(svg)
     #drawLineGrapic2(svg)
-    drawLsoscelesTrianglePoints(svg)
+    #drawLsoscelesTrianglePoints(svg)
+    drawRandomTrianglePoints(svg)
+    
     svg.close()

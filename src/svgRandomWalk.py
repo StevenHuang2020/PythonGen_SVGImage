@@ -19,7 +19,7 @@ def random_walk(x,y, n=1,step=1):
     return x,y
 
 def drawRandomNumbersPath():
-    file=r'.\images\randomNumberPath.svg'
+    file = gImageOutputPath + r'\randomNumberPath.svg'
     H,W=100,100
     svg = SVGFile(file,W,H)
     
@@ -33,12 +33,12 @@ def drawRandomNumbersPath():
         ptX = np.arange(N) + xW
         ptY = randomContinueNumbers(N=N)
         
-        print(ptX)
-        print(ptY)
+        #print(ptX)
+        #print(ptY)
 
         for x,y in zip(ptX,ptY):
-            x = x.round(1)
-            y = y.round(1)
+            x = clipFloat(x)
+            y = clipFloat(y)
             path = path + ' ' + str(x) + ' ' + str(y)
         #path = path    
         svg.draw(draw_path(path,width=0.2,color=randomColor())) 
@@ -46,12 +46,11 @@ def drawRandomNumbersPath():
     svg.close()
     
 def drawRandomWalkPath():
-    file=r'.\images\randomWalkPath.svg'
+    file = gImageOutputPath + r'\randomWalkPath.svg'
     H,W=100,100
     svg = SVGFile(file,W,H)
     
-    times=10000
-    xW = 5
+    times=1000
     cx,cy = W//2,H//2
     
     x = cx
@@ -59,13 +58,13 @@ def drawRandomWalkPath():
     path = 'M %.1f %.1f L ' % (x, y)
     for i in range(times):       
         x,y = random_walk(x,y,1,step=2)
-        x = x.round(1)
-        y = y.round(1)
+        x = clipFloat(x)
+        y = clipFloat(y)
         path = path + ' ' + str(x) + ' ' + str(y)           
          
     svg.draw(draw_path(path,width=0.2))     
     svg.close()
     
 if __name__=='__main__':    
-    drawRandomNumbersPath()
+    #drawRandomNumbersPath()
     drawRandomWalkPath()

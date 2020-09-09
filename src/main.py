@@ -5,9 +5,10 @@ import os
 import numpy as np 
 import random
 from svgBasic import *
-from svgFile import SVGFile
+from svgFile import *
 from svgImageMask import SVGImageMask
 from svgSmile import SVGSmile
+from svgFunction import *
 
 class drawArt:
     def __init__(self,svg=None):
@@ -121,7 +122,7 @@ class drawArt:
             return 
     
 def drawTest():
-    file=r'.\images\test.svg'
+    file=gImageOutputPath + r'\test.svg'
     H,W=100,100
     svg = SVGFile(file,W,H)
     svg.draw(draw_line(0,0,100,100))
@@ -134,7 +135,8 @@ def drawArtSvg():
     for N in recurse:
         for style in styles:
             fileName='art_' + style + '_' + str(N)+'.svg'
-            file=r'.\images\\'+fileName
+            #file=r'..\images\\'+fileName
+            file = gImageOutputPath + r'\\' + fileName
             H,W=200,200
             svg = SVGFile(file,W,H)
             draw = drawArt(svg)
@@ -142,7 +144,7 @@ def drawArtSvg():
             svg.close()
             
 def GeFile():
-    file = r'.\images\hi.txt'
+    file = r'.\res\hi.txt'
     with open(file, 'r') as f:
         return f.readlines()
     
@@ -150,7 +152,7 @@ def insert(source_str, insert_str, pos):
     return source_str[:pos]+insert_str+source_str[pos:]
 
 def drawText():
-    file=r'.\images\Hi.svg'
+    file = gImageOutputPath + r'\Hi.svg'
     H,W=200,1200
     #str='Hello'
     
@@ -173,21 +175,20 @@ def drawText():
     
 def maskImage():
     f = r'.\res\trumps.jpg'
-    d = r'.\images\trump.svg'
+    d = gImageOutputPath + r'\trump.svg'
     svg = SVGImageMask(f,d)
     svg.drawStep()
     svg.close()
     
 def drawSmile():
-    file=r'.\images\smile.svg'
-    ridus = 100
+    file = gImageOutputPath + r'\smile.svg'
     s = SVGSmile(file, ridus=100)
     s.draw()
     s.close()
    
 def drawRandomPath():
-    file=r'.\images\randomPath.svg'
-    H,W=100,100
+    file = gImageOutputPath + r'\randomPath.svg'
+    H,W = 100,100
     svg = SVGFile(file,W,H)
     
     svg.draw(add_style_path(stroke_width=0.5))
@@ -198,19 +199,19 @@ def drawRandomPath():
     
     for i in range(times):
         path='M 100 50 L '
-        if 1:
+        if 0:
             for i in range(N+1):
                 rd = np.random.rand()
                 x = (cx*np.cos(np.pi*2*i/N) + cx)*rd
                 y = (cy*np.sin(np.pi*2*i/N) + cy)*rd
-                x = x.round(1)
-                y = y.round(1)
+                x = clipFloat(x)
+                y = clipFloat(y)
                 path = path + ' ' + str(x) + ' ' + str(y)
             path = path + ' Z'
         else:    
             path='M 0 0 L '    
-            ptX = np.random.randint(cx-r,cx+r, size=(N,)).round(1)
-            ptY = np.sqrt(r**2-(ptX-cx)**2).round(1)
+            ptX = clipFloat(np.random.randint(cx-r,cx+r, size=(N,)))
+            ptY = clipFloat(np.sqrt(r**2-(ptX-cx)**2))
             print(ptX)
             print(ptY)
 
@@ -227,15 +228,7 @@ def drawRandomPath():
     svg.close()
     
 def drawHearCurve():
-    def heart(x,offsetX=50,lam=4/5,offsetY=50,r=10,up=True): #heart equation: x**2+ (5*y/4 - sqrt(abs(x)))**2 = r**2
-        #lam = 4/5 #4/5
-        if up:
-            a = np.sqrt(r**2 - (x-offsetX)**2)*1 + np.sqrt(abs(x-offsetX))
-        else:
-            a = np.sqrt(r**2 - (x-offsetX)**2)*(-1) + np.sqrt(abs(x-offsetX))
-        return a*lam*(-1) + offsetY
-
-    file=r'.\images\heartPath.svg'
+    file = gImageOutputPath + r'\heartPath.svg'
     H,W=100,100
     svg = SVGFile(file,W,H)
     
@@ -245,21 +238,22 @@ def drawHearCurve():
     svg.draw(add_style_path(stroke='red', stroke_width=0.5,fill='red'))
     
     N = 100
-    r = 50
-    lam = 4/5.5
-    path = 'M %.1f %.1f L ' % (0+offsetX, (lam)*r*(-1)+offsetY)
-    x = np.linspace(-r+offsetX, r+offsetX, N)
-    y = heart(x,r=r,lam=lam,offsetX=offsetX,offsetY=offsetY)    #Up part points of heart curve, set sqrt value positive       
-    xr = np.flip(x) #Down part points of heart curve, set sqrt value negative
-    yr = heart(xr,r=r,lam=lam, offsetX=offsetX,offsetY=offsetY,up=False)
+    r = 30
+    path = 'M %.1f %.1f L ' % (0 + offsetX, heartFuc(0,r) + offsetY) #start point
+    x = np.linspace(-r, r, N)
+    y = heartFuc(x,r=r)    #Up part points of heart curve, set sqrt value positive       
+    xr = np.flip(x)         #Down part points of heart curve, set sqrt value negative
+    yr = heartFuc(xr,r=r,up=False)
       
     x = np.concatenate((x, xr), axis=0)
-    y = np.concatenate((y, yr), axis=0)
-    print('x=',x)
-    print('y=',y)
+    y = np.concatenate((y, yr), axis=0)*-1  #*-1  svg coordinate system different from standard cod system
+    #print('x=',x)
+    #print('y=',y)
+    x = x + offsetX
+    y = y + offsetY
     
     for i,j in zip(x,y):
-        path = path + ' ' + str(i.round(1)) + ' ' + str(j.round(1))
+        path = path + ' ' + str(clipFloat(i)) + ' ' + str(clipFloat(j))
         
     print(path)
     svg.draw(draw_Only_path(path))
@@ -273,7 +267,7 @@ def main():
     #maskImage()
     #drawSmile()
     #drawRandomPath()
-    #drawHearCurve()
+    drawHearCurve()
     pass
     
 if __name__=='__main__':

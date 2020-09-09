@@ -2,11 +2,16 @@
 #Update: add lxml verion 09/07/2020 
 import os
 from lxml import etree
+from svgBasic import *
+
+#--------globla variables--------------#
+gImageOutputPath = r'..\images'
+#--------------------------------------#
 
 
 class SVGFileV2:
     """SVGFileV2 xml version"""
-    def __init__(self,fileName,W=100,H=100):
+    def __init__(self,fileName,W=100,H=100,border=False):
         self._initFile(fileName)
         self.fileName = fileName
         self.width = W
@@ -19,6 +24,9 @@ class SVGFileV2:
         self.g = etree.SubElement(self.svgRoot, "g")
         self.g.set("opacity",'1.0')
         
+        if border:
+            self._addBorder()
+            
     def _initFile(self,fileName):
         """remove svg file if already exist"""
         if os.path.exists(fileName):
@@ -27,6 +35,11 @@ class SVGFileV2:
     def svgSize(self):
         return self.width,self.height
     
+    def _addBorder(self):
+        rect = draw_rect(0, 0, self.width, self.height, stroke_width=1, \
+            color='white',strokeColor='black')
+        self.draw(rect)
+                
     def draw(self, content):
         """link child to svgRoot child g element"""
         self.g.append(etree.fromstring(content))

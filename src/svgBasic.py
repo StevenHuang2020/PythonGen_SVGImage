@@ -9,6 +9,7 @@ def colorFader(c1,c2,mix=0): #fade (linear interpolate) from color c1 (at mix=0)
     return mpl.colors.to_hex((1-mix)*c1 + mix*c2)
 
 def randomColor():
+    """web hex color format"""
     chars = '0123456789ABCDEF'
     color = ['#']
     for _ in range(6):
@@ -28,20 +29,25 @@ def randomColor3(i):
     except:
         print('i,i/n = ',i,i/N)
 
-def convertRGB(rgb):
+def convertRGB(rgb): #covert from rgb to hex color
     def clamp(x): 
         return max(0, min(x, 255))
     return "#{0:02x}{1:02x}{2:02x}".format(rgb[0], rgb[1], rgb[2])
+
+def clipFloat(x,n=1):
+    if isinstance(x,float):
+        return round(x, n)
+    return x
 
 #------------------------------draw function---------------------------------#        
 def draw_line(x, y, x2, y2, stroke_width=0.5, color='black'):
     #Draw a line for svg
     return f'<line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="{color}" stroke_width="{stroke_width}"/>'
 
-def draw_rect(x, y, width, height, stroke_width=0.5, color=None):
+def draw_rect(x, y, width, height, stroke_width=0.5, color=None,strokeColor=None):
     #Draw a rectangle for svg
     color = color or randomColor()
-    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{color}" stroke_width="{stroke_width}"  />'
+    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{strokeColor}" stroke_width="{stroke_width}"  />'
 
 def draw_circle(x, y, radius, color='black'):
     return f'<circle cx="{x}" cy="{y}" r="{radius}" fill="{color}" />'

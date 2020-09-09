@@ -68,7 +68,7 @@ class SVGImageMask:
         
 def main():
     f = r'.\res\trumps.jpg'
-    d = r'.\images\trumpX.svg'
+    d = gImageOutputPath + r'\trumpX.svg'
     #SVGImageMask(f,d).drawStep()
     svg=SVGImageMask(f,d)
     svg.drawColor()
