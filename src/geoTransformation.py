@@ -20,7 +20,6 @@ def translationMatrix(x,y,toPoint):
 
 def rotationMatrix(x,y,theta):  
     """rotation matrix with (0,0)"""
-    """x,y vector rotation with (0,0)"""
     a = np.stack(([x,y]))
     c, s = np.cos(theta), np.sin(theta)
     R = np.array([[c,-s],[s,c]])
