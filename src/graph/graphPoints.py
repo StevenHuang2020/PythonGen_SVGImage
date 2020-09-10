@@ -9,15 +9,14 @@ class VertexPt():
         self.id = id
         
     def setDistance(self,distance):
-        self.setDistance = distance
+        self.distance = distance
         
     def __str__(self):
         return 'Vertex: id=' + str(self.id) + ' point=' + str(self.point)
             
     def getDistanceVectorIds(self,K=2):
-        #top_k_idx = self.setDistance.argsort()[::-1][0:K+1]
-        low_k_idx = self.setDistance.argsort()[1:K+1]  #start from 1,skip self index
-
+        #top_k_idx = self.distance.argsort()[::-1][0:K+1]
+        low_k_idx = self.distance.argsort()[1:K+1]  #start from 1,skip self index
         return low_k_idx
     
 class GraphPoints():
@@ -41,12 +40,11 @@ class GraphPoints():
             
             # print('sum1 res**2=',np.sum(res**2, axis=1))
             # print('sum0 res**2=',np.sum(res**2, axis=0))
-            
             distances = np.sqrt(np.sum(np.asarray(pt - self.ptMatrix) ** 2, axis=0))
-            #print('distances=',distances)
+            #print('distances=',len(distances),distances)
             v.setDistance(distances)
-            
-    def getVertexNearstPtIndex(self,K=2):
+        
+    def getVertexNearstPtIndex(self,K=8):
         #K = K if K < len(self.VertexPt_list) else len(self.VertexPt_list)
         
         ys = None
@@ -58,7 +56,7 @@ class GraphPoints():
         #print('ys=',ys)
         self.shortestMatrix = ys
         
-    def getConnectionMatrix(self,K=2):
+    def getConnectionMatrix(self,K=2,KNearst=4):
         def removeItem(conM, i):
             if conM is not None:
                 for con in conM:
@@ -66,7 +64,7 @@ class GraphPoints():
                         yield con[0]
             return None
             
-        self.getVertexNearstPtIndex(K)
+        self.getVertexNearstPtIndex(K=KNearst)
         conMatrix = None
         for i,v in enumerate(self.VertexPt_list):
             shortest = list(self.shortestMatrix[i])
@@ -74,19 +72,20 @@ class GraphPoints():
             # print('cur conMatrix:',conMatrix)
             # print('---------')
             
+            #print('start:',i,shortest)
             for vIndex in  removeItem(conMatrix,i):
                 #vIndex =  removeItem(conMatrix,i)
-                #print(i,shortest,vIndex)
-                if vIndex and vIndex in shortest:
+                #print('remove:',i,shortest,vIndex)
+                if vIndex is not None and vIndex in shortest:
                     shortest.remove(vIndex)
                 
-            #print(i,shortest)
+            #print('after remove:',i,shortest)
             if len(shortest) == 0:
                 con = np.array([[i, -1]])
             else:
-                K = len(shortest) if K > len(shortest) else K
-                
-                for s in random.sample(shortest, K):
+                N = len(shortest) if K > len(shortest) else K
+                #print('start to choice:',i,shortest)
+                for s in random.sample(shortest, N):
                     con = np.array([[i, s]])
                     conMatrix = np.concatenate((conMatrix,con)) if conMatrix is not None else con
         #print('conMatrix=',conMatrix)
@@ -111,10 +110,10 @@ def main():
     points.append((9,5))
     
     graph = GraphPoints(points)
-    graph.show()
+    #graph.show()
     
-    mat = graph.getConnectionMatrix(K=3)
-    print('mat=', mat)
+    mat = graph.getConnectionMatrix(K=2)
+    #print('mat=', mat)
 
 if __name__=='__main__':
     main()

@@ -30,8 +30,8 @@ def drawPointsLineGraphic(svg):
     graph = GraphPoints(pts)
     #graph.show()
     
-    conMatrix = graph.getConnectionMatrix(K=2)
-    print('conMatrix=',conMatrix)
+    conMatrix = graph.getConnectionMatrix(K=3,KNearst=4)
+    #print('conMatrix=',conMatrix)
     linePoints = []
     for i in conMatrix:
         s,t =  i[0], i[1] #start stop point index
@@ -40,7 +40,6 @@ def drawPointsLineGraphic(svg):
         linePoints.append((pts[s][0],pts[s][1],pts[t][0],pts[t][1]))
 
     drawPointsLine(svg,linePoints)
-    
     
     
 def drawPointLine():
