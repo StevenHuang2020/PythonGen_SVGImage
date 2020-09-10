@@ -65,7 +65,14 @@ class SVGImageMask:
          
     def close(self):       
         self.svg.close()
-        
+   
+def maskImage():
+    f = r'.\res\trumps.jpg'
+    d = gImageOutputPath + r'\trump.svg'
+    svg = SVGImageMask(f,d)
+    svg.drawStep()
+    svg.close()
+         
 def main():
     f = r'.\res\trumps.jpg'
     d = gImageOutputPath + r'\trumpX.svg'

@@ -31,7 +31,6 @@ def drawSVG(svg, ridus, offsetX=0, offsetY=0,color=None):
     svg.draw(draw_circle(startPt[0], startPt[1], lineWidth/2, color=color))
     svg.draw(draw_circle(stopPt[0], stopPt[1], lineWidth/2, color=color))
     
-    
 def testSmile():
     file = gImageOutputPath + r'\smileC.svg'
     s = SVGFileV2(file,W=300,H=300)

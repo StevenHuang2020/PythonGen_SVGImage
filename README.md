@@ -106,5 +106,9 @@ Please report any bugs at https://github.com/StevenHuang2020/PythonGen_SVGImage/
       <td><img src="images/lingGraphic7.svg" width="200" height="200" /></td>
       <td><img src="images/lingGraphic8.svg" width="200" height="200" /></td>
    </tr>
+   <tr>
+      <td><img src="images/lingGraphic9.svg" width="200" height="200" /></td>
+      <td><img src="images/pointsLine1.svg" width="200" height="200" /></td>
+   </tr>
    
 </table>

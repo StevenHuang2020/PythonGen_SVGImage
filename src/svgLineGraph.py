@@ -101,13 +101,13 @@ def drawLineGrapic2(svg):
             
     drawlinePoints(svg,pts)
 
-def drawTrianglePoints(svg,pt1,pt2,pt3):
+def drawTrianglePoints(svg,pt1,pt2,pt3,color=None):
     pts=[]
     pts.append((pt1[0],pt1[1],pt2[0],pt2[1])) #pt1,pt2
     pts.append((pt1[0],pt1[1],pt3[0],pt3[1])) #pt1,pt3
     pts.append((pt2[0],pt2[1],pt3[0],pt3[1])) #pt2,pt3
     
-    drawlinePoints(svg,pts,stroke_width=0.1,color=randomColor())
+    drawlinePoints(svg,pts,stroke_width=0.1,color=color or randomColor())
     
 def drawTrianglePointsXY(svg,x,y):
     """x&y are (3,) vector, three points"""
@@ -149,14 +149,7 @@ def drawLsoscelesTrianglePoints(svg):
             x,y = rotationMatrixCenter(x,y,(cx,cy),theta)
 
         drawTrianglePointsXY(svg,x,y)
-    
 
-def getRandomPoints(size,min=0, max = 5):
-    return np.random.random(size)*(max-min) + min  #[0,5)
-
-def getRandomPoint(min=0, max = 5):
-    #return np.random.random((2,))*(max-min) + min  #[0,5)
-    return getRandomPoints((2,), min=min, max=max)
 
 def getCenterPoint(p1, p2, p3):
     """get center point of three points"""
@@ -181,12 +174,12 @@ def get_inner_circle(A, B, C):
     ang_a = np.arccos((b**2 + c**2 - a**2) / (2 * b * c))
     ang_b = np.arccos((a**2 + c**2 - b**2) / (2 * a * c))
 
-    # 两条角平分线的斜率
+    # slop
     k1 = np.tan(alpha + ang_a / 2)
     k2 = np.tan(beta + ang_b / 2)
     kv = np.tan(alpha + np.pi / 2)
 
-    # 求圆心
+    # circle center calculate
     y, x = solve([[1.0, -k1], [1.0, -k2]], [ya - k1 * xa, yb - k2 * xb])
     ym, xm = solve([[1.0, -ka], [1.0, -kv]], [ya - ka * xa, y - kv * x])
     r1 = np.sqrt((x - xm)**2 + (y - ym)**2)
@@ -212,12 +205,17 @@ def get_outer_circle(px1, px2, px3):
     return X,Y,R
 
 def drawRandomTrianglePoints(svg):
+    """draw a random triangle and zoom this to seris"""
     W,H = svg.svgSize()
     cx,cy = W//2,H//2
     
-    r = 50
-    pts = getRandomPoints((3,2), min=cx-r, max=cx+r)
-    print(pts)
+    r = 10
+    if 1:
+        pts = getRandomProper3Points(min=r, max=W-r)
+    else:
+        pts = getRandomPoints((3,2), min=cx-r, max=cx+r)
+        print(pts)
+    
     #drawTrianglePoints(svg,pts[0],pts[1],pts[2])
     
     cx, cy, _ = getCenterPoint(pts[0],pts[1],pts[2])
@@ -227,20 +225,53 @@ def drawRandomTrianglePoints(svg):
     
     #zoomPoint = (0,0)
     zoomPoint = (cx,cy)
-    
     times = 30
-    for z in np.linspace(0.1, 2, times):
+    for z in np.linspace(0.1, 1.0, times):
         zx, zy = zoomMatrixCenter(x,y,zoomPoint,z)  
         drawTrianglePointsXY(svg, zx, zy)
 
+def getCenterPointOf2Pts(pt1,pt2,ratio=1/2):
+    x = (pt1[0] + pt2[0] )*ratio
+    y = (pt1[1] + pt2[1] )*ratio
+    return np.array([[x, y]])
 
-if __name__=='__main__':    
+def getTrianglesCenterPoints(points):
+    #print('points,shape=',points,points.shape)
+    pt1 = getCenterPointOf2Pts(points[0],points[1])
+    pt2 = getCenterPointOf2Pts(points[1],points[2])
+    pt3 = getCenterPointOf2Pts(points[2],points[0])
+    
+    pts = np.concatenate((pt1,pt2),axis=0)
+    pts = np.concatenate((pts,pt3),axis=0)
+    return pts
+    
+def drawRandomTriangles(svg):
+    """draw a random triangle and inter center triangles"""
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    
+    r = 10
+    color=None #'black'
+    pts = getRandomProper3Points(min=10, max=W-10)
+    #print(pts)
+    drawTrianglePoints(svg,pts[0],pts[1],pts[2],color=color)
+    
+    for _ in range(5):
+        pts = getTrianglesCenterPoints(pts)
+        drawTrianglePoints(svg,pts[0],pts[1],pts[2],color=color)
+    
+def drawLineGraphic():
     file = gImageOutputPath + r'\lingGraphic.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
     #drawLineGrapic(svg)
     #drawLineGrapic2(svg)
     #drawLsoscelesTrianglePoints(svg)
-    drawRandomTrianglePoints(svg)
+    #drawRandomTrianglePoints(svg)
+    drawRandomTriangles(svg)
     
     svg.close()
+    
+if __name__=='__main__':    
+    drawLineGraphic()    
+    #print(comb(4,3))

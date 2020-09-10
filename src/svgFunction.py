@@ -3,6 +3,9 @@ import numpy as np
 from svgFile import *
 from svgBasic import *
 #plot function to svg
+#from scipy.special import perm,comb
+from itertools import combinations, permutations
+
 
 def funcIdentity(x):
     return x #y=x
@@ -83,14 +86,42 @@ def getRectanglePoints(x0=0, y0=0, N=10, w=10, h=10):
     center = ((x0+w)/2,(y0+h)/2)
     return x,y,center
 
-def getLsoscelesTrianglePoints(center,r):
-    pass
+def getRandomProper3Points(min=0, max = 5):
+    """get random point from 0,1,2,3 quadrants,
+       pt(x,y) = (min ~ max)
+    """
+    c = list(combinations(range(4),3))
+    #[(0, 1, 2), (0, 1, 3), (0, 2, 3), (1, 2, 3)]
+    #print(c)
+    qds = random.choice(c)
+    #print('qds=',qds)
+    center = (max-min)/2.0
+    pts = None
+    for qd in qds:
+        if qd == 0:
+            x = np.random.random()*(center-min) + min
+            y = np.random.random()*(center-min) + min
+        elif qd == 1:
+            x = np.random.random()*(max-center) + center
+            y = np.random.random()*(center-min) + min
+        elif qd == 2:
+            x = np.random.random()*(center-min) + min
+            y = np.random.random()*(max-center) + center
+        elif qd == 3:
+            x = np.random.random()*(max-center) + center
+            y = np.random.random()*(max-center) + center
+        
+        pt = np.array([[x,y]])
+        pts = np.concatenate((pts,pt),axis=0) if pts is not None else pt
+    return pts
 
-def getTrianglePoints(pt1,pt2,pt3):
-    pass
+def getRandomPoints(size,min=0, max = 5):
+    return np.random.random(size)*(max-min) + min  #[0,5)
 
-def getLinePoints(pt1,pt2):
-    pass
+def getRandomPoint(min=0, max = 5):
+    #return np.random.random((2,))*(max-min) + min  #[0,5)
+    return getRandomPoints((2,), min=min, max=max)
+
     
 def drawFuncSVG(svg, offsetX=0, offsetY=0,color=None):          
     N=500

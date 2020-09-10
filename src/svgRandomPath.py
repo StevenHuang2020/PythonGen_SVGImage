@@ -69,6 +69,37 @@ def drawRandomPath():
      
     svg.close()
 
+def drawHearCurve():
+    file = gImageOutputPath + r'\heartPath.svg'
+    H,W=100,100
+    svg = SVGFile(file,W,H)
+    
+    offsetX = W//2
+    offsetY = H//2
+    
+    svg.draw(add_style_path(stroke='red', stroke_width=0.5,fill='red'))
+    
+    N = 100
+    r = 30
+    path = 'M %.1f %.1f L ' % (0 + offsetX, heartFuc(0,r) + offsetY) #start point
+    x = np.linspace(-r, r, N)
+    y = heartFuc(x,r=r)    #Up part points of heart curve, set sqrt value positive       
+    xr = np.flip(x)         #Down part points of heart curve, set sqrt value negative
+    yr = heartFuc(xr,r=r,up=False)
+      
+    x = np.concatenate((x, xr), axis=0)
+    y = np.concatenate((y, yr), axis=0)*-1  #*-1  svg coordinate system different from standard cod system
+    #print('x=',x)
+    #print('y=',y)
+    x = x + offsetX
+    y = y + offsetY
+    
+    for i,j in zip(x,y):
+        path = path + ' ' + str(clipFloat(i)) + ' ' + str(clipFloat(j))
+        
+    #print(path)
+    svg.draw(draw_Only_path(path))
+    svg.close()
     
 def drawRandomCirclePath():
     file = gImageOutputPath + r'\randomCirclePath.svg'
