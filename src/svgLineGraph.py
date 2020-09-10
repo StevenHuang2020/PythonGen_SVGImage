@@ -7,13 +7,16 @@ from svgBasic import *
 from svgFunction import *
 from geoTransformation import *
 
-def drawlinePoints(svg,pts,stroke_width=0.5,color=None):
-    for i in pts:
-        x1,y1,x2,y2 = i
+def drawlinePoints(svg,pts,stroke_width=0.5,color=None,stroke_widths=None):
+    for i,pt in enumerate(pts):
+        x1,y1,x2,y2 = pt
         x1 = clipFloat(x1)
         y1 = clipFloat(y1)
         x2 = clipFloat(x2)
         y2 = clipFloat(y2)
+        if stroke_widths:
+            stroke_width = stroke_widths[i]
+
         svg.draw(draw_line(x1,y1,x2,y2, stroke_width=stroke_width, color = color or randomColor()))
         
 def drawLineGrapic(svg):
@@ -260,6 +263,45 @@ def drawRandomTriangles(svg):
         pts = getTrianglesCenterPoints(pts)
         drawTrianglePoints(svg,pts[0],pts[1],pts[2],color=color)
     
+def getLinePointFromSlope(slope=1, p0=(20,0)):
+    b = slope*p0[0] - p0[1]
+    ptYaxis = [0,0]
+    y = -slope*ptYaxis[0] + b
+    ptYaxis[1] = y
+    return ptYaxis
+
+def drawAbstractLine(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    N = 10
+    
+    #svg.draw(draw_rect(0,0,W,H,color='#808B96')) #background
+    
+    slope = 1.7
+    #ptYaxis = getLinePointFromSlope(slope,(20,0))
+    #print('ptYaxis=',ptYaxis)
+    pts1 = getRandomPoints((N,),min=0,max=W).reshape((N,1))
+    pts1 = np.append(pts1,np.zeros_like(pts1),axis=1)
+    
+    pts2 = None
+    for i in pts1:
+        pt = getLinePointFromSlope(slope,(i[0],i[1]))
+        pt = np.array(pt).reshape(1,2)
+        print('pt=',pt)
+        #pts2 = np.append(pts2, pt, axis=1)
+        pts2 = np.concatenate((pts2, pt),axis=0) if pts2 is not None else pt
+    
+    #print('pts1=',pts1)
+    #print('pts2=',pts2)
+    
+    linePoints = []
+    widths = []
+    for pt1,pt2 in zip(pts1,pts2):
+        linePoints.append((pt1[0],pt1[1],pt2[0],pt2[1]))
+        widths.append(random.choice([2,2,4,6,8,10]))
+    print(widths)
+    drawlinePoints(svg,linePoints,color=None,stroke_widths=widths)
+        
 def drawLineGraphic():
     file = gImageOutputPath + r'\lingGraphic.svg'
     H,W=200,200
@@ -268,8 +310,8 @@ def drawLineGraphic():
     #drawLineGrapic2(svg)
     #drawLsoscelesTrianglePoints(svg)
     #drawRandomTrianglePoints(svg)
-    drawRandomTriangles(svg)
-    
+    #drawRandomTriangles(svg)
+    drawAbstractLine(svg)
     svg.close()
     
 if __name__=='__main__':    

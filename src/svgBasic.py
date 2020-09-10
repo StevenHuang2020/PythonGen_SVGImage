@@ -42,12 +42,12 @@ def clipFloat(x,n=1):
 #------------------------------draw function---------------------------------#        
 def draw_line(x, y, x2, y2, stroke_width=0.5, color='black'):
     #Draw a line for svg
-    return f'<line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="{color}" stroke_width="{stroke_width}"/>'
+    return f'<line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="{stroke_width}"/>'
 
 def draw_rect(x, y, width, height, stroke_width=0.5, color=None,strokeColor=None):
     #Draw a rectangle for svg
     color = color or randomColor()
-    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{strokeColor}" stroke_width="{stroke_width}"  />'
+    return f'<rect x="{x}" y="{y}" width="{width}" height="{height}"  fill="{color}" stroke="{strokeColor}" stroke-width="{stroke_width}"  />'
 
 def draw_circle(x, y, radius, color='black'):
     return f'<circle cx="{x}" cy="{y}" r="{radius}" fill="{color}" />'
