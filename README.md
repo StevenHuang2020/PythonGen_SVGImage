@@ -112,7 +112,10 @@ Please report any bugs at https://github.com/StevenHuang2020/PythonGen_SVGImage/
    </tr>
    <tr>
       <td><img src="images/pointsLine2.svg" width="200" height="200" /></td>
-      、
+      <td><img src="images/pointsLine3.svg" width="200" height="200" /></td>、
    </tr>
-   
+   <tr>
+      <td><img src="images/pointsLine4.svg" width="200" height="200" /></td>
+     
+   </tr>
 </table>

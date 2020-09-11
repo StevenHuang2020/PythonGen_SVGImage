@@ -7,6 +7,7 @@ from svgBasic import *
 from svgFunction import *
 from geoTransformation import *
 
+
 def drawlinePoints(svg,pts,stroke_width=0.5,color=None,stroke_widths=None):
     for i,pt in enumerate(pts):
         x1,y1,x2,y2 = pt
@@ -301,7 +302,8 @@ def drawAbstractLine(svg):
         widths.append(random.choice([2,2,4,6,8,10]))
     print(widths)
     drawlinePoints(svg,linePoints,color=None,stroke_widths=widths)
-        
+
+            
 def drawLineGraphic():
     file = gImageOutputPath + r'\lingGraphic.svg'
     H,W=200,200

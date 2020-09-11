@@ -2,6 +2,7 @@
 #For connecting random points 
 import numpy as np
 import random
+from itertools import combinations, permutations
 
 class VertexPt():
     def __init__(self, id, point):
@@ -55,7 +56,16 @@ class GraphPoints():
         
         #print('ys=',ys)
         self.shortestMatrix = ys
-        
+            
+    def getVertextPoint(self,vertex):
+        #pt = self.VertexPt_list[index].point
+        pt = vertex.point
+        return np.array([[pt[0]], [pt[1]]]) 
+    
+    def show(self):
+        for i in  self.VertexPt_list:
+            print(i)
+    
     def getConnectionMatrix(self,K=2,KNearst=4):
         def removeItem(conM, i):
             if conM is not None:
@@ -90,31 +100,49 @@ class GraphPoints():
                     conMatrix = np.concatenate((conMatrix,con)) if conMatrix is not None else con
         #print('conMatrix=',conMatrix)
         return conMatrix
-            
-    def getVertextPoint(self,vertex):
-        #pt = self.VertexPt_list[index].point
-        pt = vertex.point
-        return np.array([[pt[0]], [pt[1]]]) 
     
-    def show(self):
-        for i in  self.VertexPt_list:
-            print(i)
+    def getConnectionMatrix2(self,KNearst=4):
+        size = len(self.VertexPt_list)
+        conAllMatrix = np.array(list(combinations(range(size),2)))
+        #print('conAllMatrix=',conAllMatrix)
+        
+        conMatrix = None
+        self.getVertexNearstPtIndex(K=KNearst)
+        for con in conAllMatrix:
+            id = con[0]
+            conId = con[1]
+            shortest = list(self.shortestMatrix[id])
+            #print('start:',id, shortest)
+            if conId in shortest:
+                connect = np.array([[id, conId]])
+                conMatrix = np.concatenate((conMatrix,connect)) if conMatrix is not None else connect
+                
+        # for i,v in enumerate(self.VertexPt_list):
+        #     shortest = list(self.shortestMatrix[i])
+        #     # print('---------')
+        #     # print('cur conMatrix:',conMatrix)
+        #     # print('---------')
+        #     print('start:',i,shortest)
+            
+        return conMatrix
     
 def main(): 
-    points = []
-    points.append((1,2))
-    points.append((3,4))
-    points.append((5,6))
-    points.append((7,6))
-    points.append((9,8))
-    points.append((9,5))
+    # points = []
+    # points.append((1,2))
+    # points.append((3,4))
+    # points.append((5,6))
+    # points.append((7,6))
+    # points.append((9,8))
+    # points.append((9,5))
     
-    graph = GraphPoints(points)
-    #graph.show()
+    # graph = GraphPoints(points)
+    # #graph.show()
     
-    mat = graph.getConnectionMatrix(K=2)
+    # mat = graph.getConnectionMatrix(K=2)
     #print('mat=', mat)
-
+    pass
+    
+    
 if __name__=='__main__':
     main()
     
