@@ -43,7 +43,7 @@ def drawPointsLineGraphic2(svg):
     N = 200
     
     color1='green'
-    color2 = 'yellow'
+    color2 = '#C70039'
     
     #svg.draw(draw_rect(0,0,W,H,color='#808B96')) #background
     
@@ -64,6 +64,29 @@ def drawPointsLineGraphic2(svg):
         linePoints.append((i[0],i[1],W,H))
     drawlinePoints(svg,linePoints,color=color2,stroke_width=0.2)
     
+def drawPointsLineGraphic4(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    N = 300
+    
+    r0 = 80
+    color='#48C9B0' #'green'
+    
+    offsetX = cx
+    offsetY=cy
+    linePoints = []
+    theta = 0
+    strokeWidths = []
+    for i in range(N):
+        r = r0 + random.normalvariate(mu=0,sigma=1)*4
+        theta = theta + 2*np.pi/(N-1) + random.normalvariate(mu=0,sigma=1)*.01
+        x = r*np.cos(theta) + offsetX
+        y = r*np.sin(theta) + offsetY
+        linePoints.append((offsetX,offsetY,x,y))
+        strokeWidths.append(random.choice([0.2,0.3,0.8,1.0,1.5]))
+        
+    drawlinePoints(svg,linePoints,color=color,stroke_widths=strokeWidths)
+
 def drawPointsLineGraphic3(svg):
     W,H = svg.svgSize()
     cx,cy = W//2,H//2
@@ -110,8 +133,9 @@ def drawPointLine():
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
     #drawPointsLineGraphic(svg)
-    drawPointsLineGraphic2(svg)
+    #drawPointsLineGraphic2(svg)
     #drawPointsLineGraphic3(svg)
+    drawPointsLineGraphic4(svg)
     svg.close()
     
 def main():
@@ -119,4 +143,3 @@ def main():
     
 if __name__=='__main__':    
     main()
-
