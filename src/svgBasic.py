@@ -21,8 +21,8 @@ def randomColor2():
     colors = ['#006600','#009933','#00CC66','#00FFCC','#6699FF']
     return random.choice(colors)
 
-def randomColor3(i):
-    N = 255 #number of grade colors
+def randomColor3(i,N=255):
+    #N: number of grade colors
     #i = random.choice(range(N))
     try:
         return colorFader('k','w',i/N)
@@ -73,3 +73,6 @@ def add_style_path(stroke='black', stroke_width=1, fill='transparent'):
 
 def draw_Only_path(path):
     return f'<path d="{path}"/>'
+
+def draw_polygon(points, color=None, strokeColor=None, stroke_width=1.0):
+     return f'<polygon points="{points}" stroke="{strokeColor}" stroke-width="{stroke_width}" fill="{color}" />'

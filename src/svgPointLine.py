@@ -9,7 +9,9 @@ from graph.interPoints import GetLineSegInterPoint
 
 def drawPointsCircle(svg,pts,r=2,color='black'):
     for pt in pts:
-        svg.draw(draw_circle(pt[0],pt[1],radius=r,color=color))
+        x = clipFloat(pt[0])
+        y = clipFloat(pt[1])
+        svg.draw(draw_circle(x,y,radius=r,color=color))
 
 def drawPointsLineGraphic(svg):
     W,H = svg.svgSize()
@@ -31,10 +33,11 @@ def drawPointsLineGraphic(svg):
         s,t =  i[0], i[1] #start stop point index
         if t == -1:
             continue
-        linePoints.append((pts[s][0],pts[s][1],pts[t][0],pts[t][1]))
+        
+        conect = (pts[s][0],pts[s][1],pts[t][0],pts[t][1])
+        linePoints.append(conect)
 
     drawlinePoints(svg,linePoints,color=color)
-    
     drawInterPointLines(svg, linePoints, r=1, color=color) #draw intersection points
     
 def drawPointsLineGraphic2(svg):
@@ -63,29 +66,7 @@ def drawPointsLineGraphic2(svg):
     for i in pts2:
         linePoints.append((i[0],i[1],W,H))
     drawlinePoints(svg,linePoints,color=color2,stroke_width=0.2)
-    
-def drawPointsLineGraphic4(svg):
-    W,H = svg.svgSize()
-    cx,cy = W//2,H//2
-    N = 300
-    
-    r0 = 80
-    color='#48C9B0' #'green'
-    
-    offsetX = cx
-    offsetY=cy
-    linePoints = []
-    theta = 0
-    strokeWidths = []
-    for i in range(N):
-        r = r0 + random.normalvariate(mu=0,sigma=1)*4
-        theta = theta + 2*np.pi/(N-1) + random.normalvariate(mu=0,sigma=1)*.01
-        x = r*np.cos(theta) + offsetX
-        y = r*np.sin(theta) + offsetY
-        linePoints.append((offsetX,offsetY,x,y))
-        strokeWidths.append(random.choice([0.2,0.3,0.8,1.0,1.5]))
-        
-    drawlinePoints(svg,linePoints,color=color,stroke_widths=strokeWidths)
+
 
 def drawPointsLineGraphic3(svg):
     W,H = svg.svgSize()
@@ -109,6 +90,29 @@ def drawPointsLineGraphic3(svg):
     drawlinePoints(svg,linePoints,color=color1,stroke_width=0.2)    
     drawInterPointLines(svg, linePoints, r=1, color=color1)
     
+def drawPointsLineGraphic4(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    N = 300
+    
+    r0 = 80
+    color='#48C9B0' #'green'
+    
+    offsetX = cx
+    offsetY=cy
+    linePoints = []
+    theta = 0
+    strokeWidths = []
+    for i in range(N):
+        r = r0 + random.normalvariate(mu=0,sigma=1)*4
+        theta = theta + 2*np.pi/(N-1) + random.normalvariate(mu=0,sigma=1)*.01
+        x = r*np.cos(theta) + offsetX
+        y = r*np.sin(theta) + offsetY
+        linePoints.append((offsetX,offsetY,x,y))
+        strokeWidths.append(random.choice([0.2,0.3,0.8,1.0,1.5]))
+        
+    drawlinePoints(svg,linePoints,color=color,stroke_widths=strokeWidths)
+    
 def drawInterPointLines(svg,linePoints,r=1,color=None):
     for line in linePoints:
         for i in linePoints:
@@ -127,6 +131,86 @@ def drawInterPointLines(svg,linePoints,r=1,color=None):
                 #print('ptInter=',ptInter)
                 drawPointsCircle(svg, [ptInter], r=1, color=color)#r=3, color='red'
 
+def drawPointsLineGraphic5(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    N = 10
+    
+    color = 'black'
+    pts = getRandomPoints((N,2),min=2,max=W-2)
+    drawPointsCircle(svg, pts,r=1)
+    
+    graph = GraphPoints(pts)
+    #graph.show()
+    
+    conMatrix = graph.getConnectionMatrix2(KNearst=3)
+    print('conMatrix=',conMatrix)
+    # for i,pt in enumerate(pts):
+    #     #print(i,pt, conMatrix[i])
+    #     ptsTriangle=[]
+    #     ptsTriangle.append(pts[i])
+    #     ptsTriangle.append(pts[conMatrix[i][0]])
+    #     ptsTriangle.append(pts[conMatrix[i][1]])
+        
+    #     color = None #randomColor3(random.choice(range(N)), N=10)
+    #     drawPloygon(svg,ptsTriangle,color=color)
+
+    linePoints = []
+    for i in conMatrix:
+        s,t =  i[0], i[1] #start stop point index
+        if t == -1:
+            continue
+        linePoints.append((pts[s][0],pts[s][1],pts[t][0],pts[t][1]))
+        
+    drawlinePoints(svg,linePoints,color=color)
+
+    
+def drawPloygon(svg, pts,color=None):
+    #print('pts',pts)
+    points=[]
+    for i in pts:
+        points.append(str(clipFloat(i[0])) + ',' + str(clipFloat(i[1])) + ' ')
+    points = ''.join(points)
+    svg.draw(draw_polygon(points,stroke_width=0.5,color=color or randomColor()))
+    
+def drawPointsLineGraphic6(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    N = 50
+    
+    color = 'black'
+    pts = getRandomPoints((N,2),min=2,max=W-2)
+    drawPointsCircle(svg, pts,r=1)
+    
+    graph = GraphPoints(pts)
+    #graph.show()
+    
+    #conMatrix = graph.getAllConnectionMatrix()
+    conMatrix = graph.getConnectionMatrix2(KNearst=4)
+    print('conMatrix=',conMatrix)
+    linePoints = []
+    for i in conMatrix:
+        s,t =  i[0], i[1] #start stop point index
+        if t == -1:
+            continue
+        
+        conect = (pts[s][0],pts[s][1],pts[t][0],pts[t][1])
+        if not IsIntersectionWithAlreayLines(conect,linePoints):
+            linePoints.append(conect)
+    
+    drawlinePoints(svg,linePoints,color=color)
+
+def IsIntersectionWithAlreayLines(conect,linePoints):
+    def getLineFrom2Pts(connect):
+        return np.array(list(connect)).reshape((2,2))
+
+    line1 = getLineFrom2Pts(conect)
+    for i in linePoints:
+        line2 = getLineFrom2Pts(i)
+        if GetLineSegInterPoint(line1,line2).interPoint:
+            return True
+
+    return False
     
 def drawPointLine():
     file = gImageOutputPath + r'\pointsLine.svg'
@@ -135,7 +219,9 @@ def drawPointLine():
     #drawPointsLineGraphic(svg)
     #drawPointsLineGraphic2(svg)
     #drawPointsLineGraphic3(svg)
-    drawPointsLineGraphic4(svg)
+    #drawPointsLineGraphic4(svg)
+    #drawPointsLineGraphic5(svg)
+    drawPointsLineGraphic6(svg)
     svg.close()
     
 def main():

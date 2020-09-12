@@ -16,6 +16,9 @@ class VertexPt():
         return 'Vertex: id=' + str(self.id) + ' point=' + str(self.point)
             
     def getDistanceVectorIds(self,K=2):
+        if K<=0 :
+            K = len(self.distance)
+            #print('all K=', K)
         #top_k_idx = self.distance.argsort()[::-1][0:K+1]
         low_k_idx = self.distance.argsort()[1:K+1]  #start from 1,skip self index
         return low_k_idx
@@ -56,6 +59,7 @@ class GraphPoints():
         
         #print('ys=',ys)
         self.shortestMatrix = ys
+        return self.shortestMatrix
             
     def getVertextPoint(self,vertex):
         #pt = self.VertexPt_list[index].point
@@ -101,14 +105,18 @@ class GraphPoints():
         #print('conMatrix=',conMatrix)
         return conMatrix
     
-    def getConnectionMatrix2(self,KNearst=4):
+    def getAllConnectionMatrix(self):
         size = len(self.VertexPt_list)
         conAllMatrix = np.array(list(combinations(range(size),2)))
+        return conAllMatrix
+
+    def getConnectionMatrix2(self,KNearst=4):
+        conAllMatrix = self.getAllConnectionMatrix()
         #print('conAllMatrix=',conAllMatrix)
         
         conMatrix = None
         self.getVertexNearstPtIndex(K=KNearst)
-        for con in conAllMatrix:
+        for con in conAllMatrix: #filter nearst points to connect
             id = con[0]
             conId = con[1]
             shortest = list(self.shortestMatrix[id])
@@ -116,30 +124,24 @@ class GraphPoints():
             if conId in shortest:
                 connect = np.array([[id, conId]])
                 conMatrix = np.concatenate((conMatrix,connect)) if conMatrix is not None else connect
-                
-        # for i,v in enumerate(self.VertexPt_list):
-        #     shortest = list(self.shortestMatrix[i])
-        #     # print('---------')
-        #     # print('cur conMatrix:',conMatrix)
-        #     # print('---------')
-        #     print('start:',i,shortest)
             
         return conMatrix
     
-def main(): 
-    # points = []
-    # points.append((1,2))
-    # points.append((3,4))
-    # points.append((5,6))
-    # points.append((7,6))
-    # points.append((9,8))
-    # points.append((9,5))
     
-    # graph = GraphPoints(points)
+def main(): 
+    points = []
+    points.append((1,2))
+    points.append((3,4))
+    points.append((5,6))
+    points.append((7,6))
+    points.append((9,8))
+    points.append((9,5))
+    
+    graph = GraphPoints(points)
     # #graph.show()
     
-    # mat = graph.getConnectionMatrix(K=2)
-    #print('mat=', mat)
+    mat = graph.getConnectionMatrix2(KNearst=4)
+    print('mat=', mat)
     pass
     
     

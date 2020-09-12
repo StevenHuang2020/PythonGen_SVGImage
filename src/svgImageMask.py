@@ -1,7 +1,7 @@
 import os
 import cv2
 import numpy as np 
-from svgFile import SVGFile
+from svgFile import SVGFileV2
 from svgBasic import *
 from svgSmile import *
 
@@ -38,7 +38,7 @@ class SVGImageMask:
         self.step = step
         self.svgH = int((self.height//step) * step)
         self.svgW = int((self.width//step) * step)
-        self.svg = SVGFile(dstSvgfile,W=self.svgW,H=self.svgH)
+        self.svg = SVGFileV2(dstSvgfile,W=self.svgW,H=self.svgH)
         print('step=',step,'image H,W=',self.height,self.width,'SVG H,W=',self.svgH,self.svgW)
         
     def drawStep(self):
@@ -69,19 +69,23 @@ class SVGImageMask:
 def maskImage():
     f = r'.\res\trumps.jpg'
     d = gImageOutputPath + r'\trump.svg'
-    svg = SVGImageMask(f,d)
+    svg = SVGImageMask(f,d,step=1) #4, 8
     svg.drawStep()
     svg.close()
          
-def main():
+def maskColorImg():
     f = r'.\res\trumps.jpg'
     d = gImageOutputPath + r'\trumpX.svg'
     #SVGImageMask(f,d).drawStep()
     svg=SVGImageMask(f,d)
     svg.drawColor()
     
-    drawSVG(svg.svg,ridus=10, offsetX=10, offsetY=20)
+    drawSmileSVG(svg.svg,ridus=10, offsetX=10, offsetY=20) #draw a smile
     svg.close()
+    
+def main():
+    maskImage()
+    #maskColorImg()
     
 if __name__=='__main__':
     main()         

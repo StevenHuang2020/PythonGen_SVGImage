@@ -1,5 +1,5 @@
 #python3 Steven
-#geotransformaion operation for coordiantes
+#geometry transformaion operation for coordiantes
 import numpy as np 
 
 def translationMatrix(x,y,toPoint): 

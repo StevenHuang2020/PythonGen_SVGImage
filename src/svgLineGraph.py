@@ -313,7 +313,7 @@ def drawLineGraphic():
     #drawLsoscelesTrianglePoints(svg)
     #drawRandomTrianglePoints(svg)
     #drawRandomTriangles(svg)
-    drawAbstractLine(svg)
+    #drawAbstractLine(svg)
     svg.close()
     
 if __name__=='__main__':    

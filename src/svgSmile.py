@@ -3,7 +3,7 @@ import numpy as np
 from svgFile import *
 from svgBasic import *
 
-def drawSVG(svg, ridus, offsetX=0, offsetY=0,color=None):      
+def drawSmileSVG(svg, ridus, offsetX=0, offsetY=0,color=None):      
     x = ridus + offsetX
     y = ridus + offsetY
     color = color or '#FFC10E'
@@ -34,7 +34,7 @@ def drawSVG(svg, ridus, offsetX=0, offsetY=0,color=None):
 def testSmile():
     file = gImageOutputPath + r'\smileC.svg'
     s = SVGFileV2(file,W=300,H=300)
-    drawSVG(s,ridus=100,offsetX=20,offsetY=45)
+    drawSmileSVG(s,ridus=100,offsetX=20,offsetY=45)
     s.close()
     
 def testSmile2():
@@ -52,7 +52,7 @@ def testSmile2():
     #svg = SVGSmile(dstSvgfile=d,svgW=totalW,svgH=totalH)
     for i in range(1,N):
         r = i*r0
-        drawSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY)
+        drawSmileSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY)
         offsetX += (2*r + inter)
         
     svg.close()
@@ -75,8 +75,8 @@ def testSmile3():
             offsetX = j*(2*r + inter)
             offsetY = i*(2*r + inter)
            
-            #drawSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY,color=randomColor())
-            drawSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY,color='#FFC10E')
+            #drawSmileSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY,color=randomColor())
+            drawSmileSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY,color='#FFC10E')
               
     svg.close()
        
