@@ -16,9 +16,7 @@ def drawOnePathcSVG(svg, ptX, ptY, width=1,onlyPath=True):
     y = ptY[0]
     path = 'M %.1f %.1f L ' % (x, y)     
     for x,y in zip(ptX,ptY):
-        x = clipFloat(x)
-        y = clipFloat(y)
-        path = path + ' ' + str(x) + ' ' + str(y)
+        path = path + ' ' + str(clipFloat(x)) + ' ' + str(clipFloat(y))
     path = path + 'z'
     
     if onlyPath:

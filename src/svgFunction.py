@@ -169,9 +169,7 @@ def drawOneFuncSVG(svg, ptX,ptY, N=10, color=None):
     y = ptY[0]
     path = 'M %.1f %.1f L ' % (x, y)     
     for x,y in zip(ptX,ptY):
-        x = clipFloat(x)
-        y = clipFloat(y)
-        path = path + ' ' + str(x) + ' ' + str(y)
+        path = path + ' ' + str(clipFloat(x)) + ' ' + str(clipFloat(y))
  
     svg.draw(draw_path(path,width=0.2,color=color or randomColor())) 
 

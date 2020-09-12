@@ -6,20 +6,8 @@ from svgFile import SVGFileV2
 from svgBasic import *
 from svgFunction import *
 from geoTransformation import *
+from svgPointLine import drawPloygon
 
-
-def drawlinePoints(svg,pts,stroke_width=0.5,color=None,stroke_widths=None):
-    for i,pt in enumerate(pts):
-        x1,y1,x2,y2 = pt
-        x1 = clipFloat(x1)
-        y1 = clipFloat(y1)
-        x2 = clipFloat(x2)
-        y2 = clipFloat(y2)
-        if stroke_widths:
-            stroke_width = stroke_widths[i]
-
-        svg.draw(draw_line(x1,y1,x2,y2, stroke_width=stroke_width, color = color or randomColor()))
-        
 def drawLineGrapic(svg):
     W,H = svg.svgSize()
     times=100
@@ -288,7 +276,7 @@ def drawAbstractLine(svg):
     for i in pts1:
         pt = getLinePointFromSlope(slope,(i[0],i[1]))
         pt = np.array(pt).reshape(1,2)
-        print('pt=',pt)
+        #print('pt=',pt)
         #pts2 = np.append(pts2, pt, axis=1)
         pts2 = np.concatenate((pts2, pt),axis=0) if pts2 is not None else pt
     
@@ -300,10 +288,42 @@ def drawAbstractLine(svg):
     for pt1,pt2 in zip(pts1,pts2):
         linePoints.append((pt1[0],pt1[1],pt2[0],pt2[1]))
         widths.append(random.choice([2,2,4,6,8,10]))
-    print(widths)
+    #print(widths)
     drawlinePoints(svg,linePoints,color=None,stroke_widths=widths)
 
-            
+def drawArrowCircleLine(svg):
+    def getPointCircle(r,theta):
+        #return np.array([[r*np.cos(theta), r*np.sin(theta)]])
+        return (r*np.cos(theta), r*np.sin(theta))
+    
+    def getTwinPoints(r,theta, sTheta=2*np.pi/80):
+        pt1 =  getPointCircle(r,theta - sTheta/2)
+        pt2 =  getPointCircle(r,theta + sTheta/2)
+        return pt1,pt2
+    
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    N = 40
+    R0 = 80
+    rMin = 8
+    rMax = 30
+    theta = 0
+    for i in range(1,N):
+        theta = theta + 2*np.pi/(N-1)
+        R = R0 + random.normalvariate(mu=0,sigma=1)*3
+        r = random.choice(np.linspace(rMin,rMax,10))
+        
+        ptInner = getPointCircle(r,theta)
+        sTheta = 2*np.pi/random.choice(range(80,200,2))
+        ptOuter1, ptOuter2 = getTwinPoints(R,theta,sTheta=sTheta)
+        
+        x = [ptInner[0],ptOuter1[0],ptOuter2[0]]
+        y = [ptInner[1],ptOuter1[1],ptOuter2[1]]
+        
+        x,y = translationMatrix(x,y,(cx,cy))
+        #drawTrianglePoints(svg,(x[0],y[0]), (x[1],y[1]), (x[2],y[2]))
+        drawPloygon(svg, [(x[0],y[0]), (x[1],y[1]), (x[2],y[2])], color='black')
+        
 def drawLineGraphic():
     file = gImageOutputPath + r'\lingGraphic.svg'
     H,W=200,200
@@ -314,6 +334,7 @@ def drawLineGraphic():
     #drawRandomTrianglePoints(svg)
     #drawRandomTriangles(svg)
     #drawAbstractLine(svg)
+    drawArrowCircleLine(svg)
     svg.close()
     
 if __name__=='__main__':    

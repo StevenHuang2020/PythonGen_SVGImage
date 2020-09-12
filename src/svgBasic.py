@@ -3,6 +3,7 @@ import random
 import matplotlib as mpl
 import numpy as np 
 
+
 def colorFader(c1,c2,mix=0): #fade (linear interpolate) from color c1 (at mix=0) to c2 (mix=1)
     c1=np.array(mpl.colors.to_rgb(c1))
     c2=np.array(mpl.colors.to_rgb(c2))
@@ -11,11 +12,8 @@ def colorFader(c1,c2,mix=0): #fade (linear interpolate) from color c1 (at mix=0)
 def randomColor():
     """web hex color format"""
     chars = '0123456789ABCDEF'
-    color = ['#']
-    for _ in range(6):
-        color.append(random.choice(chars))
-    return ''.join(color)
-
+    return '#' + ''.join(random.sample(chars,6))
+    
 def randomColor2():
     #colors = ['#3300FF','#3366FF','#3399FF','#33FFFF','#CC6633']
     colors = ['#006600','#009933','#00CC66','#00FFCC','#6699FF']
@@ -76,3 +74,4 @@ def draw_Only_path(path):
 
 def draw_polygon(points, color=None, strokeColor=None, stroke_width=1.0):
      return f'<polygon points="{points}" stroke="{strokeColor}" stroke-width="{stroke_width}" fill="{color}" />'
+ 

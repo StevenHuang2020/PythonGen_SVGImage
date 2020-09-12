@@ -13,7 +13,7 @@ def randomContinueNumbers(x0=0,N=100):
 def random_walk(x,y, n=1,step=1):
     """Return coordinantes after n block random walk"""
     for _ in range(n):
-        (dx, dy) = random.choice([(0,1*step),(0,-1*step),(1*step,0),(-1*step,0)])
+        (dx, dy) = random.choice([(0,1*step),(0,-1*step),(1*step,0),(-1*step,0)]) #N,S,E,W
         x += dx
         y += dy
     return x,y
@@ -37,9 +37,7 @@ def drawRandomNumbersPath():
         #print(ptY)
 
         for x,y in zip(ptX,ptY):
-            x = clipFloat(x)
-            y = clipFloat(y)
-            path = path + ' ' + str(x) + ' ' + str(y)
+            path = path + ' ' + str(clipFloat(x)) + ' ' + str(clipFloat(y))
         #path = path    
         svg.draw(draw_path(path,width=0.2,color=randomColor())) 
         
@@ -58,9 +56,7 @@ def drawRandomWalkPath():
     path = 'M %.1f %.1f L ' % (x, y)
     for i in range(times):       
         x,y = random_walk(x,y,1,step=2)
-        x = clipFloat(x)
-        y = clipFloat(y)
-        path = path + ' ' + str(x) + ' ' + str(y)           
+        path = path + ' ' + str(clipFloat(x)) + ' ' + str(clipFloat(y))           
          
     svg.draw(draw_path(path,width=0.2))     
     svg.close()

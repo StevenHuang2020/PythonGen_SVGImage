@@ -4,9 +4,21 @@ from svgBasic import *
 from svgFunction import *
 from geoTransformation import *
 from graph.graphPoints import GraphPoints
-from svgLineGraph import drawlinePoints 
 from graph.interPoints import GetLineSegInterPoint
 
+def drawlinePoints(svg,pts,stroke_width=0.5,color=None,stroke_widths=None):
+    for i,pt in enumerate(pts):
+        x1,y1,x2,y2 = pt
+        x1 = clipFloat(x1)
+        y1 = clipFloat(y1)
+        x2 = clipFloat(x2)
+        y2 = clipFloat(y2)
+        if stroke_widths:
+            stroke_width = stroke_widths[i]
+
+        svg.draw(draw_line(x1,y1,x2,y2, stroke_width=stroke_width, color = color or randomColor()))
+        
+    
 def drawPointsCircle(svg,pts,r=2,color='black'):
     for pt in pts:
         x = clipFloat(pt[0])
@@ -49,22 +61,17 @@ def drawPointsLineGraphic2(svg):
     color2 = '#C70039'
     
     #svg.draw(draw_rect(0,0,W,H,color='#808B96')) #background
-    
     pts = getRandomPoints((N,2),min=2,max=W-2)
     
     pts1 = pts[:N//2]
     pts2 = pts[N//2:]
     drawPointsCircle(svg, pts1, color=color1)
     drawPointsCircle(svg, pts2, color=color2)
-    
-    linePoints = []
-    for i in pts1:
-        linePoints.append((0,0,i[0],i[1]))
+        
+    linePoints = [(0,0,i[0],i[1]) for i in pts1]
     drawlinePoints(svg,linePoints,color=color1,stroke_width=0.2)
-    
-    linePoints = []
-    for i in pts2:
-        linePoints.append((i[0],i[1],W,H))
+        
+    linePoints = [(i[0],i[1],W,H) for i in pts2]
     drawlinePoints(svg,linePoints,color=color2,stroke_width=0.2)
 
 
@@ -74,7 +81,7 @@ def drawPointsLineGraphic3(svg):
     N = 100
     
     color1='green'
-    color2 = 'yellow'
+    #color2 = 'yellow'
     
     pts = getRandomPoints((N,2),min=2,max=W-2)
     
@@ -83,10 +90,8 @@ def drawPointsLineGraphic3(svg):
     drawPointsCircle(svg, pts1, r=1, color=color1)
     drawPointsCircle(svg, pts2, r=1, color=color1)
     
-    linePoints = []
-    for pt1,pt2 in zip(pts1,pts2):
-        linePoints.append((pt1[0],pt1[1],pt2[0],pt2[1]))
-        
+    linePoints = [(pt1[0],pt1[1],pt2[0],pt2[1]) for pt1,pt2 in zip(pts1,pts2)]
+    
     drawlinePoints(svg,linePoints,color=color1,stroke_width=0.2)    
     drawInterPointLines(svg, linePoints, r=1, color=color1)
     
@@ -164,7 +169,6 @@ def drawPointsLineGraphic5(svg):
         
     drawlinePoints(svg,linePoints,color=color)
 
-    
 def drawPloygon(svg, pts,color=None):
     #print('pts',pts)
     points=[]
@@ -217,11 +221,11 @@ def drawPointLine():
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
     #drawPointsLineGraphic(svg)
-    #drawPointsLineGraphic2(svg)
+    drawPointsLineGraphic2(svg)
     #drawPointsLineGraphic3(svg)
     #drawPointsLineGraphic4(svg)
     #drawPointsLineGraphic5(svg)
-    drawPointsLineGraphic6(svg)
+    #drawPointsLineGraphic6(svg)
     svg.close()
     
 def main():
