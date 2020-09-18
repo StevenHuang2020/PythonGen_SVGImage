@@ -213,19 +213,88 @@ def IsIntersectionWithAlreayLines(conect,linePoints):
         line2 = getLineFrom2Pts(i)
         if GetLineSegInterPoint(line1,line2).interPoint:
             return True
-
     return False
     
+def drawPointsLineGraphic7(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+
+    r = 50
+    x0 = [cx, cx+2*r, cx+r]
+    y0 = [cy, cy, cy-r*np.tan(np.pi/6)]
+    
+    times = 8
+    theta = 0
+    for i in range(times):
+        theta = i*(2*np.pi/times)
+        x,y = rotationMatrixCenter(x0,y0,(cx,cy),theta)
+        drawPloygon(svg, [(x[0],y[0]), (x[1],y[1]), (x[2],y[2])], color='black')
+    
+def drawPointsLineGraphic8(svg): #Neuron network
+    def getNumberYs(H,N=3):
+        offsetY = 190/N
+        #hInter = (H-2*offsetY)/(N-1)
+        if N == 1:
+            return [H/2]
+        else:
+            return np.linspace(offsetY, H-offsetY,N)
+    
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+
+    layerNumbers=[3,5,4,3]
+    ptsLayers = []
+    
+    inter = 52
+    x0 = 15
+    for i in range(len(layerNumbers)):
+        #x = x0 + i*inter
+        N = layerNumbers[i]
+        xs = np.zeros((N,)) + x0 + i*inter
+        ys = getNumberYs(H,N)
+        #print('xs=', len(xs), xs)
+        #print('ys=', len(ys), ys)
+        
+        ptLayer = np.stack(([xs,ys])).T 
+        #print('ptLayer=',ptLayer)
+        ptsLayers.append(ptLayer)
+        
+    #print('ptsLayers=',ptsLayers)  
+    for i,layPts in enumerate(ptsLayers):
+        x = layPts[0][0] - 15
+        y = layPts[0][1] - 8
+        #print(x,y)
+        svg.draw(draw_text(x,y,'layer'+str(i)))
+        drawPointsCircle(svg, layPts,r=3,color = randomColor())
+    
+    for i in range(len(ptsLayers)-1):
+        layerPtsPre = ptsLayers[i]
+        layerPts = ptsLayers[i+1]
+        #print('layerPtsPre=',layerPtsPre)
+        #print('layerPts=',layerPts)
+        
+        linePoints = []
+        for pre in layerPtsPre:
+            for cur in layerPts:
+                #print('pre,cur=',pre,cur)
+                conect = (pre[0],pre[1],cur[0],cur[1])
+                linePoints.append(conect)
+
+        drawlinePoints(svg,linePoints,color='black')
+    
+     
 def drawPointLine():
     file = gImageOutputPath + r'\pointsLine.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
     #drawPointsLineGraphic(svg)
-    drawPointsLineGraphic2(svg)
+    #drawPointsLineGraphic2(svg)
     #drawPointsLineGraphic3(svg)
     #drawPointsLineGraphic4(svg)
     #drawPointsLineGraphic5(svg)
     #drawPointsLineGraphic6(svg)
+    #drawPointsLineGraphic7(svg)
+    drawPointsLineGraphic8(svg)
     svg.close()
     
 def main():
