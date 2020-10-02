@@ -12,25 +12,6 @@ class GetLineSegInterPoint():
                         return True
         return False
         
-        '''
-        if line1[0][0] == line1[1][0]:#如果line竖直
-            if  p[1] > min(line1[0][1],line1[1][1]) and p[1] < max(line1[0][1],line1[1][1]):
-                #if p[1] >= min(line2[0][1],line2[1][1]) and p[1] <= max(line2[0][1],line2[1][1]):
-                if p[0] >= min(line2[0][0],line2[1][0]) and p[0] <= max(line2[0][0],line2[1][0]):
-                    return True
-        elif line1[0][1] == line1[1][1]:#如果line水平
-            if p[0] > min(line1[0][0],line1[1][0]) and p[0] < max(line1[0][0],line1[1][0]):
-                #if p[0] >= min(line2[0][0],line2[1][0]) and p[0] <= max(line2[0][0],line2[1][0]):
-                if p[1] >= min(line2[0][1],line2[1][1]) and p[1] <= max(line2[0][1],line2[1][1]):
-                    return True
-        else:
-            if p[0] > min(line1[0][0],line1[1][0]) and p[0] < max(line1[0][0],line1[1][0]):
-                #line为斜线时，line2有可能竖直也有可能水平，所以对x和y都需要检查
-                if p[1] >= min(line2[0][1],line2[1][1]) and p[1] <= max(line2[0][1],line2[1][1]) and p[0] >= min(line2[0][0],line2[1][0]) and p[0] <= max(line2[0][0],line2[1][0]):
-                    return True
-        return False
-        '''
-        
     def getCrossPoint(self,line1,line2):
         """line[0]: line start point,line[1]: stop point"""
         def getLinePara(line):

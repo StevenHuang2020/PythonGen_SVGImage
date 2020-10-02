@@ -7,6 +7,9 @@ from svgBasic import *
 from svgFunction import *
 from geoTransformation import *
 from svgPointLine import drawPloygon
+from svgPointLine import drawlinePoints,drawPointsCircle
+from geoMath import *
+
 
 def drawLineGrapic(svg):
     W,H = svg.svgSize()
@@ -93,20 +96,20 @@ def drawLineGrapic2(svg):
             
     drawlinePoints(svg,pts)
 
-def drawTrianglePoints(svg,pt1,pt2,pt3,color=None):
+def drawTrianglePoints(svg,pt1,pt2,pt3,stroke_width=0.1,color=None):
     pts=[]
     pts.append((pt1[0],pt1[1],pt2[0],pt2[1])) #pt1,pt2
     pts.append((pt1[0],pt1[1],pt3[0],pt3[1])) #pt1,pt3
     pts.append((pt2[0],pt2[1],pt3[0],pt3[1])) #pt2,pt3
     
-    drawlinePoints(svg,pts,stroke_width=0.1,color=color or randomColor())
+    drawlinePoints(svg,pts,stroke_width=stroke_width,color=color or randomColor())
     
-def drawTrianglePointsXY(svg,x,y):
+def drawTrianglePointsXY(svg,x,y,stroke_width=0.1,color=None):
     """x&y are (3,) vector, three points"""
     pt1 = (x[0],y[0])
     pt2 = (x[1],y[1])
     pt3 = (x[2],y[2])
-    drawTrianglePoints(svg,pt1,pt2,pt3)
+    drawTrianglePoints(svg,pt1,pt2,pt3,stroke_width=stroke_width,color=color)
         
 def drawLsoscelesTrianglePoints(svg):
     W,H = svg.svgSize()
@@ -323,7 +326,129 @@ def drawArrowCircleLine(svg):
         x,y = translationMatrix(x,y,(cx,cy))
         #drawTrianglePoints(svg,(x[0],y[0]), (x[1],y[1]), (x[2],y[2]))
         drawPloygon(svg, [(x[0],y[0]), (x[1],y[1]), (x[2],y[2])], color='black')
+       
+def drawLineGrapic3(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    length=160
+    
+    pt1 = (-1*length/2, -1*length/2*np.tan(np.pi/6))
+    pt2 = (length/2, -1*length/2*np.tan(np.pi/6))
+    pt3 = (0, (length/2)/np.cos(np.pi/6))
+    x = [pt1[0],pt2[0],pt3[0]]
+    y = [pt1[1],pt2[1],pt3[1]]
+    x,y = translationMatrix(x,y,(cx,cy))
+    pt1 = (x[0],y[0])
+    pt2 = (x[1],y[1])
+    pt3 = (x[2],y[2])
         
+    N = 20
+    pts=[]
+    
+    s,b = getLineParam(pt2,pt3)
+    for i in range(N+1):
+        xn = pt3[0]+ np.abs(pt2[0]-pt3[0])*i/N
+        yn = s*xn+b
+        pts.append((pt1[0],pt1[1],xn,yn))
+
+    s,b = getLineParam(pt1,pt3)
+    for i in range(N+1):
+        xn = pt1[0]+ np.abs(pt1[0]-pt3[0])*i/N
+        yn = s*xn+b
+        pts.append((pt2[0],pt2[1],xn,yn))
+    
+    s,b = getLineParam(pt1,pt2)
+    for i in range(N+1):
+        xn = pt1[0]+ np.abs(pt1[0]-pt2[0])*i/N
+        yn = s*xn+b
+        pts.append((pt3[0],pt3[1],xn,yn))
+        
+    drawlinePoints(svg,pts,color='black')
+     
+def drawLineGrapic4(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    length=160
+    
+    pt1 = (0, -1*(length/2)/np.cos(np.pi/6))
+    pt2 = (-1*length/2, length/2*np.tan(np.pi/6))
+    pt3 = (length/2, length/2*np.tan(np.pi/6))
+    x = [pt1[0],pt2[0],pt3[0]]
+    y = [pt1[1],pt2[1],pt3[1]]
+    x,y = translationMatrix(x,y,(cx,cy))
+    pt1 = (x[0],y[0])
+    pt2 = (x[1],y[1])
+    pt3 = (x[2],y[2])
+    
+    N=20
+    for i in range(N+1):
+        newX,newY = rotationMatrixCenter(x,y,(cx,cy),theta = i*np.pi/6/N)
+        newX,newY = zoomMatrixCenter(newX, newY, (cx,cy), z=1-0.8*i/N)
+        drawTrianglePointsXY(svg,newX,newY,stroke_width=0.5,color='black')
+    
+def drawLineGrapic5(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    
+    N = 40
+    layer = 14
+    r0 = 5
+    for l in range(layer+1):
+        xs,ys=[],[]
+        
+        r = r0 + 6*l
+        th0 = 2*l*np.pi/layer
+        for i in range(N+1):
+            theta = i*2*np.pi/N + th0
+            x = r*np.cos(theta)
+            y = r*np.sin(theta)
+            xs.append(x)
+            ys.append(y)
+        
+        xs,ys = translationMatrix(xs,ys,(cx,cy))
+        pts = np.vstack((xs,ys)).T
+        drawPointsCircle(svg,pts,r = 0.2 + l/5)    
+        
+def drawLineGrapic6(svg):
+    W,H = svg.svgSize()
+    cx,cy = W//2,H//2
+    
+    N = 18
+    xs,ys=[],[]
+    r1 = 50
+    r2 = 80
+    for i in range(N+1):
+        theta = i*2*np.pi/N
+        x = r1*np.cos(theta)
+        y = r1*np.sin(theta)
+        xs.append(x)
+        ys.append(y)
+                
+    xs,ys = translationMatrix(xs,ys,(cx,cy))
+    pts = np.vstack((xs,ys)).T
+    linePts=[]
+    for i in pts:
+        linePts.append((cx,cy,i[0],i[1]))
+    drawlinePoints(svg,linePts,color='black')
+    drawPointsCircle(svg,pts,r = 5,color='#000000')   
+    
+    xs,ys=[],[]
+    for i in range(N+1):
+        theta = i*2*np.pi/N + np.pi/N
+        x = r2*np.cos(theta)
+        y = r2*np.sin(theta)
+        xs.append(x)
+        ys.append(y)
+    
+    xs,ys = translationMatrix(xs,ys,(cx,cy))
+    pts = np.vstack((xs,ys)).T
+    linePts=[]
+    for i in pts:
+        linePts.append((cx,cy,i[0],i[1]))
+    drawlinePoints(svg,linePts,color='black')
+    drawPointsCircle(svg,pts,r = 5,color='#808B96')   
+    
+    
 def drawLineGraphic():
     file = gImageOutputPath + r'\lingGraphic.svg'
     H,W=200,200
@@ -334,7 +459,11 @@ def drawLineGraphic():
     #drawRandomTrianglePoints(svg)
     #drawRandomTriangles(svg)
     #drawAbstractLine(svg)
-    drawArrowCircleLine(svg)
+    #drawArrowCircleLine(svg)
+    #drawLineGrapic3(svg)
+    #drawLineGrapic4(svg)
+    #drawLineGrapic5(svg)
+    drawLineGrapic6(svg)
     svg.close()
     
 if __name__=='__main__':    

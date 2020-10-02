@@ -15,9 +15,7 @@ def drawlinePoints(svg,pts,stroke_width=0.5,color=None,stroke_widths=None):
         y2 = clipFloat(y2)
         if stroke_widths:
             stroke_width = stroke_widths[i]
-
-        svg.draw(draw_line(x1,y1,x2,y2, stroke_width=stroke_width, color = color or randomColor()))
-        
+        svg.draw(draw_line(x1,y1,x2,y2, stroke_width=stroke_width, color = color or randomColor()))        
     
 def drawPointsCircle(svg,pts,r=2,color='black'):
     for pt in pts:
@@ -74,12 +72,10 @@ def drawPointsLineGraphic2(svg):
     linePoints = [(i[0],i[1],W,H) for i in pts2]
     drawlinePoints(svg,linePoints,color=color2,stroke_width=0.2)
 
-
 def drawPointsLineGraphic3(svg):
     W,H = svg.svgSize()
     cx,cy = W//2,H//2
     N = 100
-    
     color1='green'
     #color2 = 'yellow'
     
@@ -99,7 +95,6 @@ def drawPointsLineGraphic4(svg):
     W,H = svg.svgSize()
     cx,cy = W//2,H//2
     N = 300
-    
     r0 = 80
     color='#48C9B0' #'green'
     
@@ -242,7 +237,7 @@ def drawPointsLineGraphic8(svg): #Neuron network
     W,H = svg.svgSize()
     cx,cy = W//2,H//2
 
-    layerNumbers=[3,5,4,3]
+    layerNumbers=[8,6,6,4]
     ptsLayers = []
     
     inter = 52
