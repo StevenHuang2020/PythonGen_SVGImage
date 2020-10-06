@@ -73,12 +73,12 @@ def drawPoet(svg):
     poet.append('草木有本心，何求美人折？')
     '''
     poet = []
-    poet.append('过故人庄')
+    poet.append('過故人莊')
     poet.append('孟浩然')
-    poet.append('故人具鸡黍，邀我至田家。')
-    poet.append('绿树村边合，青山郭外斜。')
-    poet.append('开轩面场圃，把酒话桑麻。')
-    poet.append('待到重阳日，还来就菊花。')
+    poet.append('故人具雞黍，邀我至田家。')
+    poet.append('綠樹村邊合，青山郭外斜。')
+    poet.append('開軒面場圃，把酒話桑麻。')
+    poet.append('待到重陽日，还來就菊花。')
 
     styleDict={}
     styleDict['fill'] = 'red' 
@@ -151,8 +151,8 @@ def main():
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
     #drawText()
-    #drawPoet(svg)
-    drawPoet2(svg)
+    drawPoet(svg)
+    #drawPoet2(svg)
     svg.close()
     
 if __name__=='__main__':
