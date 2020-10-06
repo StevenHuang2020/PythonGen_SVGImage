@@ -111,11 +111,11 @@ def drawPoet(svg):
         
 def drawPoet2(svg):
     poet = []
-    poet.append('红楼梦')
-    poet.append('可叹停机德，')
-    poet.append('堪怜咏絮才。')
-    poet.append('玉带林中挂，')
-    poet.append('金簪雪里埋。')
+    poet.append('紅樓夢')
+    poet.append('可嘆停機德，')
+    poet.append('堪憐詠絮才。')
+    poet.append('玉帶林中掛，')
+    poet.append('金簪雪裡埋。')
 
     styleDict={}
     styleDict['fill'] = 'red' 
