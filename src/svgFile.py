@@ -42,8 +42,10 @@ class SVGFileV2:
                 
     def draw(self, content):
         """link child to svgRoot child g element"""
-        self.g.append(etree.fromstring(content))
-        
+        node = etree.fromstring(content)
+        self.g.append(node)
+        return node
+    
     def close(self):
         """write lxml tree to file"""
         etree.ElementTree(self.svgRoot).write(self.fileName, pretty_print=True, \
