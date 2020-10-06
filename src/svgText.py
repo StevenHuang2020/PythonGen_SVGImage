@@ -125,7 +125,7 @@ def drawPoet2(svg):
     
     styleList=''
     for i in styleDict:
-        styleList = styleList + (i+':' + styleDict[i] + ';')
+        styleList = styleList + (i + ':' + styleDict[i] + '; ')
     
     W,H = svg.svgSize()
     svg.draw(add_style('text',styleList)) 
