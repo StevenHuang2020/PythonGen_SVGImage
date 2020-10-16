@@ -38,6 +38,7 @@ def drawText():
         y0 = 15
         h=12
         for i in strs:
+            #i = i.replace('#', '@')
             i = ' '.join(i)#'.'.join(i)
             print(i)
             svg.draw(draw_text(0,y0,i, blankSpace='preserve'))
