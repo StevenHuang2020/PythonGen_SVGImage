@@ -16,7 +16,7 @@ def drawText():
     H,W=200,1200
     #str='Hello'
     
-    svg = SVGFileV2(file,W,H,border=True)
+    svg = SVGFileV2(file,W,H,border=False)
     
     styleDict={}
     styleDict['fill'] = 'black' 
@@ -160,7 +160,8 @@ def drawPoet2(svg):
         x = x - xInter
                 
 def main():
-    #drawText()
+    #return drawText()
+    
     file = gImageOutputPath + r'\poem.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)

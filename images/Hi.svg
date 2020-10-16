@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <svg width="1200" height="200" xmlns="http://www.w3.org/2000/svg">
   <g opacity="1.0">
-    <rect x="0" y="0" width="1200" height="200" fill="white" stroke="black" stroke-width="1"/>
     <style> text { fill: black; font-family: Consolas; font-size: 10px; font-style: normal; font-variant: normal;  } </style>
     <text x="0" y="15" fill="black" xml:space="preserve" font-family="Consolas" font-size="smaller" font-style="normal" font-variant="normal">  # # # # # #     # # # # # #           # #                               # #               # # # #                                                                                                         # 
 </text>
