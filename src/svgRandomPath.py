@@ -215,7 +215,7 @@ def drawRandomRectanglePath():
     svg.close()
     
 if __name__=='__main__':    
-    #drawRandomPath()
+    drawRandomPath()
     #drawRandomCirclePath()
-    drawRandomRectanglePath()
+    #drawRandomRectanglePath()
     

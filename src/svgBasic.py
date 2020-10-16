@@ -28,7 +28,7 @@ def randomColor3(i,N=255):
         print('i,i/n = ',i,i/N)
 
 def convertRGB(rgb): #covert from rgb to hex color
-    def clamp(x): 
+    def clip(x): 
         return max(0, min(x, 255))
     return "#{0:02x}{1:02x}{2:02x}".format(rgb[0], rgb[1], rgb[2])
 
@@ -58,12 +58,11 @@ def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
         color = color or randomColor()
         yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke-width="{sw}" stroke="{color}" fill="none" />'
             
-def draw_text(x,y,text,font='Consolas',fontsize='smaller',color='black'):
-    return f'<text x="{x}" y="{y}" fill="{color}" font-family="{font}" font-size="{fontsize}" font-style="normal" font-variant="normal">{text}</text>'
+def draw_text(x,y,text,font='Consolas',fontsize='smaller',color='black',blankSpace='default'):
+    return f'<text x="{x}" y="{y}" fill="{color}" xml:space="{blankSpace}" font-family="{font}" font-size="{fontsize}" font-style="normal" font-variant="normal">{text}</text>'
 
 def draw_text_only(x,y,text):
     return f'<text x="{x}" y="{y}" >{text}</text>'
-
 
 def draw_path(path, width=30, color='black',fillColor='transparent'):
     #https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
@@ -74,8 +73,9 @@ def add_style(tag,styleList):
     return '<style> %s { %s } </style>' % (tag,styleList)
 
 def add_style_path(stroke='black', stroke_width=1, fill='transparent'):
-    return '<style> path { stroke: %s; stroke-width: %s; fill: %s; } </style>' % (stroke,stroke_width,fill)
-
+    style = f'stroke: {stroke}; stroke-width: {stroke_width}; fill: {fill};'
+    return add_style(tag='path', styleList = style)
+   
 def draw_Only_path(path):
     return f'<path d="{path}"/>'
 

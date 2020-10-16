@@ -18,7 +18,7 @@ Please report any bugs at https://github.com/StevenHuang2020/PythonGen_SVGImage/
 |<img src="images/trump.svg" width="200" height="200" />|<img src="images/trump_pt.svg" width="200" height="200" />|
 |<img src="images/trumpX.svg" width="200" height="200" />|<img src="images/smile.svg" width="200" height="200" />|
 |<img src="images/smileC2.svg" />|<img src="images/smileC3.svg" width="200" height="200" />|
-|<img src="images/smileC_same.svg" width="200" height="200" />|<img src="images/randomNumberPath.svg"  />|
+|<img src="images/smileC32.svg" width="200" height="200" />|<img src="images/randomNumberPath.svg"  />|
 |<img src="images/randomWalkPath.svg"  />|<img src="images/func.svg"  />|
 |<img src="images/randomShapePath.svg" width="500" height="250"/>|<img src="images/randomShapePath1.svg" width="500" height="250" />|
 |<img src="images/randomShapePath2.svg" width="500" height="250"  />|<img src="images/randomShapePath3.svg" width="500" height="250" />|

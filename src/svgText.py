@@ -13,10 +13,21 @@ def drawText():
         return source_str[:pos]+insert_str+source_str[pos:]
 
     file = gImageOutputPath + r'\Hi.svg'
-    H,W=200,1600
+    H,W=200,1200
     #str='Hello'
     
-    svg = SVGFile(file,W,H)
+    svg = SVGFileV2(file,W,H,border=True)
+    
+    styleDict={}
+    styleDict['fill'] = 'black' 
+    styleDict['font-family'] = 'Consolas' 
+    styleDict['font-size'] = '10px'
+    styleDict['font-style'] = 'normal' 
+    styleDict['font-variant'] = 'normal' 
+    
+    styleList = getStyleList(styleDict)
+    svg.draw(add_style('text',styleList))
+    
     if 0:
         y0 = 15
         for i in range(10):
@@ -27,9 +38,9 @@ def drawText():
         y0 = 15
         h=12
         for i in strs:
-            i = '.'.join(i)#insert(i,'.',0)
-            #print(i)
-            svg.draw(draw_text(0,y0,i))
+            i = ' '.join(i)#'.'.join(i)
+            print(i)
+            svg.draw(draw_text(0,y0,i, blankSpace='preserve'))
             y0+=h
     svg.close()
     
@@ -62,6 +73,12 @@ def drawText():
 华文新魏：STXinwei
 '''
 
+def getStyleList(styleDict):
+    styleList=''
+    for i in styleDict:
+        styleList = styleList + (i+': ' + styleDict[i] + '; ')
+    return styleList
+
 def drawPoet(svg):
     '''
     poet = []
@@ -86,9 +103,7 @@ def drawPoet(svg):
     styleDict['font-size'] = '12px' 
     #font-style: normal; font-variant: normal;
     
-    styleList=''
-    for i in styleDict:
-        styleList = styleList + (i+':' + styleDict[i] + ';')
+    styleList = getStyleList(styleDict)
     
     W,H = svg.svgSize()
     svg.draw(add_style('text',styleList)) 
@@ -123,9 +138,7 @@ def drawPoet2(svg):
     styleDict['font-size'] = '24px' 
     #font-style: normal; font-variant: normal;
     
-    styleList=''
-    for i in styleDict:
-        styleList = styleList + (i + ':' + styleDict[i] + '; ')
+    styleList = getStyleList(styleDict)
     
     W,H = svg.svgSize()
     svg.draw(add_style('text',styleList)) 
@@ -145,14 +158,14 @@ def drawPoet2(svg):
             y = y + yInter
         y = y0
         x = x - xInter
-        
+                
 def main():
+    #drawText()
     file = gImageOutputPath + r'\poem.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
-    #drawText()
-    drawPoet(svg)
-    #drawPoet2(svg)
+    #drawPoet(svg)
+    drawPoet2(svg)
     svg.close()
     
 if __name__=='__main__':
