@@ -8,9 +8,6 @@ def drawText():
         file = r'.\res\hi.txt'
         with open(file, 'r') as f:
             return f.readlines()
-    
-    def insert(source_str, insert_str, pos):
-        return source_str[:pos]+insert_str+source_str[pos:]
 
     file = gImageOutputPath + r'\Hi.svg'
     H,W=200,1200
@@ -24,6 +21,7 @@ def drawText():
     styleDict['font-size'] = '10px'
     styleDict['font-style'] = 'normal' 
     styleDict['font-variant'] = 'normal' 
+    #styleDict['xml:space'] = 'preserve'
     
     styleList = getStyleList(styleDict)
     svg.draw(add_style('text',styleList))
@@ -160,14 +158,67 @@ def drawPoet2(svg):
         y = y0
         x = x - xInter
                 
+def drawStyleText(svg):
+    text = '怡红快绿' #
+    styleDict={}
+    styleDict['fill'] = 'black' 
+    styleDict['font-family'] = 'Microsoft YaHei' 
+    styleDict['font-size'] = '50px' 
+     
+    styleList = getStyleList(styleDict)
+    
+    W,H = svg.svgSize()
+    svg.draw(add_style('text',styleList)) 
+          
+    xInter = 60
+    yInter = 60
+    x0 = (W-xInter)/2
+    y0 = (H-yInter)/2
+
+    theta=0
+    w,h = 2,2
+    for i,c in enumerate(text):
+        x = x0 + i%w * xInter
+        y = y0 + i//w * yInter
+        node = svg.draw(draw_text_only(x,y,text=c))
+        svg.setNodeAttri(node, 'text-anchor', 'middle')
+        svg.setNodeAttri(node, 'dominant-baseline', 'central')
+        str = 'rotate({},{},{})'.format(theta,x,y)
+        svg.setNodeAttri(node, 'transform', str)
+        #svg.draw(draw_circle(x,y,5,color='red'))
+        theta += 90
+    
+def drawStyleText2(svg):
+    text = 'Text rotation!'
+    styleDict={}
+    styleDict['fill'] = 'black' 
+    styleDict['font-family'] = 'Consolas' 
+    styleDict['font-size'] = '24px' 
+     
+    styleList = getStyleList(styleDict)
+    
+    W,H = svg.svgSize()
+    svg.draw(add_style('text',styleList)) 
+        
+    x0 = 10
+    y0 = 30
+    theta=0
+    for i in range(6):
+        node = svg.draw(draw_text_only(x0,y0,text))
+        svg.setNodeAttri(node, 'rotate', theta)
+        y0 += 25
+        theta += 30
+    #svg.setNodeAttri(node, 'textLength', 200)
+    
 def main():
     #return drawText()
-    
-    file = gImageOutputPath + r'\poem.svg'
+    file = gImageOutputPath + r'\text.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
     #drawPoet(svg)
-    drawPoet2(svg)
+    #drawPoet2(svg)
+    drawStyleText(svg)
+    #drawStyleText2(svg)
     svg.close()
     
 if __name__=='__main__':

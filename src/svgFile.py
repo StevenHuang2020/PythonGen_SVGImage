@@ -40,6 +40,14 @@ class SVGFileV2:
             color='white',strokeColor='black')
         self.draw(rect)
                 
+    def setNodeAttri(self,node,attrbi,value):
+        """set/add etree Element node attribute"""
+        node.set(attrbi,str(value))
+    
+    def setNodeAttriDict(self,node,attrbiDict):
+        for i in attrbiDict:
+            self.setNodeAttri(node,i,attrbiDict[i])
+        
     def draw(self, content):
         """link child to svgRoot child g element"""
         node = etree.fromstring(content)

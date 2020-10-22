@@ -80,5 +80,7 @@ def draw_Only_path(path):
     return f'<path d="{path}"/>'
 
 def draw_polygon(points, color=None, strokeColor=None, stroke_width=1.0):
-     return f'<polygon points="{points}" stroke="{strokeColor}" stroke-width="{stroke_width}" fill="{color}" />'
+    return f'<polygon points="{points}" stroke="{strokeColor}" stroke-width="{stroke_width}" fill="{color}" />'
  
+def draw_tag(tag):
+    return f'<{tag} />'

@@ -42,6 +42,6 @@ Please report any bugs at https://github.com/StevenHuang2020/PythonGen_SVGImage/
 |<img src="images/lingGraphic11.svg" width="200" height="200" />|<img src="images/lingGraphic12.svg" width="200" height="200" />|
 |<img src="images/lingGraphic13.svg" width="200" height="200" />|<img src="images/lingGraphic14.svg" width="200" height="200" />|
 |<img src="images/lingGraphic15.svg" width="200" height="200" />|<img src="images/poem1.svg" width="200" height="200" />|
-|<img src="images/poem2.svg" width="200" height="200" />||
-|||
+|<img src="images/poem2.svg" width="200" height="200" />|<img src="images/text1.svg" width="200" height="200" />|
+|<img src="images/text2.svg" width="200" height="200" />||
 
