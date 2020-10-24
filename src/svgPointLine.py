@@ -24,7 +24,7 @@ def drawPointsCircle(svg,pts,r=2,color='black'):
         svg.draw(draw_circle(x,y,radius=r,color=color))
 
 def drawPointsLineGraphic(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 50
     
@@ -51,7 +51,7 @@ def drawPointsLineGraphic(svg):
     drawInterPointLines(svg, linePoints, r=1, color=color) #draw intersection points
     
 def drawPointsLineGraphic2(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 200
     
@@ -73,7 +73,7 @@ def drawPointsLineGraphic2(svg):
     drawlinePoints(svg,linePoints,color=color2,stroke_width=0.2)
 
 def drawPointsLineGraphic3(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 100
     color1='green'
@@ -92,7 +92,7 @@ def drawPointsLineGraphic3(svg):
     drawInterPointLines(svg, linePoints, r=1, color=color1)
     
 def drawPointsLineGraphic4(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 300
     r0 = 80
@@ -132,7 +132,7 @@ def drawInterPointLines(svg,linePoints,r=1,color=None):
                 drawPointsCircle(svg, [ptInter], r=1, color=color)#r=3, color='red'
 
 def drawPointsLineGraphic5(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 10
     
@@ -173,7 +173,7 @@ def drawPloygon(svg, pts,color=None):
     svg.draw(draw_polygon(points,stroke_width=0.5,color=color or randomColor()))
     
 def drawPointsLineGraphic6(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 50
     
@@ -211,7 +211,7 @@ def IsIntersectionWithAlreayLines(conect,linePoints):
     return False
     
 def drawPointsLineGraphic7(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
 
     r = 50
@@ -234,7 +234,7 @@ def drawPointsLineGraphic8(svg): #Neuron network
         else:
             return np.linspace(offsetY, H-offsetY,N)
     
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
 
     layerNumbers=[8,6,6,4]

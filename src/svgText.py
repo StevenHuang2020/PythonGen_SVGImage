@@ -105,7 +105,7 @@ def drawPoet(svg):
     
     styleList = getStyleList(styleDict)
     
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     svg.draw(add_style('text',styleList)) 
         
     offsetx = 25
@@ -140,7 +140,7 @@ def drawPoet2(svg):
     
     styleList = getStyleList(styleDict)
     
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     svg.draw(add_style('text',styleList)) 
         
     offsetx = 28
@@ -168,7 +168,7 @@ def drawStyleText(svg):
      
     styleList = getStyleList(styleDict)
     
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     svg.draw(add_style('text',styleList)) 
           
     xInter = 60
@@ -198,7 +198,7 @@ def drawStyleText2(svg):
      
     styleList = getStyleList(styleDict)
     
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     svg.draw(add_style('text',styleList)) 
         
     x0 = 10

@@ -2,7 +2,7 @@
 import random
 import matplotlib as mpl
 import numpy as np 
-
+import string
 
 def colorFader(c1,c2,mix=0): #fade (linear interpolate) from color c1 (at mix=0) to c2 (mix=1)
     c1=np.array(mpl.colors.to_rgb(c1))
@@ -32,11 +32,14 @@ def convertRGB(rgb): #covert from rgb to hex color
         return max(0, min(x, 255))
     return "#{0:02x}{1:02x}{2:02x}".format(rgb[0], rgb[1], rgb[2])
 
-def clipFloat(x,n=1):
+def clipFloat(x, n=1):
     if isinstance(x,float):
         return round(x, n)
     return x
 
+def ranstr(num): #random string as ID
+    return ''.join(random.sample(string.ascii_letters + string.digits, num))
+    
 #------------------------------draw function---------------------------------#        
 def draw_line(x, y, x2, y2, stroke_width=0.5, color='black'):
     #Draw a line for svg

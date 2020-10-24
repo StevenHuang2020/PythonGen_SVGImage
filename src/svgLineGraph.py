@@ -12,7 +12,7 @@ from geoMath import *
 
 
 def drawLineGrapic(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     times=100
     len=0
     offsetX = W//2 #
@@ -37,7 +37,7 @@ def drawLineGrapic(svg):
     drawlinePoints(svg,pts)
     
 def drawLineGrapic2(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     len=0
     offsetX = W/4 #
     offsetY = 0 
@@ -112,7 +112,7 @@ def drawTrianglePointsXY(svg,x,y,stroke_width=0.1,color=None):
     drawTrianglePoints(svg,pt1,pt2,pt3,stroke_width=stroke_width,color=color)
         
 def drawLsoscelesTrianglePoints(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
 
     times = 40
@@ -201,7 +201,7 @@ def get_outer_circle(px1, px2, px3):
 
 def drawRandomTrianglePoints(svg):
     """draw a random triangle and zoom this to seris"""
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     
     r = 10
@@ -242,7 +242,7 @@ def getTrianglesCenterPoints(points):
     
 def drawRandomTriangles(svg):
     """draw a random triangle and inter center triangles"""
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     
     r = 10
@@ -263,7 +263,7 @@ def getLinePointFromSlope(slope=1, p0=(20,0)):
     return ptYaxis
 
 def drawAbstractLine(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 10
     
@@ -304,7 +304,7 @@ def drawArrowCircleLine(svg):
         pt2 =  getPointCircle(r,theta + sTheta/2)
         return pt1,pt2
     
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     N = 40
     R0 = 80
@@ -328,7 +328,7 @@ def drawArrowCircleLine(svg):
         drawPloygon(svg, [(x[0],y[0]), (x[1],y[1]), (x[2],y[2])], color='black')
        
 def drawLineGrapic3(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     length=160
     
@@ -366,7 +366,7 @@ def drawLineGrapic3(svg):
     drawlinePoints(svg,pts,color='black')
      
 def drawLineGrapic4(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     length=160
     
@@ -387,7 +387,7 @@ def drawLineGrapic4(svg):
         drawTrianglePointsXY(svg,newX,newY,stroke_width=0.5,color='black')
     
 def drawLineGrapic5(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     
     N = 40
@@ -410,7 +410,7 @@ def drawLineGrapic5(svg):
         drawPointsCircle(svg,pts,r = 0.2 + l/5)    
         
 def drawLineGrapic6(svg):
-    W,H = svg.svgSize()
+    W,H = svg.getSize()
     cx,cy = W//2,H//2
     
     N = 18

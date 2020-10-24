@@ -16,11 +16,20 @@ class SVGFileV2:
         self.fileName = fileName
         self.width = W
         self.height = H
-        self.svgRoot = etree.Element("svg")
-        self.svgRoot.set("width", str(self.width))
-        self.svgRoot.set("height", str(self.height))
-        self.svgRoot.set("xmlns", "http://www.w3.org/2000/svg")
+        self.url = "http://www.w3.org/2000/svg"
+        self.xlink = "http://www.w3.org/1999/xlink"
+        self.svgRoot = etree.Element("svg", width=str(self.width), height=str(self.height),\
+            nsmap={None: self.url, "xlink": self.xlink})
+        
+        #self.svgRoot.set("width", str(self.width))
+        #self.svgRoot.set("height", str(self.height))
+        #self.svgRoot.set("xmlns", "http://www.w3.org/2000/svg")
 
+        #self.namespace = "{{{}}}".format(self.url)
+        #self.namespace = "{http://www.w3.org/2000/svg}"
+        #print(self.namespace)
+        #self.svgRoot.set(self.namespace + "xlink", "http://www.w3.org/1999/xlink")
+        
         self.g = self.addChildNode(self.svgRoot,'g')#etree.SubElement(self.svgRoot, "g")
         self.g.set("opacity",'1.0')
         
@@ -32,7 +41,7 @@ class SVGFileV2:
         if os.path.exists(fileName):
             os.remove(fileName) 
             
-    def svgSize(self):
+    def getSize(self):
         return self.width,self.height
     
     def addBorder(self):
@@ -49,8 +58,7 @@ class SVGFileV2:
             self.setNodeAttri(node, key, value)
         
     def addChildNode(self,node,tag):
-        child = etree.SubElement(node, tag)
-        return child
+        return etree.SubElement(node, tag) #child
     
     def draw(self, content):    
         """link child to svgRoot child g element"""

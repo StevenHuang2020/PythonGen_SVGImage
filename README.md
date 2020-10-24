@@ -39,5 +39,5 @@ https://datavizproject.com/ <br/>
 |<img src="images/lingGraphic14.svg" width="200" height="200" />|<img src="images/poem1.svg" width="200" height="200" />|
 |<img src="images/poem2.svg" width="200" height="200" />|<img src="images/text1.svg" width="200" height="200" />|
 |<img src="images/text2.svg" width="200" height="200" />|
-|||
+|<img src="images/anim_circle1.svg" width="200" height="200" />|<img src="images/anim_circle2.svg" width="200" height="200" />|
 |||
