@@ -21,13 +21,14 @@ class SVGFileV2:
         self.svgRoot.set("height", str(self.height))
         self.svgRoot.set("xmlns", "http://www.w3.org/2000/svg")
 
-        self.g = etree.SubElement(self.svgRoot, "g")
+        self.g = self.addChildNode(self.svgRoot,'g')#etree.SubElement(self.svgRoot, "g")
         self.g.set("opacity",'1.0')
         
         if border:
             self.addBorder()
             
-    def _initFile(self,fileName):   """remove svg file if already exist"""
+    def _initFile(self,fileName):
+        """remove svg file if already exist"""
         if os.path.exists(fileName):
             os.remove(fileName) 
             
@@ -39,19 +40,26 @@ class SVGFileV2:
             color='white',strokeColor='black')
         self.draw(rect)
                 
-    def setNodeAttri(self,node,attrbi,value):   """set/add etree Element node attribute"""
+    def setNodeAttri(self,node,attrbi,value):   
+        """set/add etree Element node attribute"""
         node.set(attrbi,str(value))
     
     def setNodeAttriDict(self,node,attrbiDict):
         for key,value in attrbiDict.items():
             self.setNodeAttri(node, key, value)
         
-    def draw(self, content):    """link child to svgRoot child g element"""
+    def addChildNode(self,node,tag):
+        child = etree.SubElement(node, tag)
+        return child
+    
+    def draw(self, content):    
+        """link child to svgRoot child g element"""
         node = etree.fromstring(content)
         self.g.append(node)
         return node
     
-    def close(self):    """write lxml tree to file"""
+    def close(self):    
+        """write lxml tree to file"""
         etree.ElementTree(self.svgRoot).write(self.fileName, pretty_print=True, \
             xml_declaration=True, encoding='UTF-8', standalone=False) 
         
