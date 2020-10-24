@@ -1,5 +1,6 @@
 import random 
 from svgBasic import *
+from svgFile import *
 
 class DrawArt:
     styles=['Line','DiagLine','Rectangle','Circle','Rings']
@@ -124,7 +125,7 @@ def drawArtSvg():
             #file=r'..\images\\'+fileName
             file = gImageOutputPath + r'\\' + fileName
             H,W=200,200
-            svg = SVGFile(file,W,H)
+            svg = SVGFileV2(file,W,H)
             draw = DrawArt(svg)
             draw.plotArt(np.array([0,0]), np.array([W,H]), N=N, style=style)
             svg.close()

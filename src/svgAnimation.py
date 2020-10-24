@@ -4,7 +4,7 @@ from svgBasic import *
 from svgFile import *
 from svgFunction import *
 
-def circleInfalation(svg, x, y, r, color=None, fromR=0, toR=0, durS=5):
+def circleInflation(svg, x, y, r, color=None, fromR=0, toR=0, durS=5):
     x,y, r = clipFloat(x),clipFloat(y),clipFloat(r)
     circle = svg.draw(draw_circle(x, y, r, color=color or randomColor()))
     id = 'circle_' + ranstr(4)
@@ -28,12 +28,12 @@ def circleInfalation(svg, x, y, r, color=None, fromR=0, toR=0, durS=5):
     animateDict["repeatCount"] = "indefinite" #"5"
     svg.setNodeAttriDict(animate, animateDict)
     
-def animCircleInfaltion(svg):
+def animCircleInflation(svg):
     H,W = svg.getSize()
     cx,cy = W//2,H//2
-    circleInfalation(svg,cx,cy,r=10,fromR=10, toR=50,durS=3)
+    circleInflation(svg,cx,cy,r=10,fromR=10, toR=50,durS=3)
     
-def animCircleInfaltion2(svg):
+def animCircleInflation2(svg):
     H,W = svg.getSize()
     
     N=30 #total points
@@ -41,18 +41,29 @@ def animCircleInfaltion2(svg):
     pts = getRandomPoints((N,2), min=offset, max=W-offset)
     #print(pts)
     
+    color=None #"black" #None
     for pt in pts:
         r = random.randint(1, 6)
-        circleInfalation(svg, pt[0], pt[1], r=r, fromR=r, toR=r*5, durS=3)
+        circleInflation(svg, pt[0], pt[1], r=r, color=color, fromR=r, toR=r*5, durS=3)
+        
+def animCircleInflation3(svg):
+    H,W = svg.getSize()
+    
+  
+    
+    color=None #"black" #None
+    for pt in pts:
+        r = random.randint(1, 6)
+        circleInflation(svg, pt[0], pt[1], r=r, color=color, fromR=r, toR=r*5, durS=3)
         
 def main():
     file = gImageOutputPath + r'\animation.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)
     
-    #animCircleInfaltion(svg)
-    animCircleInfaltion2(svg)
-    
+    #animCircleInflation(svg)
+    #animCircleInflation2(svg)
+    animCircleInflation3(svg)
     svg.close()
     
 if __name__ == '__main__':
