@@ -20,17 +20,8 @@ class SVGFileV2:
         self.xlink = "http://www.w3.org/1999/xlink"
         self.svgRoot = etree.Element("svg", width=str(self.width), height=str(self.height),\
             nsmap={None: self.url, "xlink": self.xlink})
-        
-        #self.svgRoot.set("width", str(self.width))
-        #self.svgRoot.set("height", str(self.height))
-        #self.svgRoot.set("xmlns", "http://www.w3.org/2000/svg")
-
-        #self.namespace = "{{{}}}".format(self.url)
-        #self.namespace = "{http://www.w3.org/2000/svg}"
-        #print(self.namespace)
-        #self.svgRoot.set(self.namespace + "xlink", "http://www.w3.org/1999/xlink")
-        
-        self.g = self.addChildNode(self.svgRoot,'g')#etree.SubElement(self.svgRoot, "g")
+               
+        self.g = self.addChildNode(self.svgRoot,'g')
         self.g.set("opacity",'1.0')
         
         if border:
