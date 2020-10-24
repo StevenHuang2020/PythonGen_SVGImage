@@ -2,6 +2,7 @@
 from svgBasic import *
 from svgFile import *
 import re
+import cProfile
 
 def drawText():
     def GeFile():
@@ -74,8 +75,8 @@ def drawText():
 
 def getStyleList(styleDict):
     styleList=''
-    for i in styleDict:
-        styleList = styleList + (i+': ' + styleDict[i] + '; ')
+    for key, value in styleDict.items():
+        styleList = styleList + (key + ': ' + value + '; ')
     return styleList
 
 def drawPoet(svg):
@@ -203,12 +204,18 @@ def drawStyleText2(svg):
     x0 = 10
     y0 = 30
     theta=0
-    for i in range(6):
+    for _ in range(6):
         node = svg.draw(draw_text_only(x0,y0,text))
-        svg.setNodeAttri(node, 'rotate', theta)
+        if 1:
+            svg.setNodeAttri(node, 'rotate', theta)
+        else:
+            str = 'rotate({},{},{})'.format(theta,x0,y0)
+            svg.setNodeAttri(node, 'transform', str)
+            svg.setNodeAttri(node, 'text-anchor', 'middle')
+            svg.setNodeAttri(node, 'dominant-baseline', 'central')
+            
         y0 += 25
         theta += 30
-    #svg.setNodeAttri(node, 'textLength', 200)
     
 def main():
     #return drawText()
@@ -217,9 +224,10 @@ def main():
     svg = SVGFileV2(file,W,H,border=True)
     #drawPoet(svg)
     #drawPoet2(svg)
-    drawStyleText(svg)
-    #drawStyleText2(svg)
+    #drawStyleText(svg)
+    drawStyleText2(svg)
     svg.close()
     
 if __name__=='__main__':
     main()
+    #cProfile.run('main()')

@@ -25,43 +25,39 @@ class SVGFileV2:
         self.g.set("opacity",'1.0')
         
         if border:
-            self._addBorder()
+            self.addBorder()
             
-    def _initFile(self,fileName):
-        """remove svg file if already exist"""
+    def _initFile(self,fileName):   """remove svg file if already exist"""
         if os.path.exists(fileName):
             os.remove(fileName) 
             
     def svgSize(self):
         return self.width,self.height
     
-    def _addBorder(self):
+    def addBorder(self):
         rect = draw_rect(0, 0, self.width, self.height, stroke_width=1, \
             color='white',strokeColor='black')
         self.draw(rect)
                 
-    def setNodeAttri(self,node,attrbi,value):
-        """set/add etree Element node attribute"""
+    def setNodeAttri(self,node,attrbi,value):   """set/add etree Element node attribute"""
         node.set(attrbi,str(value))
     
     def setNodeAttriDict(self,node,attrbiDict):
-        for i in attrbiDict:
-            self.setNodeAttri(node,i,attrbiDict[i])
+        for key,value in attrbiDict.items():
+            self.setNodeAttri(node, key, value)
         
-    def draw(self, content):
-        """link child to svgRoot child g element"""
+    def draw(self, content):    """link child to svgRoot child g element"""
         node = etree.fromstring(content)
         self.g.append(node)
         return node
     
-    def close(self):
-        """write lxml tree to file"""
+    def close(self):    """write lxml tree to file"""
         etree.ElementTree(self.svgRoot).write(self.fileName, pretty_print=True, \
             xml_declaration=True, encoding='UTF-8', standalone=False) 
         
         
 class SVGFile:
-    """SVGFile string io version,deprecated"""
+    """SVGFile string IO version, deprecated"""
     def __init__(self,fileName,W=100,H=100):
         self._initFile(fileName)
         self.fileName = fileName

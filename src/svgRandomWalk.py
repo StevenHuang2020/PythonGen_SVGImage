@@ -6,7 +6,7 @@ from svgBasic import *
 
 def randomContinueNumbers(x0=0,N=100):
     res = [x0]
-    for i in range(N):
+    for _ in range(N):
         res.append(res[-1] + np.random.rand())
     return res
 
@@ -27,7 +27,7 @@ def drawRandomNumbersPath():
     N=500
     xW = 5
     
-    for i in range(times):
+    for _ in range(times):
         path='M 0 0 L '
     
         ptX = np.arange(N) + xW
@@ -54,7 +54,7 @@ def drawRandomWalkPath():
     x = cx
     y = cy
     path = 'M %.1f %.1f L ' % (x, y)
-    for i in range(times):       
+    for _ in range(times):       
         x,y = random_walk(x,y,1,step=2)
         path = path + ' ' + str(clipFloat(x)) + ' ' + str(clipFloat(y))           
          

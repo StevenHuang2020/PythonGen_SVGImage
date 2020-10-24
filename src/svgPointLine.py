@@ -103,7 +103,7 @@ def drawPointsLineGraphic4(svg):
     linePoints = []
     theta = 0
     strokeWidths = []
-    for i in range(N):
+    for _ in range(N):
         r = r0 + random.normalvariate(mu=0,sigma=1)*4
         theta = theta + 2*np.pi/(N-1) + random.normalvariate(mu=0,sigma=1)*.01
         x = r*np.cos(theta) + offsetX
@@ -242,9 +242,8 @@ def drawPointsLineGraphic8(svg): #Neuron network
     
     inter = 52
     x0 = 15
-    for i in range(len(layerNumbers)):
+    for i,N in enumerate(layerNumbers):
         #x = x0 + i*inter
-        N = layerNumbers[i]
         xs = np.zeros((N,)) + x0 + i*inter
         ys = getNumberYs(H,N)
         #print('xs=', len(xs), xs)

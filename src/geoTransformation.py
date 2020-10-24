@@ -9,7 +9,7 @@ def translationMatrix(x,y,toPoint):
     #one = np.array([toPoint[0], toPoint[1]]).T.reshape((2,1))
     
     M=one
-    for i in range(a.shape[1]-1):
+    for _ in range(a.shape[1]-1):
         M = np.concatenate((M,one),axis=1)
     
     res = a + M
