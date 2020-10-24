@@ -19,12 +19,11 @@ https://datavizproject.com/ <br/>
 |||
 |---|---|
 |<img src="images/art_DiagLine_5.svg" width="200" height="200" />|<img src="images/art_Circle_5.svg" width="200" height="200" />|
-|<img src="images/art_Rectangle_5.svg" width="200" height="200" />|<img src="images/art_Rings_4.svg" width="200" height="200" />|
+|<img src="images/art_Rectangle_5.svg" width="200" height="200" />|<img src="images/art_Rings_5.svg" width="200" height="200" />|
 |<img src="images/trump.svg" width="200" height="200" />|<img src="images/trumpX.svg" width="200" height="200" />|
 |<img src="images/smile.svg" width="200" height="200" />|<img src="images/smileC3.svg" width="200" height="200" />|
 |<img src="images/randomShapePath.svg" width="500" height="250"/>|<img src="images/randomShapePath1.svg" width="500" height="250" />|
 |<img src="images/randomShapePath5.svg" width="500" height="250" />|<img src="images/randomShapePath6.svg" width="500" height="250" />|
-|<img src="images/randomShapePath7.svg" width="500" height="250" />|<img src="images/randomShapePath8.svg" width="500" height="250" />|
 |<img src="images/randomShapePath9.svg" width="500" height="250" />|<img src="images/randomShapePath10.svg" width="500" height="250" />|
 |<img src="images/randomShapePath11.svg" width="500" height="250" />|<img src="images/randomCirclePath1.svg" width="200" height="200" />||
 |<img src="images/randomCirclePath2.svg" width="200" height="200" />|<img src="images/randomCirclePath.svg" width="200" height="200" />|
@@ -32,19 +31,15 @@ https://datavizproject.com/ <br/>
 |<img src="images/randomRectanglePath3.svg" width="200" height="200" />|<img src="images/randomRectanglePath4.svg" width="200" height="200" />|
 |<img src="images/randomRectanglePath5.svg" width="200" height="200" />|<img src="images/randomRectanglePath6.svg" width="200" height="200" />|
 |<img src="images/randomRectanglePath7.svg" width="200" height="200" />|<img src="images/lingGraphic1.svg" width="200" height="200" />|
-|<img src="images/lingGraphic2.svg" width="200" height="200" />|<img src="images/lingGraphic3.svg" width="200" height="200" />|
-|<img src="images/lingGraphic4.svg" width="200" height="200" />|<img src="images/lingGraphic5.svg" width="200" height="200" />|
-|<img src="images/lingGraphic6.svg" width="200" height="200" />|<img src="images/lingGraphic7.svg" width="200" height="200" />|
-|<img src="images/lingGraphic8.svg" width="200" height="200" />|<img src="images/lingGraphic9.svg" width="200" height="200" />|
+|<img src="images/lingGraphic3.svg" width="200" height="200" />|<img src="images/lingGraphic4.svg" width="200" height="200" />|
+|<img src="images/lingGraphic5.svg" width="200" height="200" />|<img src="images/lingGraphic6.svg" width="200" height="200" />|
+|<img src="images/lingGraphic7.svg" width="200" height="200" />|<img src="images/lingGraphic8.svg" width="200" height="200" />|
 |<img src="images/lingGraphic10.svg" width="200" height="200" />|<img src="images/pointsLine2.svg" width="200" height="200" />|
-|<img src="images/pointsLine3.svg" width="200" height="200" />|<img src="images/pointsLine4.svg" width="200" height="200" />|
-|<img src="images/pointsLine5.svg" width="200" height="200" />|<img src="images/pointsLine6.svg" width="200" height="200" />|
-|<img src="images/pointsLine7.svg" width="200" height="200" />|<img src="images/lingGraphic11.svg" width="200" height="200" />|
-|<img src="images/lingGraphic12.svg" width="200" height="200" />|<img src="images/lingGraphic13.svg" width="200" height="200" />|
-|<img src="images/lingGraphic14.svg" width="200" height="200" />|<img src="images/lingGraphic15.svg" width="200" height="200" />|
-|<img src="images/poem1.svg" width="200" height="200" />|<img src="images/poem2.svg" width="200" height="200" />|
-|<img src="images/text1.svg" width="200" height="200" />|<img src="images/text2.svg" width="200" height="200" />|
+|<img src="images/pointsLine3.svg" width="200" height="200" />|<img src="images/pointsLine5.svg" width="200" height="200" />|
+|<img src="images/pointsLine6.svg" width="200" height="200" />|<img src="images/pointsLine7.svg" width="200" height="200" />|
+|<img src="images/lingGraphic11.svg" width="200" height="200" />|<img src="images/lingGraphic12.svg" width="200" height="200" />
+|<img src="images/lingGraphic14.svg" width="200" height="200" />|<img src="images/poem1.svg" width="200" height="200" />|
+|<img src="images/poem2.svg" width="200" height="200" />|<img src="images/text1.svg" width="200" height="200" />|
+|<img src="images/text2.svg" width="200" height="200" />|
 |||
 |||
-|||
-
