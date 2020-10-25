@@ -4,6 +4,7 @@ import numpy as np
 from svgFile import SVGFileV2
 from svgBasic import *
 from svgSmile import *
+from common import gImageOutputPath
 
 def getImgHW(img):
     return img.shape[0],img.shape[1]

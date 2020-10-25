@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" version="1.1" style="border:1px solid black">
+  <g opacity="1.0">
+    <circle cx="42.4" cy="14.8" r="3" fill="none" id="circle_70Nn" stroke-width="2" stroke="#64BCD9">
+      <animate xlink:href="#circle_70Nn" id="animate_circle_70Nn" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="85.4" cy="56.3" r="4" fill="none" id="circle_qYf9" stroke-width="2" stroke="#E403BD">
+      <animate xlink:href="#circle_qYf9" id="animate_circle_qYf9" fill="freeze" attributeName="r" from="4" to="20" dur="3" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="107.0" cy="55.6" r="6" fill="none" id="circle_aFqI" stroke-width="2" stroke="#D01F47">
+      <animate xlink:href="#circle_aFqI" id="animate_circle_aFqI" fill="freeze" attributeName="r" from="6" to="30" dur="3" begin="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="146.9" cy="154.3" r="2" fill="none" id="circle_qcmP" stroke-width="2" stroke="#65B84A">
+      <animate xlink:href="#circle_qcmP" id="animate_circle_qcmP" fill="freeze" attributeName="r" from="2" to="10" dur="3" begin="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="35.4" cy="157.2" r="5" fill="none" id="circle_3EPk" stroke-width="2" stroke="#56AC73">
+      <animate xlink:href="#circle_3EPk" id="animate_circle_3EPk" fill="freeze" attributeName="r" from="5" to="25" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="34.9" cy="103.0" r="5" fill="none" id="circle_8o3l" stroke-width="2" stroke="#795A6E">
+      <animate xlink:href="#circle_8o3l" id="animate_circle_8o3l" fill="freeze" attributeName="r" from="5" to="25" dur="3" begin="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="34.3" cy="21.1" r="3" fill="none" id="circle_EkK9" stroke-width="2" stroke="#6BF81E">
+      <animate xlink:href="#circle_EkK9" id="animate_circle_EkK9" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="130.7" cy="153.6" r="2" fill="none" id="circle_lHqj" stroke-width="2" stroke="#EA7DC4">
+      <animate xlink:href="#circle_lHqj" id="animate_circle_lHqj" fill="freeze" attributeName="r" from="2" to="10" dur="3" begin="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="12.8" cy="147.6" r="4" fill="none" id="circle_PcmA" stroke-width="2" stroke="#390FD7">
+      <animate xlink:href="#circle_PcmA" id="animate_circle_PcmA" fill="freeze" attributeName="r" from="4" to="20" dur="3" begin="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="40.7" cy="122.7" r="1" fill="none" id="circle_pFA8" stroke-width="2" stroke="#9B6CA7">
+      <animate xlink:href="#circle_pFA8" id="animate_circle_pFA8" fill="freeze" attributeName="r" from="1" to="5" dur="3" begin="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="151.6" cy="124.0" r="5" fill="none" id="circle_FQib" stroke-width="2" stroke="#867EAC">
+      <animate xlink:href="#circle_FQib" id="animate_circle_FQib" fill="freeze" attributeName="r" from="5" to="25" dur="3" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="13.1" cy="60.8" r="3" fill="none" id="circle_aAf2" stroke-width="2" stroke="#D83E14">
+      <animate xlink:href="#circle_aAf2" id="animate_circle_aAf2" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="47.5" cy="167.2" r="6" fill="none" id="circle_UaEr" stroke-width="2" stroke="#D41E97">
+      <animate xlink:href="#circle_UaEr" id="animate_circle_UaEr" fill="freeze" attributeName="r" from="6" to="30" dur="3" begin="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="185.5" cy="115.8" r="1" fill="none" id="circle_SQE2" stroke-width="2" stroke="#5F6BD7">
+      <animate xlink:href="#circle_SQE2" id="animate_circle_SQE2" fill="freeze" attributeName="r" from="1" to="5" dur="3" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="167.8" cy="141.9" r="3" fill="none" id="circle_5ED8" stroke-width="2" stroke="#659EF0">
+      <animate xlink:href="#circle_5ED8" id="animate_circle_5ED8" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="57.2" cy="73.6" r="3" fill="none" id="circle_awqH" stroke-width="2" stroke="#CBD195">
+      <animate xlink:href="#circle_awqH" id="animate_circle_awqH" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="104.8" cy="186.6" r="4" fill="none" id="circle_NKXh" stroke-width="2" stroke="#52EFC1">
+      <animate xlink:href="#circle_NKXh" id="animate_circle_NKXh" fill="freeze" attributeName="r" from="4" to="20" dur="3" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="63.1" cy="94.9" r="3" fill="none" id="circle_N81l" stroke-width="2" stroke="#930F86">
+      <animate xlink:href="#circle_N81l" id="animate_circle_N81l" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="144.8" cy="89.0" r="6" fill="none" id="circle_L2k7" stroke-width="2" stroke="#8493B0">
+      <animate xlink:href="#circle_L2k7" id="animate_circle_L2k7" fill="freeze" attributeName="r" from="6" to="30" dur="3" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="173.9" cy="144.9" r="1" fill="none" id="circle_2Bwj" stroke-width="2" stroke="#E21F67">
+      <animate xlink:href="#circle_2Bwj" id="animate_circle_2Bwj" fill="freeze" attributeName="r" from="1" to="5" dur="3" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="85.0" cy="83.8" r="5" fill="none" id="circle_TRSH" stroke-width="2" stroke="#FCA982">
+      <animate xlink:href="#circle_TRSH" id="animate_circle_TRSH" fill="freeze" attributeName="r" from="5" to="25" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="51.1" cy="75.0" r="2" fill="none" id="circle_XwYJ" stroke-width="2" stroke="#4897A5">
+      <animate xlink:href="#circle_XwYJ" id="animate_circle_XwYJ" fill="freeze" attributeName="r" from="2" to="10" dur="3" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="30.6" cy="140.9" r="5" fill="none" id="circle_Al4K" stroke-width="2" stroke="#A1D54F">
+      <animate xlink:href="#circle_Al4K" id="animate_circle_Al4K" fill="freeze" attributeName="r" from="5" to="25" dur="3" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="61.9" cy="130.2" r="5" fill="none" id="circle_jzR4" stroke-width="2" stroke="#0821F9">
+      <animate xlink:href="#circle_jzR4" id="animate_circle_jzR4" fill="freeze" attributeName="r" from="5" to="25" dur="3" begin="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="141.4" cy="155.9" r="1" fill="none" id="circle_adfN" stroke-width="2" stroke="#8B7341">
+      <animate xlink:href="#circle_adfN" id="animate_circle_adfN" fill="freeze" attributeName="r" from="1" to="5" dur="3" begin="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="175.6" cy="83.4" r="3" fill="none" id="circle_SRWn" stroke-width="2" stroke="#2C087F">
+      <animate xlink:href="#circle_SRWn" id="animate_circle_SRWn" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="78.4" cy="153.7" r="6" fill="none" id="circle_2bp7" stroke-width="2" stroke="#93C02E">
+      <animate xlink:href="#circle_2bp7" id="animate_circle_2bp7" fill="freeze" attributeName="r" from="6" to="30" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="84.0" cy="114.5" r="6" fill="none" id="circle_zXtE" stroke-width="2" stroke="#F71390">
+      <animate xlink:href="#circle_zXtE" id="animate_circle_zXtE" fill="freeze" attributeName="r" from="6" to="30" dur="3" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="147.4" cy="91.2" r="2" fill="none" id="circle_IHum" stroke-width="2" stroke="#0CAD86">
+      <animate xlink:href="#circle_IHum" id="animate_circle_IHum" fill="freeze" attributeName="r" from="2" to="10" dur="3" begin="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="66.7" cy="184.8" r="3" fill="none" id="circle_y36Q" stroke-width="2" stroke="#2D0168">
+      <animate xlink:href="#circle_y36Q" id="animate_circle_y36Q" fill="freeze" attributeName="r" from="3" to="15" dur="3" begin="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

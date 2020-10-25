@@ -1,6 +1,7 @@
 import random 
 from svgBasic import *
 from svgFile import *
+from common import gImageOutputPath
 
 class DrawArt:
     styles=['Line','DiagLine','Rectangle','Circle','Rings']

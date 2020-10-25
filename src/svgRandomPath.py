@@ -5,6 +5,7 @@ from svgFile import SVGFile, SVGFileV2
 from svgBasic import *
 from svgFunction import *
 from geoTransformation import *
+from common import gImageOutputPath
 
 def addNoise(x,y,alpha=2):
     x = x + np.random.randn(len(x))*alpha

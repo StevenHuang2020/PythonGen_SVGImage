@@ -2,6 +2,7 @@ import os
 import numpy as np 
 from svgFile import *
 from svgBasic import *
+from common import gImageOutputPath
 
 def drawSmileSVG(svg, ridus, offsetX=0, offsetY=0,color=None):      
     x = ridus + offsetX

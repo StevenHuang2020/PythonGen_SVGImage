@@ -3,6 +3,7 @@ import random
 import numpy as np
 from svgFile import *
 from svgBasic import *
+from common import gImageOutputPath
 
 def randomContinueNumbers(x0=0,N=100):
     res = [x0]

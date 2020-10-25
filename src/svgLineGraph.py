@@ -9,7 +9,7 @@ from geoTransformation import *
 from svgPointLine import drawPloygon
 from svgPointLine import drawlinePoints,drawPointsCircle
 from geoMath import *
-
+from common import gImageOutputPath
 
 def drawLineGrapic(svg):
     W,H = svg.getSize()

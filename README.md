@@ -12,6 +12,7 @@ Please report any bugs at https://github.com/StevenHuang2020/PythonGen_SVGImage/
 Practical data visualization resources： <br/>
 https://en.wikipedia.org/wiki/Data_visualization <br/>
 https://www.visualcinnamon.com/ <br/>
+https://www.hongkiat.com/blog/svg-animations/ <br/>
 https://informationisbeautiful.net/ <br/>
 https://datavizproject.com/ <br/>
 
@@ -38,6 +39,7 @@ https://datavizproject.com/ <br/>
 |<img src="images/lingGraphic11.svg" width="200" height="200" />|<img src="images/lingGraphic12.svg" width="200" height="200" />
 |<img src="images/lingGraphic14.svg" width="200" height="200" />|<img src="images/poem1.svg" width="200" height="200" />|
 |<img src="images/poem2.svg" width="200" height="200" />|<img src="images/text1.svg" width="200" height="200" />|
-|<img src="images/text2.svg" width="200" height="200" />|
-|<img src="images/anim_circle1.svg" width="200" height="200" />|<img src="images/anim_circle2.svg" width="200" height="200" />|
+|<img src="images/text2.svg" width="200" height="200" />|<img src="images/anim_circle1.svg" width="200" height="200" />|
+|<img src="images/anim_circle2.svg" width="200" height="200" />|<img src="images/anim_circle3.svg" width="200" height="200" />|
+<img src="images/anim_circle4.svg" width="200" height="200" />|
 |||

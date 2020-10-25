@@ -5,6 +5,7 @@ from svgFunction import *
 from geoTransformation import *
 from graph.graphPoints import GraphPoints
 from graph.interPoints import GetLineSegInterPoint
+from common import gImageOutputPath
 
 def drawlinePoints(svg,pts,stroke_width=0.5,color=None,stroke_widths=None):
     for i,pt in enumerate(pts):

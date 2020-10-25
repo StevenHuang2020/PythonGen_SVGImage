@@ -15,6 +15,7 @@ from svgRandomPath import drawRandomRectanglePath, drawHearCurve
 from svgRandomWalk import drawRandomNumbersPath, drawRandomWalkPath
 from svgLineGraph import drawLineGraphic
 from svgText import drawText
+from common import gImageOutputPath
 
 def drawTest():
     file=gImageOutputPath + r'\test.svg'

@@ -3,6 +3,7 @@ from svgBasic import *
 from svgFile import *
 import re
 import cProfile
+from common import gImageOutputPath
 
 def drawText():
     def GeFile():

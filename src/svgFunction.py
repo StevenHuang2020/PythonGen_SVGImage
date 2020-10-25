@@ -2,6 +2,7 @@ import os
 import numpy as np 
 from svgFile import *
 from svgBasic import *
+from common import gImageOutputPath
 #plot function to svg
 #from scipy.special import perm,comb
 from itertools import combinations, permutations

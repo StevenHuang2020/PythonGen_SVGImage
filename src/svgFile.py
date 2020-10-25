@@ -4,22 +4,18 @@ import os
 from lxml import etree
 from svgBasic import *
 
-#--------globla variables--------------#
-gImageOutputPath = r'..\images'
-#--------------------------------------#
-
 
 class SVGFileV2:
     """SVGFileV2 xml version"""
-    def __init__(self,fileName,W=100,H=100,border=False):
-        self._initFile(fileName)
+    def __init__(self,fileName,W=100,H=100, border=False):
         self.fileName = fileName
         self.width = W
         self.height = H
         self.url = "http://www.w3.org/2000/svg"
         self.xlink = "http://www.w3.org/1999/xlink"
+        self.version = "1.1"
         self.svgRoot = etree.Element("svg", width=str(self.width), height=str(self.height),\
-            nsmap={None: self.url, "xlink": self.xlink})
+            nsmap={None: self.url, "xlink": self.xlink}, version=self.version)
                
         self.g = self.addChildNode(self.svgRoot,'g')
         self.g.set("opacity",'1.0')
@@ -27,19 +23,17 @@ class SVGFileV2:
         if border:
             self.addBorder()
             
-    def _initFile(self,fileName):
-        """remove svg file if already exist"""
-        if os.path.exists(fileName):
-            os.remove(fileName) 
-            
     def getSize(self):
         return self.width,self.height
     
     def addBorder(self):
-        rect = draw_rect(0, 0, self.width, self.height, stroke_width=1, \
-            color='white',strokeColor='black')
-        self.draw(rect)
-                
+        if 0:
+            rect = self.draw(draw_rect(0, 0, self.width, self.height, stroke_width=1, \
+                color='none', strokeColor='black'))
+            rect.set("opacity","0.8")
+        else:
+            self.svgRoot.set('style','border:1px solid black')
+                   
     def setNodeAttri(self,node,attrbi,value):   
         """set/add etree Element node attribute"""
         node.set(attrbi,str(value))
