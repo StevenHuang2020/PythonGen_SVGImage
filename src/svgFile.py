@@ -27,7 +27,7 @@ class SVGFileV2:
         return self.width,self.height
     
     def addBorder(self):
-        if 0:
+        if 1:
             rect = self.draw(draw_rect(0, 0, self.width, self.height, stroke_width=1, \
                 color='none', strokeColor='black'))
             rect.set("opacity","0.8")

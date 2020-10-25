@@ -75,8 +75,20 @@ def animCircleInflation3(svg):
             y = j + r0
             r = random.choice(rList)
             circleInflation(svg, x, y, r=r, color=color, fromR=r, toR=r0*3/4, durS=random.randint(0,10))
-        
+   
 def animCircleInflation4(svg):
+    H,W = svg.getSize()
+    cx,cy = W//2,H//2
+    N = 20 #total points
+    r0 = 5
+    r1 = 60
+       
+    color= "black"#None #
+    for i in range(N):
+        begin = str(i)+'s'
+        circleInflation(svg, cx, cy, r=r0, color=color, fromR=r0, toR=r1, durS=4, begin=begin)
+        
+def animCircleInflation5(svg):
     H,W = svg.getSize()
     cx,cy = W//2,H//2
     N = 20 #total points
@@ -111,6 +123,7 @@ def main():
     #animCircleInflation2(svg)
     #animCircleInflation3(svg)
     animCircleInflation4(svg)
+    #animCircleInflation5(svg)
     svg.close()
     
 if __name__ == '__main__':
