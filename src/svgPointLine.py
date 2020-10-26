@@ -165,14 +165,14 @@ def drawPointsLineGraphic5(svg):
         
     drawlinePoints(svg,linePoints,color=color)
 
-def drawPloygon(svg, pts,color=None):
+def drawPloygon(svg, pts, color=None):
     #print('pts',pts)
     points=[]
     for i in pts:
         points.append(str(clipFloat(i[0])) + ',' + str(clipFloat(i[1])) + ' ')
     points = ''.join(points)
     svg.draw(draw_polygon(points,stroke_width=0.5,color=color or randomColor()))
-    
+        
 def drawPointsLineGraphic6(svg):
     W,H = svg.getSize()
     cx,cy = W//2,H//2

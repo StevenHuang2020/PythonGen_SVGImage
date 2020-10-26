@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+  <line x1="10" y1="20" x2="200" y2="20" stroke="black" stroke-width="5" marker-end="url(#arrowhead)" />
+  <line x1="10" y1="20" x2="10" y2="200" stroke="black" stroke-width="5" marker-end="url(#arrowhead)" />
+  <text x="50" y="130" >SVG Coordinates System</text> 
+  <text x="15" y="40" >(0,0)</text> 
+  
+  <text x="240" y="40" >(W,0)</text> 
+  <text x="15" y="240" >(0,H)</text> 
+  <text x="220" y="220" >(W,H)</text> 
+</svg>

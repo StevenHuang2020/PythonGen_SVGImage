@@ -16,10 +16,7 @@ class SVGFileV2:
         self.version = "1.1"
         self.svgRoot = etree.Element("svg", width=str(self.width), height=str(self.height),\
             nsmap={None: self.url, "xlink": self.xlink}, version=self.version)
-               
-        self.g = self.addChildNode(self.svgRoot,'g')
-        self.g.set("opacity",'1.0')
-        
+                       
         if border:
             self.addBorder()
             
@@ -46,10 +43,14 @@ class SVGFileV2:
         return etree.SubElement(node, tag) #child
     
     def draw(self, content):    
-        """link child to svgRoot child g element"""
-        node = etree.fromstring(content)
-        self.g.append(node)
-        return node
+        """link child to svgRoot element"""
+        return self.drawNode(self.svgRoot, content)
+
+    def drawNode(self,node,content):
+        """link child to node element"""
+        newNode = etree.fromstring(content)
+        node.append(newNode)
+        return newNode
     
     def close(self):    
         """write lxml tree to file"""
@@ -126,3 +127,4 @@ class SVGFile:
     def close(self):
         self._svgTail()
         self._writeToSvg()
+        

@@ -5,10 +5,11 @@ from svgBasic import *
 from svgFile import *
 from svgFunction import *
 from common import gImageOutputPath
+from geoTransformation import *
 
-def addNodeAnitmation(svg, objectNode, animateDict):
+def addNodeAnitmation(svg, objectNode, animateDict, elementName='animate'):
     #animate = svg.draw(draw_tag('animate'))
-    animate = svg.addChildNode(objectNode,'animate')  
+    animate = svg.addChildNode(objectNode, elementName)  
     svg.setNodeAttriDict(animate, animateDict)
     
 def createCircle(svg, x,y,r,color=None):
@@ -99,10 +100,12 @@ def animCircleInflation5(svg):
     pts = getRandomPoints((N,2), min=offset, max=W-offset)
     
     color= None #"black"#
+    rList = np.linspace(1, r1/2, 20)
     for i in range(N):
-        begin = str(i)+'s'
-        #id, circle = circleInflation(svg, cx, cy, r=r0, color=color, fromR=r0, toR=r1, durS=4, begin=begin)
-        id, circle = circleInflation(svg, pts[i][0], pts[i][1], r=r0, color=color, fromR=r0, toR=r1, durS=4, begin=begin)
+        begin = str(random.randint(1,4)) + 's' #str(i)+'s' #'0s'
+        dur = random.randint(3,6)
+        r = random.choice(rList)
+        id, circle = circleInflation(svg, pts[i][0], pts[i][1], r=r, color=color, fromR=r0, toR=r1, durS=dur, begin=begin)
         
         animateDict={}
         animateDict["{{{}}}".format(svg.xlink) + 'href'] = f'#{id}'
@@ -113,7 +116,48 @@ def animCircleInflation5(svg):
         animateDict['begin'] = begin #'0s'
         animateDict["repeatCount"] = "indefinite" #"5"
         addNodeAnitmation(svg, circle, animateDict)
-        
+       
+def drawNodeShape(svg, node):
+    H,W = svg.getSize()
+    cx,cy = W//2,H//2
+    r = 50
+    x0 = [cx, cx+2*r, cx+r]
+    y0 = [cy, cy, cy-r*np.tan(np.pi/6)]
+    
+    times = 8
+    theta = 0
+    for i in range(times):
+        theta = i*(2*np.pi/times)
+        x,y = rotationMatrixCenter(x0,y0,(cx,cy),theta)
+        drawPloygonNode(svg, node, [(x[0],y[0]), (x[1],y[1]), (x[2],y[2])], color='black')
+
+def drawPloygonNode(svg, node, pts, color=None):
+    #print('pts',pts)
+    points=[]
+    for i in pts:
+        points.append(str(clipFloat(i[0])) + ',' + str(clipFloat(i[1])) + ' ')
+    points = ''.join(points)
+    svg.drawNode(node, draw_polygon(points,stroke_width=0.5,color=color or randomColor()))
+          
+def anim_Windmill(svg):
+    H,W = svg.getSize()
+    cx,cy = W//2,H//2
+    
+    g = svg.draw(draw_tag('g'))
+    svg.setNodeAttri(g,'opacity', '1.0')
+    drawNodeShape(svg, g)
+    
+    animateTransDict={}
+    animateTransDict['attributeName'] = 'transform'
+    animateTransDict['attributeType'] = 'xml'
+    animateTransDict['type'] = 'rotate' 
+    animateTransDict['from'] = f'360 {cx} {cy}'
+    animateTransDict['to'] = f'0 {cx} {cy}'
+    animateTransDict['dur'] = '5s'
+    animateTransDict["repeatCount"] = "indefinite" #"5"
+    
+    addNodeAnitmation(svg, g, animateTransDict,elementName='animateTransform')
+    
 def main():
     file = gImageOutputPath + r'\animation.svg'
     H,W=200,200
@@ -122,8 +166,9 @@ def main():
     #animCircleInflation(svg)
     #animCircleInflation2(svg)
     #animCircleInflation3(svg)
-    animCircleInflation4(svg)
+    #animCircleInflation4(svg)
     #animCircleInflation5(svg)
+    anim_Windmill(svg)
     svg.close()
     
 if __name__ == '__main__':

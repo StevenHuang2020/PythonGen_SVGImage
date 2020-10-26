@@ -19,6 +19,7 @@ https://datavizproject.com/ <br/>
 #### SVG images generated using python code <br/>
 |||
 |---|---|
+|<img src="images/svgCoordinates.svg" width="200" height="200" />||
 |<img src="images/art_DiagLine_5.svg" width="200" height="200" />|<img src="images/art_Circle_5.svg" width="200" height="200" />|
 |<img src="images/art_Rectangle_5.svg" width="200" height="200" />|<img src="images/art_Rings_5.svg" width="200" height="200" />|
 |<img src="images/trump.svg" width="200" height="200" />|<img src="images/trumpX.svg" width="200" height="200" />|
@@ -41,5 +42,5 @@ https://datavizproject.com/ <br/>
 |<img src="images/poem2.svg" width="200" height="200" />|<img src="images/text1.svg" width="200" height="200" />|
 |<img src="images/text2.svg" width="200" height="200" />|<img src="images/anim_circle1.svg" width="200" height="200" />|
 |<img src="images/anim_circle2.svg" width="200" height="200" />|<img src="images/anim_circle3.svg" width="200" height="200" />|
-<img src="images/anim_circle4.svg" width="200" height="200" />|
+<img src="images/anim_circle4.svg" width="200" height="200" />|<img src="images/anim_circle6.svg" width="200" height="200" />|
 |||
