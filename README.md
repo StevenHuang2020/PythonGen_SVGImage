@@ -19,7 +19,6 @@ https://datavizproject.com/ <br/>
 #### SVG images generated using python code <br/>
 |||
 |---|---|
-|<img src="images/svgCoordinates.svg" width="200" height="200" />||
 |<img src="images/art_DiagLine_5.svg" width="200" height="200" />|<img src="images/art_Circle_5.svg" width="200" height="200" />|
 |<img src="images/art_Rectangle_5.svg" width="200" height="200" />|<img src="images/art_Rings_5.svg" width="200" height="200" />|
 |<img src="images/trump.svg" width="200" height="200" />|<img src="images/trumpX.svg" width="200" height="200" />|
