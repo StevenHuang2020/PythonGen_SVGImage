@@ -61,8 +61,10 @@ def draw_circleRings(x, y, radius, rings=5, color=None, fillColor='white'):
         color = color or randomColor()
         yield f'<circle cx="{x}" cy="{y}" r="{r}" stroke-width="{sw}" stroke="{color}" fill="none" />'
             
-def draw_text(x,y,text,font='Consolas',fontsize='smaller',color='black',blankSpace='default'):
-    return f'<text x="{x}" y="{y}" fill="{color}" xml:space="{blankSpace}" font-family="{font}" font-size="{fontsize}" font-style="normal" font-variant="normal">{text}</text>'
+def draw_text(x,y,text,font='Consolas',fontsize='smaller',color='black',blankSpace='pre'):
+    #return f'<text x="{x}" y="{y}" fill="{color}" xml:space="{blankSpace}" font-family="{font}" font-size="{fontsize}" font-style="normal" font-variant="normal">{text}</text>'
+    #xml:space deprecated.   white-space: normal,pre,nowrap,pre-wrap,break-spaces,pre-line
+    return f'<text x="{x}" y="{y}" fill="{color}" white-space="{blankSpace}" font-family="{font}" font-size="{fontsize}" font-style="normal" font-variant="normal">{text}</text>'
 
 def draw_text_only(x,y,text):
     return f'<text x="{x}" y="{y}" >{text}</text>'
@@ -85,5 +87,12 @@ def draw_Only_path(path):
 def draw_polygon(points, color=None, strokeColor=None, stroke_width=1.0):
     return f'<polygon points="{points}" stroke="{strokeColor}" stroke-width="{stroke_width}" fill="{color}" />'
  
-def draw_tag(tag):
-    return f'<{tag} />'
+def draw_tag(tag, text=None):
+    return draw_any(tag, text)
+
+def draw_any(tag, text=None, **kwargs): #draw_any(tagName, attr1=anything, attr2=anything, ...)    
+    attriList = ' '.join([(str(key) + '=' + '"' + str(value) + '"') for key, value in kwargs.items()])
+    #print('attriList=',attriList)
+    if text:
+        return "<{} {}>{}</{}>".format(tag, attriList,text,tag)
+    return "<{} {} />".format(tag, attriList)

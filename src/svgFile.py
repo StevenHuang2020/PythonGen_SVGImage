@@ -7,30 +7,36 @@ from svgBasic import *
 
 class SVGFileV2:
     """SVGFileV2 xml version"""
-    def __init__(self,fileName,W=100,H=100, border=False):
+    def __init__(self,fileName,W=100,H=100, border=False, title=None):
         self.fileName = fileName
         self.width = W
         self.height = H
         self.url = "http://www.w3.org/2000/svg"
         self.xlink = "http://www.w3.org/1999/xlink"
+        #self.namespace = "http://www.w3.org/XML/1998/namespace"
         self.version = "1.1"
         self.svgRoot = etree.Element("svg", width=str(self.width), height=str(self.height),\
             nsmap={None: self.url, "xlink": self.xlink}, version=self.version)
                        
-        if border:
-            self.addBorder()
-            
+        self.addBorder(border)
+        self.setTitle(title)
+        
     def getSize(self):
         return self.width,self.height
     
-    def addBorder(self):
-        if 1:
-            rect = self.draw(draw_rect(0, 0, self.width, self.height, stroke_width=1, \
-                color='none', strokeColor='black'))
-            rect.set("opacity","0.8")
-        else:
-            self.svgRoot.set('style','border:1px solid black')
-                   
+    def addBorder(self,border):
+        if border:
+            if 1:
+                rect = self.draw(draw_rect(0, 0, self.width, self.height, stroke_width=1, \
+                    color='none', strokeColor='black'))
+                rect.set("opacity","0.8")
+            else:
+                self.svgRoot.set('style','border:1px solid black')
+    
+    def setTitle(self,title):
+        if title:
+            self.draw(draw_tag('title',title))
+        
     def setNodeAttri(self,node,attrbi,value):   
         """set/add etree Element node attribute"""
         node.set(attrbi,str(value))

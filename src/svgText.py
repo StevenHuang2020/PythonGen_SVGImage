@@ -23,8 +23,9 @@ def drawText():
     styleDict['font-size'] = '10px'
     styleDict['font-style'] = 'normal' 
     styleDict['font-variant'] = 'normal' 
-    #styleDict['xml:space'] = 'preserve'
-    
+    #styleDict['xml:space'] = 'preserve' #deprecated
+    styleDict['white-space'] = 'pre'
+        
     styleList = getStyleList(styleDict)
     svg.draw(add_style('text',styleList))
     
@@ -41,8 +42,13 @@ def drawText():
             #i = i.replace('#', '@')
             i = ' '.join(i)#'.'.join(i)
             print(i)
-            svg.draw(draw_text(0,y0,i, blankSpace='preserve'))
+            #svg.draw(draw_text(0,y0,i, blankSpace='preserve'))
+            text = svg.draw(draw_text_only(0,y0,i))
+            
+            #attr = "{{{}}}".format(svg.namespace) + 'space' #
+            #svg.setNodeAttri(text, attr,"preserve") #error without namespace
             y0+=h
+            
     svg.close()
     
 '''
@@ -220,6 +226,7 @@ def drawStyleText2(svg):
     
 def main():
     #return drawText()
+
     file = gImageOutputPath + r'\text.svg'
     H,W=200,200
     svg = SVGFileV2(file,W,H,border=True)

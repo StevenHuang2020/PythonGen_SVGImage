@@ -1,4 +1,5 @@
 #python3 Steven 10/24/20 Auckland,NZ
+#https://developer.mozilla.org/en-US/docs/Web/SVG
 #https://css-tricks.com/guide-svg-animations-smil/
 import numpy as np
 from svgBasic import *
@@ -129,7 +130,7 @@ def drawNodeShape(svg, node):
     for i in range(times):
         theta = i*(2*np.pi/times)
         x,y = rotationMatrixCenter(x0,y0,(cx,cy),theta)
-        drawPloygonNode(svg, node, [(x[0],y[0]), (x[1],y[1]), (x[2],y[2])], color='black')
+        drawPloygonNode(svg, node, [(x[0],y[0]), (x[1],y[1]), (x[2],y[2])], color=None) #color='black'
 
 def drawPloygonNode(svg, node, pts, color=None):
     #print('pts',pts)
@@ -151,12 +152,68 @@ def anim_Windmill(svg):
     animateTransDict['attributeName'] = 'transform'
     animateTransDict['attributeType'] = 'xml'
     animateTransDict['type'] = 'rotate' 
-    animateTransDict['from'] = f'360 {cx} {cy}'
-    animateTransDict['to'] = f'0 {cx} {cy}'
+    animateTransDict['from'] = f'0 {cx} {cy}'
+    animateTransDict['to'] = f'360 {cx} {cy}'
     animateTransDict['dur'] = '5s'
     animateTransDict["repeatCount"] = "indefinite" #"5"
     
     addNodeAnitmation(svg, g, animateTransDict,elementName='animateTransform')
+    
+def drawAny(svg):
+    H,W = svg.getSize()
+    cx,cy = W//2,H//2
+    svg.setTitle('draw anything only use draw_any()')
+
+    g = svg.draw(draw_any('g', opacity=1.0))
+    #anyNode = svg.drawNode(g, draw_any('test','222', a=10, b="4",c='red',xml='www.ss'))
+    svg.drawNode(g, draw_any('test','hello'))
+    
+    anyDict={}
+    anyDict['test'] = 1
+    anyDict['xml'] = 'www.ggg'
+    anyDict['a'] = 'aaaaa anything else'
+    anyDict['b'] = 'red black xxxxxxxxxxxxxxxxx anything you want'
+    svg.drawNode(g, draw_any('test2', **anyDict))
+    svg.drawNode(g, draw_any('hello', **anyDict))
+    svg.drawNode(g, draw_any('anything', **anyDict))
+    
+    for i in range(20):
+        anyDict={}
+        anyDict['cx'] = cx
+        anyDict['cy'] = cy
+        anyDict['r'] = '5'
+        anyDict['stroke'] = '#80ff00'
+        anyDict['stroke-width'] = '2'
+        anyDict['fill'] = 'none'
+        
+        circle = svg.drawNode(g, draw_any('circle', **anyDict))
+        #'from' is a key word of python for import libs, but here last resort change parameter 
+        # from(attribute of animate element for svg) to 'From' to avoid conflict.
+        svg.drawNode(circle, draw_any('animate', fill='freeze', attributeName='r', From="5", to="80", dur="4s", begin=str(i), repeatCount="indefinite"))
+        
+        anyDict={}
+        anyDict['fill'] = 'freeze'
+        anyDict['attributeName'] = 'fill'
+        anyDict['from'] = '#ff0000'
+        anyDict['to'] = '#00ff40'
+        anyDict['dur'] = '6s'
+        anyDict['begin'] = '0s'
+        anyDict['repeatCount'] = 'indefinite'
+        #svg.drawNode(circle, draw_any('animate', **anyDict))
+        
+        anyDict['attributeName'] = 'stroke-width'
+        anyDict['values'] = '1;2;3;2;1'
+        anyDict.pop("from", None)
+        anyDict.pop("to", None)
+        svg.drawNode(circle, draw_any('animate', **anyDict))
+        
+        anyDict['attributeName'] = 'stroke'
+        anyDict['from'] = '#80ff00'
+        anyDict['to'] = '#0000ff'
+        anyDict['begin'] = '1s'
+        anyDict.pop("values", None)
+        svg.drawNode(circle, draw_any('animate', **anyDict))
+    
     
 def main():
     file = gImageOutputPath + r'\animation.svg'
@@ -168,7 +225,8 @@ def main():
     #animCircleInflation3(svg)
     #animCircleInflation4(svg)
     #animCircleInflation5(svg)
-    anim_Windmill(svg)
+    #anim_Windmill(svg)
+    drawAny(svg)
     svg.close()
     
 if __name__ == '__main__':
