@@ -90,7 +90,8 @@ def draw_polygon(points, color=None, strokeColor=None, stroke_width=1.0):
 def draw_tag(tag, text=None):
     return draw_any(tag, text)
 
-def draw_any(tag, text=None, **kwargs): #draw_any(tagName, attr1=anything, attr2=anything, ...)    
+def draw_any(tag, text=None, **kwargs): 
+    """draw_any(tagName, text, attr1=anything, attr2=anything, ...) or draw_any(tagName, text, **attrDict)"""
     attriList = ' '.join([(str(key) + '=' + '"' + str(value) + '"') for key, value in kwargs.items()])
     #print('attriList=',attriList)
     if text:
