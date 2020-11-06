@@ -17,14 +17,14 @@
     <line x1="147.5" y1="5" x2="147.5" y2="115.0"/>
     <line x1="195.0" y1="5" x2="195.0" y2="115.0"/>
     <style> text { font-family: Consolas; dominant-baseline: middle; text-anchor: middle;  } </style>
-    <text font-size="22px" fill="red" x="28.75" y="32.5">0</text>
-    <text font-size="22px" fill="red" x="28.75" y="50.83333333333333">1</text>
-    <text font-size="22px" fill="red" x="28.75" y="69.16666666666667">2</text>
-    <text font-size="22px" fill="red" x="28.75" y="87.5">3</text>
-    <text font-size="22px" fill="red" x="28.75" y="105.83333333333333">4</text>
-    <text font-size="22px" fill="red" x="76.25" y="14.166666666666666">A</text>
-    <text font-size="22px" fill="red" x="123.75" y="14.166666666666666">B</text>
-    <text font-size="22px" fill="red" x="171.25" y="14.166666666666666">C</text>
+    <text font-size="14px" fill="red" x="28.75" y="32.5">0</text>
+    <text font-size="14px" fill="red" x="28.75" y="50.83333333333333">1</text>
+    <text font-size="14px" fill="red" x="28.75" y="69.16666666666667">2</text>
+    <text font-size="14px" fill="red" x="28.75" y="87.5">3</text>
+    <text font-size="14px" fill="red" x="28.75" y="105.83333333333333">4</text>
+    <text font-size="14px" fill="red" x="76.25" y="14.166666666666666">A</text>
+    <text font-size="14px" fill="red" x="123.75" y="14.166666666666666">B</text>
+    <text font-size="14px" fill="red" x="171.25" y="14.166666666666666">C</text>
     <circle cx="76.25" cy="32.5" r="8.0" fill="#FFC10E"/>
     <circle cx="73.61" cy="29.78" r="1.28" fill="#333333"/>
     <circle cx="78.89" cy="29.78" r="1.28" fill="#333333"/>

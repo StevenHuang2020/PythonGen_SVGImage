@@ -17,28 +17,28 @@
     <line x1="147.5" y1="5" x2="147.5" y2="115.0"/>
     <line x1="195.0" y1="5" x2="195.0" y2="115.0"/>
     <style> text { font-family: Consolas; dominant-baseline: middle; text-anchor: middle;  } </style>
-    <text font-size="22px" fill="red" x="28.75" y="32.5">0</text>
-    <text font-size="22px" fill="red" x="28.75" y="50.83333333333333">1</text>
-    <text font-size="22px" fill="red" x="28.75" y="69.16666666666667">2</text>
-    <text font-size="22px" fill="red" x="28.75" y="87.5">3</text>
-    <text font-size="22px" fill="red" x="28.75" y="105.83333333333333">4</text>
-    <text font-size="22px" fill="red" x="76.25" y="14.166666666666666">A</text>
-    <text font-size="22px" fill="red" x="123.75" y="14.166666666666666">B</text>
-    <text font-size="22px" fill="red" x="171.25" y="14.166666666666666">C</text>
-    <rect font-size="22px" fill="#9f4f54" x="52.5" y="23.333333333333332" width="47.5" height="18.333333333333332">39</rect>
-    <rect font-size="22px" fill="#3c92d0" x="100.0" y="23.333333333333332" width="47.5" height="18.333333333333332">133</rect>
-    <rect font-size="22px" fill="#3a94d3" x="147.5" y="23.333333333333332" width="47.5" height="18.333333333333332">135</rect>
-    <rect font-size="22px" fill="#c0392b" x="52.5" y="41.666666666666664" width="47.5" height="18.333333333333332">8</rect>
-    <rect font-size="22px" fill="#a94948" x="100.0" y="41.666666666666664" width="47.5" height="18.333333333333332">30</rect>
-    <rect font-size="22px" fill="#935864" x="147.5" y="41.666666666666664" width="47.5" height="18.333333333333332">51</rect>
-    <rect font-size="22px" fill="#a34d50" x="52.5" y="60.0" width="47.5" height="18.333333333333332">36</rect>
-    <rect font-size="22px" fill="#8d5b6b" x="100.0" y="60.0" width="47.5" height="18.333333333333332">56</rect>
-    <rect font-size="22px" fill="#ba3d33" x="147.5" y="60.0" width="47.5" height="18.333333333333332">14</rect>
-    <rect font-size="22px" fill="#a74a4b" x="52.5" y="78.33333333333333" width="47.5" height="18.333333333333332">32</rect>
-    <rect font-size="22px" fill="#697499" x="100.0" y="78.33333333333333" width="47.5" height="18.333333333333332">91</rect>
-    <rect font-size="22px" fill="#67769b" x="147.5" y="78.33333333333333" width="47.5" height="18.333333333333332">93</rect>
-    <rect font-size="22px" fill="#3498db" x="52.5" y="96.66666666666666" width="47.5" height="18.333333333333332">141</rect>
-    <rect font-size="22px" fill="#99535c" x="100.0" y="96.66666666666666" width="47.5" height="18.333333333333332">45</rect>
-    <rect font-size="22px" fill="#438ec8" x="147.5" y="96.66666666666666" width="47.5" height="18.333333333333332">127</rect>
+    <text font-size="14px" fill="red" x="28.75" y="32.5">0</text>
+    <text font-size="14px" fill="red" x="28.75" y="50.83333333333333">1</text>
+    <text font-size="14px" fill="red" x="28.75" y="69.16666666666667">2</text>
+    <text font-size="14px" fill="red" x="28.75" y="87.5">3</text>
+    <text font-size="14px" fill="red" x="28.75" y="105.83333333333333">4</text>
+    <text font-size="14px" fill="red" x="76.25" y="14.166666666666666">A</text>
+    <text font-size="14px" fill="red" x="123.75" y="14.166666666666666">B</text>
+    <text font-size="14px" fill="red" x="171.25" y="14.166666666666666">C</text>
+    <rect font-size="14px" fill="#796984" x="52.5" y="23.333333333333332" width="47.5" height="18.333333333333332">83</rect>
+    <rect font-size="14px" fill="#687499" x="100.0" y="23.333333333333332" width="47.5" height="18.333333333333332">98</rect>
+    <rect font-size="14px" fill="#67759a" x="147.5" y="23.333333333333332" width="47.5" height="18.333333333333332">99</rect>
+    <rect font-size="14px" fill="#687499" x="52.5" y="41.666666666666664" width="47.5" height="18.333333333333332">98</rect>
+    <rect font-size="14px" fill="#846277" x="100.0" y="41.666666666666664" width="47.5" height="18.333333333333332">73</rect>
+    <rect font-size="14px" fill="#9d5157" x="147.5" y="41.666666666666664" width="47.5" height="18.333333333333332">50</rect>
+    <rect font-size="14px" fill="#3498db" x="52.5" y="60.0" width="47.5" height="18.333333333333332">146</rect>
+    <rect font-size="14px" fill="#3895d5" x="100.0" y="60.0" width="47.5" height="18.333333333333332">142</rect>
+    <rect font-size="14px" fill="#945762" x="147.5" y="60.0" width="47.5" height="18.333333333333332">58</rect>
+    <rect font-size="14px" fill="#796984" x="52.5" y="78.33333333333333" width="47.5" height="18.333333333333332">83</rect>
+    <rect font-size="14px" fill="#c0392b" x="100.0" y="78.33333333333333" width="47.5" height="18.333333333333332">18</rect>
+    <rect font-size="14px" fill="#3796d7" x="147.5" y="78.33333333333333" width="47.5" height="18.333333333333332">143</rect>
+    <rect font-size="14px" fill="#8d5c6c" x="52.5" y="96.66666666666666" width="47.5" height="18.333333333333332">65</rect>
+    <rect font-size="14px" fill="#a14e52" x="100.0" y="96.66666666666666" width="47.5" height="18.333333333333332">46</rect>
+    <rect font-size="14px" fill="#885f71" x="147.5" y="96.66666666666666" width="47.5" height="18.333333333333332">69</rect>
   </g>
 </svg>
