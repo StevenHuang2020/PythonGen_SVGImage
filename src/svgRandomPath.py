@@ -37,7 +37,7 @@ def getCirclePtsSVG(svg, r=1, N=10, offsetX=50, offsetY=50, noise=True,onlyPath=
 def drawRandomPath():
     file = gImageOutputPath + r'\randomShapePath.svg'
     H,W=500,1000
-    svg = SVGFile(file,W,H)
+    svg = SVGFileV2(file,W,H)
     
     singleColor=False
     if singleColor:
@@ -100,10 +100,8 @@ def drawHearCurve():
     svg.draw(draw_Only_path(path))
     svg.close()
     
-def drawRandomCirclePath():
-    file = gImageOutputPath + r'\randomCirclePath.svg'
-    H,W=200,200
-    svg = SVGFile(file,W,H)
+def drawRandomCirclePath(svg):
+    W,H = svg.getSize()
 
     styles=['circles','circle points','circle points random']
     
@@ -121,10 +119,10 @@ def drawRandomCirclePath():
             drawOnePathcSVG(svg,ptX,ptY,onlyPath=onlyPath)
             
     elif style == styles[1]:
-        times = 50
+        times = 10
         for _ in range(times):
-            r = r + random.random()*8
-            ptX,ptY = getCirclePtsSVG(svg, r=r, N=200, offsetX=offsetX, offsetY=offsetY, noise=False,onlyPath=onlyPath)
+            r = r + random.random()*18
+            ptX,ptY = getCirclePtsSVG(svg, r=r, N=20, offsetX=offsetX, offsetY=offsetY, noise=False,onlyPath=onlyPath)
             ptNumber = int(5*r)
             #ptX = np.random.choice(ptX, ptNumber)
             
@@ -141,10 +139,11 @@ def drawRandomCirclePath():
                 #print('i=',i)
                 #ra = 0.5
                 ra =  np.random.random()*(3-0.2) + 0.2
-                svg.draw(draw_circle(i[0],i[1],radius=ra,color=randomColor()))
-                
-    svg.close()
-    
+                ra = clipFloat(ra)
+                x = clipFloat(i[0])
+                y = clipFloat(i[1])
+                svg.draw(draw_circle(x,y,radius=ra,color=randomColor()))
+                  
     
 def getRectanglePtsSVG(svg, w,h, N=10, noise=True,onlyPath=True):          
     ptX,ptY, center = getRectanglePoints(w=w,h=h,N=N)
@@ -154,11 +153,8 @@ def getRectanglePtsSVG(svg, w,h, N=10, noise=True,onlyPath=True):
         ptX,ptY = addNoise(ptX,ptY,alpha=1)
     return ptX,ptY,center
 
-def drawRandomRectanglePath():
-    file= gImageOutputPath + r'\randomRectanglePath.svg'
-    H,W=200,200
-    svg = SVGFileV2(file,W,H)
-
+def drawRandomRectanglePath(svg):
+    W,H = svg.getSize()
     styles=['rectangle','rectangle roation','rotataion Center']
     
     onlyPath = False
@@ -195,7 +191,7 @@ def drawRandomRectanglePath():
             ptY = ptY + offsetY
             drawOnePathcSVG(svg,ptX,ptY,width=0.5,onlyPath=onlyPath)
     elif style == styles[2]:
-        times=180
+        times=80
         offsetX = 20 #W//2
         offsetY = 20 #H//2
         theta = 0
@@ -213,10 +209,53 @@ def drawRandomRectanglePath():
             drawOnePathcSVG(svg,ptX,ptY,width=0.5,onlyPath=onlyPath)
                
     print(w,H)         
-    svg.close()
+    
+def drawAllTypePath(svg):
+    H,W = svg.getSize()
+    cx,cy = W//2,H//2
+    svg.setTitle('draw path')
+    g = svg.draw(draw_any('g', opacity=1.0))
+    
+    anyDict={}
+    anyDict['stroke'] = 'black'
+    anyDict['fill'] = 'transparent'
+    
+    anyDict['d'] = 'M 10 10 C 20 20, 40 20, 50 10'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'M 70 10 C 70 20, 110 20, 110 10'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'M 130 10 C 120 20, 180 20, 170 10'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'M 10 30 C 20 50, 40 50, 50 30'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'M 70 30 C 70 50, 110 50, 110 30'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'MM 130 30 C 120 50, 180 50, 170 30'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'M 10 50 C 20 80, 40 80, 50 50'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'M 70 50 C 70 80, 110 80, 110 50'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    anyDict['d'] = 'M 130 50 C 120 80, 180 80, 170 50'
+    svg.drawNode(g, draw_any('path', **anyDict))
+    
+    anyDict['d'] = 'M 10 315    \
+           L 110 215    \
+           A 30 50 0 0 1 162.55 162.45  \
+           L 172.55 152.45  \
+           A 30 50 -45 0 1 215.1 109.9  \
+           L 315 10'
+           
+    anyDict['fill'] = 'green'
+    anyDict['stroke-width'] = '2'
+    svg.drawNode(g, draw_any('path', **anyDict))
     
 if __name__=='__main__':    
-    drawRandomPath()
-    #drawRandomCirclePath()
-    #drawRandomRectanglePath()
-    
+    #drawRandomPath()    
+    file= gImageOutputPath + r'\randomShapePath.svg'
+    H,W=200,200
+    svg = SVGFileV2(file,W,H,border=True)
+    #drawRandomCirclePath(svg)
+    #drawRandomRectanglePath(svg)
+    drawAllTypePath(svg)
+    svg.close()

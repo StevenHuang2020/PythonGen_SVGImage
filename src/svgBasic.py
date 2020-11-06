@@ -40,6 +40,12 @@ def clipFloat(x, n=1):
 def ranstr(num): #random string as ID
     return ''.join(random.sample(string.ascii_letters + string.digits, num))
     
+def getStyleList(styleDict):
+    styleList=''
+    for key, value in styleDict.items():
+        styleList = styleList + (key + ': ' + str(value) + '; ')
+    return styleList
+
 #------------------------------draw function---------------------------------#        
 def draw_line(x, y, x2, y2, stroke_width=0.5, color='black'):
     #Draw a line for svg
@@ -94,6 +100,6 @@ def draw_any(tag, text=None, **kwargs):
     """draw_any(tagName, text, attr1=anything, attr2=anything, ...) or draw_any(tagName, text, **attrDict)"""
     attriList = ' '.join([(str(key) + '=' + '"' + str(value) + '"') for key, value in kwargs.items()])
     #print('attriList=',attriList)
-    if text:
+    if text is not None:
         return "<{} {}>{}</{}>".format(tag, attriList,text,tag)
     return "<{} {} />".format(tag, attriList)

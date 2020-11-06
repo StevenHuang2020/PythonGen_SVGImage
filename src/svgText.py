@@ -80,12 +80,6 @@ def drawText():
 华文新魏：STXinwei
 '''
 
-def getStyleList(styleDict):
-    styleList=''
-    for key, value in styleDict.items():
-        styleList = styleList + (key + ': ' + value + '; ')
-    return styleList
-
 def drawPoet(svg):
     '''
     poet = []
@@ -169,7 +163,7 @@ def drawPoet2(svg):
 def drawStyleText(svg):
     text = '怡红快绿' #
     styleDict={}
-    styleDict['fill'] = 'black' 
+    #styleDict['fill'] = 'black' 
     styleDict['font-family'] = 'Microsoft YaHei' 
     styleDict['font-size'] = '50px' 
      
@@ -191,6 +185,7 @@ def drawStyleText(svg):
         node = svg.draw(draw_text_only(x,y,text=c))
         svg.setNodeAttri(node, 'text-anchor', 'middle')
         svg.setNodeAttri(node, 'dominant-baseline', 'central')
+        svg.setNodeAttri(node, 'fill', randomColor())
         str = 'rotate({},{},{})'.format(theta,x,y)
         svg.setNodeAttri(node, 'transform', str)
         #svg.draw(draw_circle(x,y,5,color='red'))
@@ -232,8 +227,8 @@ def main():
     svg = SVGFileV2(file,W,H,border=True)
     #drawPoet(svg)
     #drawPoet2(svg)
-    #drawStyleText(svg)
-    drawStyleText2(svg)
+    drawStyleText(svg)
+    #drawStyleText2(svg)
     svg.close()
     
 if __name__=='__main__':

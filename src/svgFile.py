@@ -52,10 +52,13 @@ class SVGFileV2:
         """link child to svgRoot element"""
         return self.drawNode(self.svgRoot, content)
 
-    def drawNode(self,node,content):
+    def drawNode(self, node=None,content=''):
         """link child to node element"""
         newNode = etree.fromstring(content)
-        node.append(newNode)
+        if node is None:
+            self.svgRoot.append(newNode)
+        else:
+            node.append(newNode)
         return newNode
     
     def close(self):    

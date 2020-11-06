@@ -4,38 +4,41 @@ from svgFile import *
 from svgBasic import *
 from common import gImageOutputPath
 
-def drawSmileSVG(svg, ridus, offsetX=0, offsetY=0,color=None):      
-    x = ridus + offsetX
-    y = ridus + offsetY
+def drawSmileSVG(svg, radius, offsetX=0, offsetY=0,color=None):      
+    return drawSmileSVGNode(svg, node=None, radius=radius, offsetX=offsetX, offsetY=offsetY,color=color)
+    
+def drawSmileSVGNode(svg, node, radius, offsetX=0, offsetY=0,color=None):      
+    x = radius + offsetX
+    y = radius + offsetY
     color = color or '#FFC10E'
-    svg.draw(draw_circle(x,y,ridus,color=color))
+    svg.drawNode(node, draw_circle(x,y,radius,color=color))
 
-    x = ridus*0.67 + offsetX
-    y = ridus*0.66 + offsetY
-    r = ridus*0.16
-    svg.draw(draw_circle(x,y,r,color='#333333')) #left eye
+    x = radius*0.67 + offsetX
+    y = radius*0.66 + offsetY
+    r = radius*0.16
+    svg.drawNode(node, draw_circle(x,y,r,color='#333333')) #left eye
     
-    x = 2*ridus - x +  2*offsetX
-    svg.draw(draw_circle(x,y,r,color='#333333')) #right eye
+    x = 2*radius - x +  2*offsetX
+    svg.drawNode(node, draw_circle(x,y,r,color='#333333')) #right eye
     
-    startPt = [0.40*ridus + offsetX, 1.05*ridus + offsetY]
-    stopPt = [2*ridus - startPt[0] + 2*offsetX, startPt[1]]
-    cp1 =  [0.6*ridus + offsetX, 1.78*ridus+offsetY]  #Bézier Curves control points
-    cp2 =  [2*ridus - cp1[0] + 2*offsetX, cp1[1]]  #Bézier Curves control points
+    startPt = [0.40*radius + offsetX, 1.05*radius + offsetY]
+    stopPt = [2*radius - startPt[0] + 2*offsetX, startPt[1]]
+    cp1 =  [0.6*radius + offsetX, 1.78*radius+offsetY]  #Bézier Curves control points
+    cp2 =  [2*radius - cp1[0] + 2*offsetX, cp1[1]]  #Bézier Curves control points
     path = 'M {} {} C {} {}, {} {}, {} {}'.format(startPt[0],startPt[1],\
         cp1[0],cp1[1],cp2[0],cp2[1],stopPt[0],stopPt[1])
     
     color = 'black'
-    lineWidth = 0.11*ridus
-    svg.draw(draw_path(path, width=lineWidth, color=color)) #mouth
+    lineWidth = 0.11*radius
+    svg.drawNode(node, draw_path(path, width=lineWidth, color=color)) #mouth
         
-    svg.draw(draw_circle(startPt[0], startPt[1], lineWidth/2, color=color))
-    svg.draw(draw_circle(stopPt[0], stopPt[1], lineWidth/2, color=color))
-    
+    svg.drawNode(node, draw_circle(startPt[0], startPt[1], lineWidth/2, color=color))
+    svg.drawNode(node, draw_circle(stopPt[0], stopPt[1], lineWidth/2, color=color))
+
 def testSmile():
     file = gImageOutputPath + r'\smileC.svg'
     s = SVGFileV2(file,W=300,H=300)
-    drawSmileSVG(s,ridus=100,offsetX=20,offsetY=45)
+    drawSmileSVG(s,radius=100,offsetX=20,offsetY=45)
     s.close()
     
 def testSmile2():
@@ -76,8 +79,8 @@ def testSmile3():
             offsetX = j*(2*r + inter)
             offsetY = i*(2*r + inter)
            
-            #drawSmileSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY,color=randomColor())
-            drawSmileSVG(svg,ridus = r,offsetX=offsetX,offsetY=offsetY,color='#FFC10E')
+            #drawSmileSVG(svg,radius = r,offsetX=offsetX,offsetY=offsetY,color=randomColor())
+            drawSmileSVG(svg,radius = r,offsetX=offsetX,offsetY=offsetY,color='#FFC10E')
               
     svg.close()
        
