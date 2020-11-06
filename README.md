@@ -42,7 +42,7 @@ https://datavizproject.com/ <br/>
 |<img src="images/text2.svg" width="200" height="200" />|<img src="images/anim_circle1.svg" width="200" height="200" />|
 |<img src="images/anim_circle2.svg" width="200" height="200" />|<img src="images/anim_circle3.svg" width="200" height="200" />|
 |<img src="images/anim_circle6.svg" width="200" height="200" />|<img src="images/anim_circle7.svg" width="200" height="200" />|
-|<img src="images/dataFrame1.svg" width="200" height="200" />|<img src="images/dataFrame2.svg" width="200" height="200" />|
-|<img src="images/dataFrame3.svg" width="200" height="200" />|<img src="images/dataFrame4.svg" width="200" height="200" />|
+|<img src="images/dataFrame1.svg" width="200" height="120" />|<img src="images/dataFrame2.svg" width="200" height="120" />|
+|<img src="images/dataFrame3.svg" width="200" height="120" />|<img src="images/dataFrame4.svg" width="200" height="120" />|
 |||
 
